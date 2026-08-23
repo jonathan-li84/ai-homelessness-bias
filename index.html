@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive map of California Continuums of Care and 2024 HUD homelessness data."
+    />
+    <title>California Continuums of Care — 2024</title>
+    <link
+      href="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body,
+      #map {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        overflow: hidden;
+        background: #e8ebed;
+      }
+
+      #map {
+        position: fixed;
+        inset: 0;
+      }
+
+      .map-heading,
+      .legend,
+      .status {
+        position: absolute;
+        z-index: 2;
+        border: 1px solid rgb(15 23 42 / 12%);
+        border-radius: 10px;
+        background: rgb(255 255 255 / 94%);
+        box-shadow: 0 4px 18px rgb(15 23 42 / 15%);
+        backdrop-filter: blur(8px);
+      }
+
+      .map-heading {
+        top: 16px;
+        left: 16px;
+        max-width: min(390px, calc(100vw - 88px));
+        padding: 13px 16px;
+      }
+
+      .map-heading h1 {
+        margin: 0;
+        color: #172033;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .map-heading p {
+        margin: 4px 0 0;
+        color: #526070;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .legend {
+        bottom: 30px;
+        left: 16px;
+        width: 270px;
+        padding: 12px 14px;
+        color: #273244;
+        font-size: 11px;
+      }
+
+      .legend-control-label {
+        display: block;
+        margin-bottom: 5px;
+        color: #667384;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .legend-select {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 7px 28px 7px 9px;
+        border: 1px solid #cbd2da;
+        border-radius: 6px;
+        background: #fff;
+        color: #273244;
+        font: inherit;
+        font-size: 12px;
+      }
+
+      .legend-select:focus-visible {
+        outline: 2px solid #2563eb;
+        outline-offset: 2px;
+      }
+
+      .legend-title {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .legend-scale {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        height: 9px;
+        overflow: hidden;
+        border-radius: 3px;
+      }
+
+      .legend-scale span:nth-child(1) { background: #fff7ec; }
+      .legend-scale span:nth-child(2) { background: #fee8c8; }
+      .legend-scale span:nth-child(3) { background: #fdbb84; }
+      .legend-scale span:nth-child(4) { background: #e34a33; }
+      .legend-scale span:nth-child(5) { background: #b30000; }
+
+      .legend-labels {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-top: 5px;
+        color: #667384;
+        font-size: 9px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .legend-labels span {
+        text-align: center;
+      }
+
+      .legend-labels span:first-child {
+        text-align: left;
+      }
+
+      .legend-labels span:last-child {
+        text-align: right;
+      }
+
+      .legend-note {
+        margin-top: 7px;
+        color: #7a8696;
+        font-size: 9px;
+      }
+
+      .status {
+        top: 50%;
+        left: 50%;
+        padding: 11px 15px;
+        color: #344054;
+        font-size: 13px;
+        transform: translate(-50%, -50%);
+      }
+
+      .status[hidden] {
+        display: none;
+      }
+
+      .status.error {
+        width: min(430px, calc(100vw - 32px));
+        color: #8b1e1e;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .maplibregl-popup-content {
+        min-width: 240px;
+        padding: 14px 16px;
+        border-radius: 9px;
+        box-shadow: 0 5px 24px rgb(15 23 42 / 22%);
+      }
+
+      .popup-title {
+        margin: 0 22px 2px 0;
+        color: #172033;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .popup-code {
+        margin-bottom: 10px;
+        color: #687587;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+
+      .popup-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 5px 14px;
+        margin: 0;
+        font-size: 12px;
+      }
+
+      .popup-grid dt {
+        color: #5d6979;
+      }
+
+      .popup-grid dd {
+        margin: 0;
+        color: #1c2738;
+        font-variant-numeric: tabular-nums;
+        font-weight: 650;
+        text-align: right;
+      }
+
+      @media (max-width: 560px) {
+        .map-heading {
+          top: 10px;
+          left: 10px;
+          padding: 10px 12px;
+        }
+
+        .map-heading p {
+          display: none;
+        }
+
+        .legend {
+          bottom: 24px;
+          left: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="map" aria-label="Interactive map of California Continuums of Care"></main>
+
+    <header class="map-heading">
+      <h1>California Continuums of Care</h1>
+      <p>2024 HUD homelessness, ACS population, and blind-guess error</p>
+    </header>
+
+    <aside class="legend" aria-label="Map legend">
+      <label class="legend-control-label" for="metric-select">Color map by</label>
+      <select id="metric-select" class="legend-select" disabled>
+        <option value="absoluteError">Absolute blind-guess error</option>
+        <option value="homelessRate">Homeless per 10,000</option>
+        <option value="pitTotal">PIT total</option>
+        <option value="population">Total population</option>
+        <option value="sheltered">Sheltered PIT population</option>
+        <option value="unsheltered">Unsheltered PIT population</option>
+        <option value="veterans">Veterans experiencing homelessness</option>
+        <option value="youth">Unaccompanied youth</option>
+        <option value="beds">Year-round beds</option>
+        <option value="blindGuess">Blind PIT guess</option>
+      </select>
+      <div id="legend-title" class="legend-title" aria-live="polite">
+        Absolute blind-guess error
+      </div>
+      <div id="legend-scale" class="legend-scale" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div id="legend-labels" class="legend-labels" aria-hidden="true">
+        <span>—</span><span>—</span><span>—</span><span>—</span><span>—</span>
+      </div>
+      <div class="legend-note">Colors use the CoC minimum, quartiles, and maximum.</div>
+    </aside>
+
+    <div id="status" class="status" role="status">Loading 2024 CoC data…</div>
+
+    <script>
+      const DATA_URL =
+        "data/processed/ca_coc_organizations_boundaries_pit_hic_2024.geojson";
+      const CALIFORNIA_BOUNDS = [
+        [-124.65, 32.35],
+        [-113.85, 42.15],
+      ];
+
+      const statusElement = document.getElementById("status");
+      const metricSelect = document.getElementById("metric-select");
+      const legendTitle = document.getElementById("legend-title");
+      const legendScale = document.getElementById("legend-scale");
+      const legendLabels = document.getElementById("legend-labels");
+      const numberFormat = new Intl.NumberFormat("en-US");
+      const compactNumberFormat = new Intl.NumberFormat("en-US", {
+        notation: "compact",
+        maximumFractionDigits: 1,
+      });
+      const COLOR_RAMP = ["#fff7ec", "#fee8c8", "#fdbb84", "#e34a33", "#b30000"];
+      let hoveredFeatureId = null;
+      let cocData = null;
+
+      const coalescedProperty = (name) => ["coalesce", ["get", name], 0];
+      const sumExpression = (...names) => ["+", ...names.map(coalescedProperty)];
+      const sumProperties = (properties, names) =>
+        names.reduce((sum, name) => sum + (properties[name] ?? 0), 0);
+
+      const SHELTERED_FIELDS = [
+        "pit_sheltered_persons_in_families",
+        "pit_sheltered_individuals",
+      ];
+      const UNSHELTERED_FIELDS = [
+        "pit_unsheltered_persons_in_families",
+        "pit_unsheltered_individuals",
+      ];
+      const BED_FIELDS = [
+        "hic_emergency_shelter_beds",
+        "hic_safe_haven_beds",
+        "hic_transitional_housing_beds",
+        "hic_permanent_supportive_housing_beds",
+        "hic_rapid_rehousing_beds",
+        "hic_other_permanent_housing_beds",
+      ];
+
+      const METRICS = {
+        absoluteError: {
+          label: "Absolute blind-guess error",
+          expression: coalescedProperty("absolute_percent_error"),
+          value: (properties) => properties.absolute_percent_error,
+          format: (value) => `${value.toFixed(1)}%`,
+        },
+        homelessRate: {
+          label: "Homeless per 10,000",
+          expression: coalescedProperty("homeless_per_10000"),
+          value: (properties) => properties.homeless_per_10000,
+          format: (value) => value.toFixed(1),
+        },
+        pitTotal: {
+          label: "PIT total",
+          expression: coalescedProperty("pit_total_homeless_persons"),
+          value: (properties) => properties.pit_total_homeless_persons,
+          format: (value) => compactNumberFormat.format(value),
+        },
+        population: {
+          label: "Total population",
+          expression: coalescedProperty("total_population_2024"),
+          value: (properties) => properties.total_population_2024,
+          format: (value) => compactNumberFormat.format(value),
+        },
+        sheltered: {
+          label: "Sheltered PIT population",
+          expression: sumExpression(...SHELTERED_FIELDS),
+          value: (properties) => sumProperties(properties, SHELTERED_FIELDS),
+          format: (value) => compactNumberFormat.format(value),
+        },
+        unsheltered: {
+          label: "Unsheltered PIT population",
+          expression: sumExpression(...UNSHELTERED_FIELDS),
+          value: (properties) => sumProperties(properties, UNSHELTERED_FIELDS),
+          format: (value) => compactNumberFormat.format(value),
+        },
+        veterans: {
+          label: "Veterans experiencing homelessness",
+          expression: coalescedProperty("pit_total_veterans"),
+          value: (properties) => properties.pit_total_veterans,
+          format: (value) => compactNumberFormat.format(value),
+        },
+        youth: {
+          label: "Unaccompanied youth",
+          expression: coalescedProperty("pit_total_unaccompanied_youth_under_25"),
+          value: (properties) => properties.pit_total_unaccompanied_youth_under_25,
+          format: (value) => compactNumberFormat.format(value),
+        },
+        beds: {
+          label: "Year-round beds",
+          expression: sumExpression(...BED_FIELDS),
+          value: (properties) => sumProperties(properties, BED_FIELDS),
+          format: (value) => compactNumberFormat.format(value),
+        },
+        blindGuess: {
+          label: "Blind PIT guess",
+          expression: coalescedProperty("blind_guessed_pit_total_2024"),
+          value: (properties) => properties.blind_guessed_pit_total_2024,
+          format: (value) => compactNumberFormat.format(value),
+        },
+      };
+
+      const map = new maplibregl.Map({
+        container: "map",
+        style: "https://tiles.openfreemap.org/styles/positron",
+        bounds: CALIFORNIA_BOUNDS,
+        fitBoundsOptions: { padding: 42 },
+        minZoom: 3.5,
+        maxZoom: 14,
+        attributionControl: false,
+      });
+
+      map.addControl(new maplibregl.NavigationControl(), "top-right");
+      map.addControl(new maplibregl.FullscreenControl(), "top-right");
+      map.addControl(
+        new maplibregl.AttributionControl({ compact: true }),
+        "bottom-right",
+      );
+
+      function formatNumber(value) {
+        return value == null ? "—" : numberFormat.format(value);
+      }
+
+      function sumPresent(...values) {
+        return values.some((value) => value != null)
+          ? values.reduce((sum, value) => sum + (value ?? 0), 0)
+          : null;
+      }
+
+      function addPopupRow(list, label, value) {
+        const term = document.createElement("dt");
+        term.textContent = label;
+        const description = document.createElement("dd");
+        description.textContent =
+          typeof value === "number" ? formatNumber(value) : (value ?? "—");
+        list.append(term, description);
+      }
+
+      function formatSignedPercent(value) {
+        if (value == null) return "—";
+        const sign = value > 0 ? "+" : "";
+        return `${sign}${value.toFixed(1)}%`;
+      }
+
+      function quantile(sortedValues, probability) {
+        const position = (sortedValues.length - 1) * probability;
+        const lowerIndex = Math.floor(position);
+        const upperIndex = Math.ceil(position);
+        if (lowerIndex === upperIndex) return sortedValues[lowerIndex];
+        const fraction = position - lowerIndex;
+        return (
+          sortedValues[lowerIndex] * (1 - fraction) +
+          sortedValues[upperIndex] * fraction
+        );
+      }
+
+      function metricStops(metric) {
+        const values = cocData.features
+          .map((feature) => metric.value(feature.properties))
+          .filter((value) => Number.isFinite(value))
+          .sort((left, right) => left - right);
+        if (!values.length) throw new Error(`No numeric values for ${metric.label}`);
+        const stops = [0, 0.25, 0.5, 0.75, 1].map((probability) =>
+          quantile(values, probability),
+        );
+        for (let index = 1; index < stops.length; index += 1) {
+          if (stops[index] <= stops[index - 1]) {
+            stops[index] =
+              stops[index - 1] + Math.max(1e-9, Math.abs(stops[index - 1]) * 1e-9);
+          }
+        }
+        return stops;
+      }
+
+      function colorExpression(metric, stops) {
+        const expression = ["interpolate", ["linear"], metric.expression];
+        stops.forEach((stop, index) => expression.push(stop, COLOR_RAMP[index]));
+        return expression;
+      }
+
+      function applyMetric(metricKey) {
+        const metric = METRICS[metricKey];
+        if (!metric || !cocData || !map.getLayer("coc-fill")) return;
+        const stops = metricStops(metric);
+        map.setPaintProperty("coc-fill", "fill-color", colorExpression(metric, stops));
+        legendTitle.textContent = metric.label;
+        [...legendScale.children].forEach((element, index) => {
+          element.style.background = COLOR_RAMP[index];
+        });
+        [...legendLabels.children].forEach((element, index) => {
+          element.textContent = metric.format(stops[index]);
+        });
+      }
+
+      function createPopupContent(properties) {
+        const container = document.createElement("section");
+        const title = document.createElement("h2");
+        const code = document.createElement("div");
+        const list = document.createElement("dl");
+
+        title.className = "popup-title";
+        title.textContent = properties.COCNAME;
+        code.className = "popup-code";
+        code.textContent = `${properties.COCNUM} · ${properties.coc_category}`;
+        list.className = "popup-grid";
+
+        const sheltered = sumPresent(
+          properties.pit_sheltered_persons_in_families,
+          properties.pit_sheltered_individuals,
+        );
+        const unsheltered = sumPresent(
+          properties.pit_unsheltered_persons_in_families,
+          properties.pit_unsheltered_individuals,
+        );
+        const yearRoundBeds = sumPresent(
+          properties.hic_emergency_shelter_beds,
+          properties.hic_safe_haven_beds,
+          properties.hic_transitional_housing_beds,
+          properties.hic_permanent_supportive_housing_beds,
+          properties.hic_rapid_rehousing_beds,
+          properties.hic_other_permanent_housing_beds,
+        );
+
+        addPopupRow(list, "Total population", properties.total_population_2024);
+        addPopupRow(list, "PIT total", properties.pit_total_homeless_persons);
+        addPopupRow(
+          list,
+          "Homeless per 10,000",
+          properties.homeless_per_10000 == null
+            ? null
+            : properties.homeless_per_10000.toFixed(1),
+        );
+        addPopupRow(list, "Sheltered", sheltered);
+        addPopupRow(list, "Unsheltered", unsheltered);
+        addPopupRow(list, "Veterans", properties.pit_total_veterans);
+        addPopupRow(
+          list,
+          "Unaccompanied youth",
+          properties.pit_total_unaccompanied_youth_under_25,
+        );
+        addPopupRow(list, "Year-round beds", yearRoundBeds);
+        addPopupRow(
+          list,
+          "Blind PIT guess",
+          properties.blind_guessed_pit_total_2024,
+        );
+        addPopupRow(
+          list,
+          "Signed guess error",
+          formatSignedPercent(properties.percent_error),
+        );
+
+        container.append(title, code, list);
+        return container;
+      }
+
+      map.on("load", async () => {
+        try {
+          const response = await fetch(DATA_URL);
+          if (!response.ok) {
+            throw new Error(`GeoJSON request failed (${response.status})`);
+          }
+          const data = await response.json();
+          if (data.type !== "FeatureCollection" || data.features.length !== 44) {
+            throw new Error("Expected a 44-feature California CoC collection");
+          }
+          cocData = data;
+          const initialMetric = METRICS[metricSelect.value];
+          const initialStops = metricStops(initialMetric);
+
+          map.addSource("california-cocs", {
+            type: "geojson",
+            data,
+            generateId: true,
+          });
+
+          map.addLayer({
+            id: "coc-fill",
+            type: "fill",
+            source: "california-cocs",
+            paint: {
+              "fill-color": colorExpression(initialMetric, initialStops),
+              "fill-opacity": [
+                "case",
+                ["boolean", ["feature-state", "hover"], false],
+                0.8,
+                0.58,
+              ],
+            },
+          });
+
+          map.addLayer({
+            id: "coc-outline",
+            type: "line",
+            source: "california-cocs",
+            paint: {
+              "line-color": [
+                "case",
+                ["boolean", ["feature-state", "hover"], false],
+                "#f97316",
+                "#1e3a5f",
+              ],
+              "line-width": [
+                "case",
+                ["boolean", ["feature-state", "hover"], false],
+                2.8,
+                1.15,
+              ],
+              "line-opacity": 0.95,
+            },
+          });
+
+          map.addLayer({
+            id: "coc-labels",
+            type: "symbol",
+            source: "california-cocs",
+            minzoom: 6,
+            layout: {
+              "text-field": ["get", "COCNUM"],
+              "text-font": ["Noto Sans Regular"],
+              "text-size": 10,
+              "text-allow-overlap": false,
+            },
+            paint: {
+              "text-color": "#172033",
+              "text-halo-color": "rgba(255,255,255,0.9)",
+              "text-halo-width": 1.5,
+            },
+          });
+
+          map.on("mousemove", "coc-fill", (event) => {
+            if (!event.features.length) return;
+            if (hoveredFeatureId !== null) {
+              map.setFeatureState(
+                { source: "california-cocs", id: hoveredFeatureId },
+                { hover: false },
+              );
+            }
+            hoveredFeatureId = event.features[0].id;
+            map.setFeatureState(
+              { source: "california-cocs", id: hoveredFeatureId },
+              { hover: true },
+            );
+            map.getCanvas().style.cursor = "pointer";
+          });
+
+          map.on("mouseleave", "coc-fill", () => {
+            if (hoveredFeatureId !== null) {
+              map.setFeatureState(
+                { source: "california-cocs", id: hoveredFeatureId },
+                { hover: false },
+              );
+            }
+            hoveredFeatureId = null;
+            map.getCanvas().style.cursor = "";
+          });
+
+          map.on("click", "coc-fill", (event) => {
+            const feature = event.features[0];
+            new maplibregl.Popup({ maxWidth: "320px" })
+              .setLngLat(event.lngLat)
+              .setDOMContent(createPopupContent(feature.properties))
+              .addTo(map);
+          });
+
+          metricSelect.addEventListener("change", () => {
+            applyMetric(metricSelect.value);
+          });
+          metricSelect.disabled = false;
+          applyMetric(metricSelect.value);
+
+          statusElement.hidden = true;
+        } catch (error) {
+          console.error(error);
+          statusElement.classList.add("error");
+          statusElement.textContent =
+            "The CoC data could not be loaded. Start a local web server in this folder with “python3 -m http.server” and open http://localhost:8000/.";
+        }
+      });
+    </script>
+  </body>
+</html>

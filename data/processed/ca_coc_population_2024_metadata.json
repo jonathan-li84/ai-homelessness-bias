@@ -1,0 +1,16 @@
+{
+  "year": 2024,
+  "population_dataset": "2020-2024 ACS 5-year Detailed Table B01003",
+  "population_variable": "B01003_E001",
+  "tract_geography": "2024 TIGER/Line California census tracts",
+  "allocation_method": "Population is allocated in proportion to each tract's intersected area among CoCs in EPSG:3310. Shares are normalized across matched CoCs; largest-remainder rounding preserves the published California total.",
+  "california_total_population": 39287377,
+  "california_tract_count": 9129,
+  "california_coc_count": 44,
+  "zero_population_unmatched_offshore_tracts": 14,
+  "sources": {
+    "tiger_tracts": "https://www2.census.gov/geo/tiger/TIGER2024/TRACT/tl_2024_06_tract.zip",
+    "acs_b01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+    "hud_coc_categories": "https://services.arcgis.com/VTyQ9soqVukalItT/ArcGIS/rest/services/CoC_Geo_Type/FeatureServer/0/query?where=COCNUM%20LIKE%20%27CA-%25%27&outFields=COCNUM%2CCOCNAME%2CGeo_Type&returnGeometry=false&orderByFields=COCNUM&f=json"
+  }
+}

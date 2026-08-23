@@ -1,0 +1,5 @@
+.DS_Store
+.venv/
+__pycache__/
+data/raw/*.checkpoint.json
+data/raw/*.records.jsonl

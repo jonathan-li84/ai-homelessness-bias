@@ -1,0 +1,5 @@
+coc_category,count,total_homeless,total_population,homeless_per_10000,average_absolute_percent_error
+Major City,9,126938,20836749,60.9,4.7
+Urban,5,6025,1786617,33.7,28.0
+Suburban,19,42415,14918363,28.4,21.6
+Rural,11,11706,1745648,67.1,63.6
