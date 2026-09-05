@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
     <style>
       :root {
         color-scheme: light;
@@ -77,6 +78,127 @@
         line-height: 1.4;
       }
 
+      .charts-toggle,
+      .charts-close {
+        border: 1px solid #cbd2da;
+        border-radius: 6px;
+        background: #fff;
+        color: #273244;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 650;
+      }
+
+      .charts-toggle {
+        margin-top: 10px;
+        padding: 6px 9px;
+        font-size: 11px;
+      }
+
+      .charts-toggle:hover,
+      .charts-close:hover {
+        background: #f1f5f9;
+      }
+
+      .charts-panel {
+        position: absolute;
+        z-index: 3;
+        top: 16px;
+        right: 58px;
+        bottom: 16px;
+        width: min(520px, calc(100vw - 90px));
+        overflow-y: auto;
+        border: 1px solid rgb(15 23 42 / 12%);
+        border-radius: 12px;
+        background: rgb(248 250 252 / 97%);
+        box-shadow: 0 8px 28px rgb(15 23 42 / 20%);
+        backdrop-filter: blur(10px);
+      }
+
+      .charts-panel[hidden] { display: none; }
+
+      .charts-header {
+        position: sticky;
+        z-index: 1;
+        top: 0;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 18px 12px;
+        border-bottom: 1px solid #dbe1e8;
+        background: rgb(248 250 252 / 97%);
+      }
+
+      .charts-header h2 {
+        margin: 0;
+        color: #172033;
+        font-size: 17px;
+      }
+
+      .charts-header p {
+        margin: 4px 0 0;
+        color: #667384;
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .charts-close {
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .chart-card {
+        margin: 14px;
+        padding: 14px;
+        border: 1px solid #dbe1e8;
+        border-radius: 9px;
+        background: #fff;
+      }
+
+      .chart-card h3 {
+        margin: 0;
+        color: #273244;
+        font-size: 14px;
+      }
+
+      .chart-card p {
+        margin: 4px 0 10px;
+        color: #748092;
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+      .chart-card svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
+
+      .chart-axis text { fill: #667384; font-size: 9px; }
+      .chart-axis path,
+      .chart-axis line { stroke: #cbd5e1; }
+      .chart-grid line { stroke: #e7ebf0; }
+      .chart-grid path { display: none; }
+      .axis-label { fill: #526070; font-size: 10px; font-weight: 650; }
+      .scatter-point {
+        fill: #2563eb;
+        fill-opacity: 0.78;
+        stroke: #fff;
+        stroke-width: 1;
+      }
+      .scatter-point:hover {
+        fill: #ea580c;
+        fill-opacity: 1;
+        stroke: #9a3412;
+      }
+      .error-bar { fill: #dc5a3a; }
+      .error-bar:hover { fill: #a92f20; }
+
       .legend {
         bottom: 30px;
         left: 16px;
@@ -127,11 +249,11 @@
         border-radius: 3px;
       }
 
-      .legend-scale span:nth-child(1) { background: #fff7ec; }
-      .legend-scale span:nth-child(2) { background: #fee8c8; }
-      .legend-scale span:nth-child(3) { background: #fdbb84; }
-      .legend-scale span:nth-child(4) { background: #e34a33; }
-      .legend-scale span:nth-child(5) { background: #b30000; }
+      .legend-scale span:nth-child(1) { background: #fff7bc; }
+      .legend-scale span:nth-child(2) { background: #7fcdbb; }
+      .legend-scale span:nth-child(3) { background: #41b6c4; }
+      .legend-scale span:nth-child(4) { background: #2c7fb8; }
+      .legend-scale span:nth-child(5) { background: #253494; }
 
       .legend-labels {
         display: grid;
@@ -237,6 +359,13 @@
           bottom: 24px;
           left: 10px;
         }
+
+        .charts-panel {
+          top: 64px;
+          right: 10px;
+          bottom: 10px;
+          width: calc(100vw - 20px);
+        }
       }
     </style>
   </head>
@@ -246,19 +375,42 @@
     <header class="map-heading">
       <h1>California Continuums of Care</h1>
       <p>2024 HUD homelessness, ACS population, and blind-guess error</p>
+      <button id="charts-toggle" class="charts-toggle" type="button"
+        aria-controls="charts-panel" aria-expanded="true">Hide charts</button>
     </header>
+
+    <aside id="charts-panel" class="charts-panel" aria-label="CoC comparison charts">
+      <header class="charts-header">
+        <div>
+          <h2>Actual and AI estimates</h2>
+          <p>Each mark represents one California Continuum of Care.</p>
+        </div>
+        <button id="charts-close" class="charts-close" type="button" aria-label="Hide charts">×</button>
+      </header>
+      <section class="chart-card">
+        <h3>Actual PIT count vs. AI estimate</h3>
+        <p>Both axes use a logarithmic scale. Points on the dashed line have identical counts. Hover for details.</p>
+        <svg id="scatterplot" role="img" aria-label="Scatterplot of actual PIT count against AI estimate"></svg>
+      </section>
+      <section class="chart-card">
+        <h3>Absolute percentage error by CoC</h3>
+        <p>Sorted from highest to lowest error. Hover for the CoC name and values.</p>
+        <svg id="error-bars" role="img" aria-label="Bar graph of absolute percentage error by CoC"></svg>
+      </section>
+    </aside>
 
     <aside class="legend" aria-label="Map legend">
       <label class="legend-control-label" for="metric-select">Color map by</label>
       <select id="metric-select" class="legend-select" disabled>
-        <option value="absoluteError">Absolute blind-guess error</option>
+        <option value="absoluteError">Absolute % error</option>
+        <option value="signedError">Signed % error</option>
         <option value="homelessRate">Homeless per 10,000</option>
         <option value="pitTotal">PIT total</option>
         <option value="population">Total population</option>
         <option value="blindGuess">Blind PIT guess</option>
       </select>
       <div id="legend-title" class="legend-title" aria-live="polite">
-        Absolute blind-guess error
+        Absolute % error
       </div>
       <div id="legend-scale" class="legend-scale" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span>
@@ -266,7 +418,7 @@
       <div id="legend-labels" class="legend-labels" aria-hidden="true">
         <span>—</span><span>—</span><span>—</span><span>—</span><span>—</span>
       </div>
-      <div class="legend-note">Colors use the CoC minimum, quartiles, and maximum.</div>
+      <div class="legend-note">Error colors are capped at 100%; other scales use the CoC minimum, quartiles, and maximum.</div>
     </aside>
 
     <div id="status" class="status" role="status">Loading 2024 CoC data…</div>
@@ -280,6 +432,9 @@
       ];
 
       const statusElement = document.getElementById("status");
+      const chartsPanel = document.getElementById("charts-panel");
+      const chartsToggle = document.getElementById("charts-toggle");
+      const chartsClose = document.getElementById("charts-close");
       const metricSelect = document.getElementById("metric-select");
       const legendTitle = document.getElementById("legend-title");
       const legendScale = document.getElementById("legend-scale");
@@ -289,17 +444,28 @@
         notation: "compact",
         maximumFractionDigits: 1,
       });
-      const COLOR_RAMP = ["#fff7ec", "#fee8c8", "#fdbb84", "#e34a33", "#b30000"];
+      const COLOR_RAMP = ["#fff7bc", "#7fcdbb", "#41b6c4", "#2c7fb8", "#253494"];
+      const SIGNED_ERROR_RAMP = ["#253494", "#41b6c4", "#fff7bc", "#dd1c77", "#7a0177"];
       let hoveredFeatureId = null;
       let cocData = null;
 
       const coalescedProperty = (name) => ["coalesce", ["get", name], 0];
       const METRICS = {
         absoluteError: {
-          label: "Absolute blind-guess error",
+          label: "Absolute % error",
           expression: coalescedProperty("absolute_percent_error"),
           value: (properties) => properties.absolute_percent_error,
           format: (value) => `${value.toFixed(1)}%`,
+          colorCap: 100,
+        },
+        signedError: {
+          label: "Signed % error",
+          expression: coalescedProperty("percent_error"),
+          value: (properties) => properties.percent_error,
+          format: formatSignedPercent,
+          colors: SIGNED_ERROR_RAMP,
+          diverging: true,
+          colorCap: 100,
         },
         homelessRate: {
           label: "Homeless per 10,000",
@@ -363,6 +529,197 @@
         return `${sign}${value.toFixed(1)}%`;
       }
 
+      function setChartsVisible(visible) {
+        chartsPanel.hidden = !visible;
+        chartsToggle.textContent = visible ? "Hide charts" : "Show charts";
+        chartsToggle.setAttribute("aria-expanded", String(visible));
+      }
+
+      chartsToggle.addEventListener("click", () => {
+        setChartsVisible(chartsPanel.hidden);
+      });
+      chartsClose.addEventListener("click", () => setChartsVisible(false));
+
+      function chartData(features) {
+        return features
+          .map(({ properties }) => ({
+            id: properties.COCNUM,
+            name: properties.COCNAME,
+            actual: Number(properties.pit_total_homeless_persons),
+            estimate: Number(properties.blind_guessed_pit_total_2024),
+            absoluteError: Number.isFinite(Number(properties.absolute_percent_error))
+              ? Number(properties.absolute_percent_error)
+              : Math.abs(Number(properties.percent_error)),
+          }))
+          .filter(
+            (row) =>
+              Number.isFinite(row.actual) &&
+              row.actual > 0 &&
+              Number.isFinite(row.estimate) &&
+              row.estimate > 0 &&
+              Number.isFinite(row.absoluteError),
+          );
+      }
+
+      function renderScatterplot(rows) {
+        const width = 470;
+        const height = 390;
+        const margin = { top: 14, right: 18, bottom: 48, left: 60 };
+        const plotWidth = width - margin.left - margin.right;
+        const plotHeight = height - margin.top - margin.bottom;
+        const smallestValue = d3.min(rows, (row) => Math.min(row.actual, row.estimate));
+        const largestValue = d3.max(rows, (row) => Math.max(row.actual, row.estimate));
+        const minimum = 10 ** Math.floor(Math.log10(smallestValue));
+        const maximum = 10 ** Math.ceil(Math.log10(largestValue));
+        const x = d3.scaleLog().domain([minimum, maximum]).range([0, plotWidth]);
+        const y = d3.scaleLog().domain([minimum, maximum]).range([plotHeight, 0]);
+        const tickValues = [];
+        for (
+          let power = Math.floor(Math.log10(minimum));
+          power <= Math.ceil(Math.log10(maximum));
+          power += 1
+        ) {
+          [1, 3].forEach((factor) => {
+            const value = factor * 10 ** power;
+            if (value >= minimum && value <= maximum) tickValues.push(value);
+          });
+        }
+        const formatLogTick = (value) =>
+          value >= 1_000 ? `${value / 1_000}k` : numberFormat.format(value);
+        const svg = d3.select("#scatterplot").attr("viewBox", `0 0 ${width} ${height}`);
+        svg.selectAll("*").remove();
+        const plot = svg
+          .append("g")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        plot
+          .append("g")
+          .attr("class", "chart-grid")
+          .call(
+            d3.axisLeft(y).tickValues(tickValues).tickSize(-plotWidth).tickFormat(""),
+          );
+        plot
+          .append("line")
+          .attr("x1", x(minimum))
+          .attr("y1", y(minimum))
+          .attr("x2", x(maximum))
+          .attr("y2", y(maximum))
+          .attr("stroke", "#64748b")
+          .attr("stroke-width", 1.25)
+          .attr("stroke-dasharray", "5 4");
+        plot
+          .append("g")
+          .attr("class", "chart-axis")
+          .attr("transform", `translate(0,${plotHeight})`)
+          .call(d3.axisBottom(x).tickValues(tickValues).tickFormat(formatLogTick));
+        plot
+          .append("g")
+          .attr("class", "chart-axis")
+          .call(d3.axisLeft(y).tickValues(tickValues).tickFormat(formatLogTick));
+        plot
+          .selectAll("circle")
+          .data(rows)
+          .join("circle")
+          .attr("class", "scatter-point")
+          .attr("cx", (row) => x(row.actual))
+          .attr("cy", (row) => y(row.estimate))
+          .attr("r", 4.5)
+          .append("title")
+          .text(
+            (row) =>
+              `${row.id} — ${row.name}\nActual PIT: ${formatNumber(row.actual)}\nAI estimate: ${formatNumber(row.estimate)}\nAbsolute error: ${row.absoluteError.toFixed(1)}%`,
+          );
+        svg
+          .append("text")
+          .attr("class", "axis-label")
+          .attr("x", margin.left + plotWidth / 2)
+          .attr("y", height - 7)
+          .attr("text-anchor", "middle")
+          .text("Actual PIT count (log scale)");
+        svg
+          .append("text")
+          .attr("class", "axis-label")
+          .attr("transform", "rotate(-90)")
+          .attr("x", -(margin.top + plotHeight / 2))
+          .attr("y", 12)
+          .attr("text-anchor", "middle")
+          .text("AI estimate (log scale)");
+      }
+
+      function renderErrorBars(rows) {
+        const sorted = [...rows].sort(
+          (left, right) => d3.descending(left.absoluteError, right.absoluteError),
+        );
+        const width = 470;
+        const rowHeight = 23;
+        const margin = { top: 32, right: 50, bottom: 14, left: 58 };
+        const height = margin.top + margin.bottom + sorted.length * rowHeight;
+        const plotWidth = width - margin.left - margin.right;
+        const plotHeight = height - margin.top - margin.bottom;
+        const x = d3
+          .scaleLinear()
+          .domain([0, d3.max(sorted, (row) => row.absoluteError)])
+          .nice()
+          .range([0, plotWidth]);
+        const y = d3
+          .scaleBand()
+          .domain(sorted.map((row) => row.id))
+          .range([0, plotHeight])
+          .padding(0.2);
+        const svg = d3.select("#error-bars").attr("viewBox", `0 0 ${width} ${height}`);
+        svg.selectAll("*").remove();
+        const plot = svg
+          .append("g")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        plot
+          .append("g")
+          .attr("class", "chart-grid")
+          .call(d3.axisTop(x).ticks(5).tickSize(-plotHeight).tickFormat(""));
+        plot
+          .append("g")
+          .attr("class", "chart-axis")
+          .call(d3.axisTop(x).ticks(5).tickFormat((value) => `${value}%`));
+        plot
+          .append("g")
+          .attr("class", "chart-axis")
+          .call(d3.axisLeft(y).tickSize(0).tickPadding(7));
+
+        const bars = plot
+          .selectAll("rect")
+          .data(sorted)
+          .join("rect")
+          .attr("class", "error-bar")
+          .attr("x", 0)
+          .attr("y", (row) => y(row.id))
+          .attr("width", (row) => x(row.absoluteError))
+          .attr("height", y.bandwidth())
+          .attr("rx", 2);
+        bars
+          .append("title")
+          .text(
+            (row) =>
+              `${row.id} — ${row.name}\nAbsolute percentage error: ${row.absoluteError.toFixed(1)}%\nActual PIT: ${formatNumber(row.actual)}\nAI estimate: ${formatNumber(row.estimate)}`,
+          );
+        plot
+          .selectAll(".bar-value")
+          .data(sorted)
+          .join("text")
+          .attr("class", "bar-value")
+          .attr("x", (row) => x(row.absoluteError) + 5)
+          .attr("y", (row) => y(row.id) + y.bandwidth() / 2)
+          .attr("dy", "0.35em")
+          .attr("fill", "#526070")
+          .attr("font-size", 9)
+          .text((row) => `${row.absoluteError.toFixed(1)}%`);
+      }
+
+      function renderCharts(features) {
+        const rows = chartData(features);
+        renderScatterplot(rows);
+        renderErrorBars(rows);
+      }
+
       function quantile(sortedValues, probability) {
         const position = (sortedValues.length - 1) * probability;
         const lowerIndex = Math.floor(position);
@@ -381,6 +738,16 @@
           .filter((value) => Number.isFinite(value))
           .sort((left, right) => left - right);
         if (!values.length) throw new Error(`No numeric values for ${metric.label}`);
+        if (metric.diverging) {
+          const minimum = Math.max(Math.min(...values, 0), -metric.colorCap);
+          const maximum = Math.min(Math.max(...values, 0), metric.colorCap);
+          return [minimum, minimum / 2, 0, maximum / 2, maximum];
+        }
+        if (metric.colorCap) {
+          return [0, 0.25, 0.5, 0.75, 1].map(
+            (proportion) => proportion * metric.colorCap,
+          );
+        }
         const stops = [0, 0.25, 0.5, 0.75, 1].map((probability) =>
           quantile(values, probability),
         );
@@ -395,7 +762,8 @@
 
       function colorExpression(metric, stops) {
         const expression = ["interpolate", ["linear"], metric.expression];
-        stops.forEach((stop, index) => expression.push(stop, COLOR_RAMP[index]));
+        const colors = metric.colors ?? COLOR_RAMP;
+        stops.forEach((stop, index) => expression.push(stop, colors[index]));
         return expression;
       }
 
@@ -405,8 +773,9 @@
         const stops = metricStops(metric);
         map.setPaintProperty("coc-fill", "fill-color", colorExpression(metric, stops));
         legendTitle.textContent = metric.label;
+        const colors = metric.colors ?? COLOR_RAMP;
         [...legendScale.children].forEach((element, index) => {
-          element.style.background = COLOR_RAMP[index];
+          element.style.background = colors[index];
         });
         [...legendLabels.children].forEach((element, index) => {
           element.textContent = metric.format(stops[index]);
@@ -460,6 +829,7 @@
             throw new Error("Expected a 44-feature California CoC collection");
           }
           cocData = data;
+          renderCharts(data.features);
           const initialMetric = METRICS[metricSelect.value];
           const initialStops = metricStops(initialMetric);
 
