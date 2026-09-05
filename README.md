@@ -1,5 +1,7 @@
 # AI Homelessness Bias
 
+[View the interactive map and charts](https://jonathan-li84.github.io/ai-homelessness-bias/)
+
 This repository contains all 44 California Continuums of Care (CoCs), their FY2024 administrative boundaries, and CoC-level 2024 homelessness data from the U.S. Department of Housing and Urban Development (HUD).
 
 ## Ready-to-use data
