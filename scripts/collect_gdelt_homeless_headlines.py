@@ -292,8 +292,9 @@ def default_paths(args: argparse.Namespace) -> tuple[Path, Path, Path]:
     label = f"{args.start_date:%Y%m%d}_{args.end_date:%Y%m%d}"
     output = Path(args.output) if args.output else Path(f"data/processed/gdelt_homelessness_headlines_{label}.csv")
     output = output if output.is_absolute() else ROOT / output
-    checkpoint = output.with_suffix(".checkpoint.json")
-    spool = output.with_suffix(".records.jsonl")
+    raw_directory = ROOT / "data" / "raw"
+    checkpoint = raw_directory / f"{output.stem}.checkpoint.json"
+    spool = raw_directory / f"{output.stem}.records.jsonl"
     return output, checkpoint, spool
 
 
