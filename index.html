@@ -255,11 +255,6 @@
         <option value="homelessRate">Homeless per 10,000</option>
         <option value="pitTotal">PIT total</option>
         <option value="population">Total population</option>
-        <option value="sheltered">Sheltered PIT population</option>
-        <option value="unsheltered">Unsheltered PIT population</option>
-        <option value="veterans">Veterans experiencing homelessness</option>
-        <option value="youth">Unaccompanied youth</option>
-        <option value="beds">Year-round beds</option>
         <option value="blindGuess">Blind PIT guess</option>
       </select>
       <div id="legend-title" class="legend-title" aria-live="polite">
@@ -299,27 +294,6 @@
       let cocData = null;
 
       const coalescedProperty = (name) => ["coalesce", ["get", name], 0];
-      const sumExpression = (...names) => ["+", ...names.map(coalescedProperty)];
-      const sumProperties = (properties, names) =>
-        names.reduce((sum, name) => sum + (properties[name] ?? 0), 0);
-
-      const SHELTERED_FIELDS = [
-        "pit_sheltered_persons_in_families",
-        "pit_sheltered_individuals",
-      ];
-      const UNSHELTERED_FIELDS = [
-        "pit_unsheltered_persons_in_families",
-        "pit_unsheltered_individuals",
-      ];
-      const BED_FIELDS = [
-        "hic_emergency_shelter_beds",
-        "hic_safe_haven_beds",
-        "hic_transitional_housing_beds",
-        "hic_permanent_supportive_housing_beds",
-        "hic_rapid_rehousing_beds",
-        "hic_other_permanent_housing_beds",
-      ];
-
       const METRICS = {
         absoluteError: {
           label: "Absolute blind-guess error",
@@ -343,36 +317,6 @@
           label: "Total population",
           expression: coalescedProperty("total_population_2024"),
           value: (properties) => properties.total_population_2024,
-          format: (value) => compactNumberFormat.format(value),
-        },
-        sheltered: {
-          label: "Sheltered PIT population",
-          expression: sumExpression(...SHELTERED_FIELDS),
-          value: (properties) => sumProperties(properties, SHELTERED_FIELDS),
-          format: (value) => compactNumberFormat.format(value),
-        },
-        unsheltered: {
-          label: "Unsheltered PIT population",
-          expression: sumExpression(...UNSHELTERED_FIELDS),
-          value: (properties) => sumProperties(properties, UNSHELTERED_FIELDS),
-          format: (value) => compactNumberFormat.format(value),
-        },
-        veterans: {
-          label: "Veterans experiencing homelessness",
-          expression: coalescedProperty("pit_total_veterans"),
-          value: (properties) => properties.pit_total_veterans,
-          format: (value) => compactNumberFormat.format(value),
-        },
-        youth: {
-          label: "Unaccompanied youth",
-          expression: coalescedProperty("pit_total_unaccompanied_youth_under_25"),
-          value: (properties) => properties.pit_total_unaccompanied_youth_under_25,
-          format: (value) => compactNumberFormat.format(value),
-        },
-        beds: {
-          label: "Year-round beds",
-          expression: sumExpression(...BED_FIELDS),
-          value: (properties) => sumProperties(properties, BED_FIELDS),
           format: (value) => compactNumberFormat.format(value),
         },
         blindGuess: {
@@ -402,12 +346,6 @@
 
       function formatNumber(value) {
         return value == null ? "—" : numberFormat.format(value);
-      }
-
-      function sumPresent(...values) {
-        return values.some((value) => value != null)
-          ? values.reduce((sum, value) => sum + (value ?? 0), 0)
-          : null;
       }
 
       function addPopupRow(list, label, value) {
@@ -487,23 +425,6 @@
         code.textContent = `${properties.COCNUM} · ${properties.coc_category}`;
         list.className = "popup-grid";
 
-        const sheltered = sumPresent(
-          properties.pit_sheltered_persons_in_families,
-          properties.pit_sheltered_individuals,
-        );
-        const unsheltered = sumPresent(
-          properties.pit_unsheltered_persons_in_families,
-          properties.pit_unsheltered_individuals,
-        );
-        const yearRoundBeds = sumPresent(
-          properties.hic_emergency_shelter_beds,
-          properties.hic_safe_haven_beds,
-          properties.hic_transitional_housing_beds,
-          properties.hic_permanent_supportive_housing_beds,
-          properties.hic_rapid_rehousing_beds,
-          properties.hic_other_permanent_housing_beds,
-        );
-
         addPopupRow(list, "Total population", properties.total_population_2024);
         addPopupRow(list, "PIT total", properties.pit_total_homeless_persons);
         addPopupRow(
@@ -513,15 +434,6 @@
             ? null
             : properties.homeless_per_10000.toFixed(1),
         );
-        addPopupRow(list, "Sheltered", sheltered);
-        addPopupRow(list, "Unsheltered", unsheltered);
-        addPopupRow(list, "Veterans", properties.pit_total_veterans);
-        addPopupRow(
-          list,
-          "Unaccompanied youth",
-          properties.pit_total_unaccompanied_youth_under_25,
-        );
-        addPopupRow(list, "Year-round beds", yearRoundBeds);
         addPopupRow(
           list,
           "Blind PIT guess",

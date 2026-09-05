@@ -279,19 +279,12 @@ def main() -> int:
             "COCNAME",
             "total_population_2024",
             "pit_total_homeless_persons",
-            "sheltered_2024",
-            "unsheltered_2024",
-            "pit_total_veterans",
-            "pit_total_unaccompanied_youth_under_25",
-            "year_round_beds_2024",
         ]
     ].rename(
         columns={
             "COCNUM": "coc_number",
             "COCNAME": "coc_name",
             "pit_total_homeless_persons": "pit_total_2024",
-            "pit_total_veterans": "veterans_2024",
-            "pit_total_unaccompanied_youth_under_25": "unaccompanied_youth_2024",
         }
     )
     categories = read_coc_categories()

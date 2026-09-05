@@ -1,4 +1,4 @@
-# California Continuums of Care — 2024
+# AI Homelessness Bias
 
 This repository contains all 44 California Continuums of Care (CoCs), their FY2024 administrative boundaries, and CoC-level 2024 homelessness data from the U.S. Department of Housing and Urban Development (HUD).
 
@@ -28,11 +28,6 @@ The unmodified response from HUD's boundary service is retained at `data/raw/ca_
 - `homeless_per_10000`
 - `blind_guessed_pit_total_2024`
 - `percent_error`
-- `sheltered_2024`
-- `unsheltered_2024`
-- `veterans_2024`
-- `unaccompanied_youth_2024`
-- `year_round_beds_2024`
 
 Additional Census and spatial outputs are:
 
