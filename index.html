@@ -198,6 +198,21 @@
       }
       .error-bar { fill: #dc5a3a; }
       .error-bar:hover { fill: #a92f20; }
+      .boxplot-title {
+        margin: 12px 0 0;
+        color: #526070;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .boxplot-box {
+        fill: #9ecae1;
+        stroke: #2563eb;
+        stroke-width: 1.5;
+      }
+      .boxplot-median { stroke: #172033; stroke-width: 2; }
+      .boxplot-whisker { stroke: #64748b; stroke-width: 1.25; }
+      .boxplot-point { fill: #dc5a3a; fill-opacity: 0.8; }
+      .boxplot-zero { stroke: #475569; stroke-dasharray: 4 3; }
 
       .legend {
         bottom: 30px;
@@ -393,6 +408,14 @@
         <svg id="scatterplot" role="img" aria-label="Scatterplot of actual PIT count against AI estimate"></svg>
       </section>
       <section class="chart-card">
+        <h3>Error distribution by CoC category</h3>
+        <p>Boxes show the middle 50%, center lines show medians, whiskers extend to 1.5× the interquartile range, and dots are outliers.</p>
+        <h4 class="boxplot-title">Signed percentage error (symmetric-log scale)</h4>
+        <svg id="category-signed-boxplot" role="img" aria-label="Box plot of signed percentage error by CoC category"></svg>
+        <h4 class="boxplot-title">Absolute percentage error (log scale)</h4>
+        <svg id="category-absolute-boxplot" role="img" aria-label="Box plot of absolute percentage error by CoC category"></svg>
+      </section>
+      <section class="chart-card">
         <h3>Absolute percentage error by CoC</h3>
         <p>Sorted from highest to lowest error. Hover for the CoC name and values.</p>
         <svg id="error-bars" role="img" aria-label="Bar graph of absolute percentage error by CoC"></svg>
@@ -545,8 +568,10 @@
           .map(({ properties }) => ({
             id: properties.COCNUM,
             name: properties.COCNAME,
+            category: properties.coc_category,
             actual: Number(properties.pit_total_homeless_persons),
             estimate: Number(properties.blind_guessed_pit_total_2024),
+            signedError: Number(properties.percent_error),
             absoluteError: Number.isFinite(Number(properties.absolute_percent_error))
               ? Number(properties.absolute_percent_error)
               : Math.abs(Number(properties.percent_error)),
@@ -557,6 +582,7 @@
               row.actual > 0 &&
               Number.isFinite(row.estimate) &&
               row.estimate > 0 &&
+              Number.isFinite(row.signedError) &&
               Number.isFinite(row.absoluteError),
           );
       }
@@ -714,9 +740,134 @@
           .text((row) => `${row.absoluteError.toFixed(1)}%`);
       }
 
+      function renderCategoryBoxplot(rows, selector, metric, signed = false) {
+        const categoryOrder = ["Major City", "Urban", "Suburban", "Rural"];
+        const categories = categoryOrder.map((category) => {
+          const values = rows
+            .filter((row) => row.category === category)
+            .map((row) => ({ id: row.id, name: row.name, value: row[metric] }))
+            .sort((left, right) => d3.ascending(left.value, right.value));
+          const numeric = values.map((row) => row.value);
+          const q1 = d3.quantileSorted(numeric, 0.25);
+          const median = d3.quantileSorted(numeric, 0.5);
+          const q3 = d3.quantileSorted(numeric, 0.75);
+          const iqr = q3 - q1;
+          const lowerLimit = q1 - 1.5 * iqr;
+          const upperLimit = q3 + 1.5 * iqr;
+          const inside = numeric.filter((value) => value >= lowerLimit && value <= upperLimit);
+          return {
+            category,
+            values,
+            q1,
+            median,
+            q3,
+            low: d3.min(inside),
+            high: d3.max(inside),
+            outliers: values.filter(
+              (row) => row.value < lowerLimit || row.value > upperLimit,
+            ),
+          };
+        }).filter((row) => row.values.length);
+        const width = 470;
+        const height = 255;
+        const margin = { top: 16, right: 18, bottom: 48, left: 54 };
+        const plotWidth = width - margin.left - margin.right;
+        const plotHeight = height - margin.top - margin.bottom;
+        const x = d3
+          .scaleBand()
+          .domain(categoryOrder)
+          .range([0, plotWidth])
+          .padding(0.4);
+        const allValues = categories.flatMap((row) => row.values.map((item) => item.value));
+        const extent = d3.extent(allValues);
+        const lower = signed ? Math.min(extent[0], 0) : extent[0];
+        const upper = Math.max(extent[1], 0);
+        const y = signed
+          ? d3.scaleSymlog().constant(10).domain([lower, upper]).nice().range([plotHeight, 0])
+          : d3.scaleLog().domain([lower, upper]).nice().range([plotHeight, 0]);
+        const tickCandidates = signed
+          ? [-300, -100, -30, -10, 0, 10, 30, 100, 300]
+          : [0.1, 0.3, 1, 3, 10, 30, 100, 300, 1000];
+        const tickValues = tickCandidates.filter(
+          (value) => value >= y.domain()[0] && value <= y.domain()[1],
+        );
+        const svg = d3
+          .select(selector)
+          .attr("viewBox", `0 0 ${width} ${height}`);
+        svg.selectAll("*").remove();
+        const plot = svg
+          .append("g")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        plot
+          .append("g")
+          .attr("class", "chart-grid")
+          .call(d3.axisLeft(y).tickValues(tickValues).tickSize(-plotWidth).tickFormat(""));
+        plot
+          .append("g")
+          .attr("class", "chart-axis")
+          .attr("transform", `translate(0,${plotHeight})`)
+          .call(d3.axisBottom(x).tickSize(0).tickPadding(8));
+        plot
+          .append("g")
+          .attr("class", "chart-axis")
+          .call(
+            d3.axisLeft(y)
+              .tickValues(tickValues)
+              .tickFormat((value) => `${value}%`),
+          );
+
+        if (signed) {
+          plot.append("line")
+            .attr("class", "boxplot-zero")
+            .attr("x1", 0).attr("x2", plotWidth)
+            .attr("y1", y(0)).attr("y2", y(0));
+        }
+
+        const groups = plot.selectAll(".boxplot-group")
+          .data(categories)
+          .join("g")
+          .attr("class", "boxplot-group")
+          .attr("transform", (row) => `translate(${x(row.category)},0)`);
+        const center = x.bandwidth() / 2;
+        const boxWidth = Math.min(x.bandwidth(), 56);
+        groups.append("line").attr("class", "boxplot-whisker")
+          .attr("x1", center).attr("x2", center)
+          .attr("y1", (row) => y(row.low)).attr("y2", (row) => y(row.high));
+        groups.append("line").attr("class", "boxplot-whisker")
+          .attr("x1", center - boxWidth / 3).attr("x2", center + boxWidth / 3)
+          .attr("y1", (row) => y(row.low)).attr("y2", (row) => y(row.low));
+        groups.append("line").attr("class", "boxplot-whisker")
+          .attr("x1", center - boxWidth / 3).attr("x2", center + boxWidth / 3)
+          .attr("y1", (row) => y(row.high)).attr("y2", (row) => y(row.high));
+        groups.append("rect").attr("class", "boxplot-box")
+          .attr("x", center - boxWidth / 2)
+          .attr("width", boxWidth)
+          .attr("y", (row) => y(row.q3))
+          .attr("height", (row) => Math.max(1, y(row.q1) - y(row.q3)))
+          .append("title")
+          .text((row) => `${row.category}\nMedian: ${row.median.toFixed(1)}%\nQ1: ${row.q1.toFixed(1)}%\nQ3: ${row.q3.toFixed(1)}%\nCoCs: ${row.values.length}`);
+        groups.append("line").attr("class", "boxplot-median")
+          .attr("x1", center - boxWidth / 2).attr("x2", center + boxWidth / 2)
+          .attr("y1", (row) => y(row.median)).attr("y2", (row) => y(row.median));
+        groups.each(function (row) {
+          d3.select(this).selectAll(".boxplot-point")
+            .data(row.outliers)
+            .join("circle")
+            .attr("class", "boxplot-point")
+            .attr("cx", center)
+            .attr("cy", (item) => y(item.value))
+            .attr("r", 3.5)
+            .append("title")
+            .text((item) => `${item.id} — ${item.name}\n${item.value.toFixed(1)}%`);
+        });
+      }
+
       function renderCharts(features) {
         const rows = chartData(features);
         renderScatterplot(rows);
+        renderCategoryBoxplot(rows, "#category-signed-boxplot", "signedError", true);
+        renderCategoryBoxplot(rows, "#category-absolute-boxplot", "absoluteError");
         renderErrorBars(rows);
       }
 
