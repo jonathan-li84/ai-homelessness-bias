@@ -172,6 +172,32 @@
         line-height: 1.4;
       }
 
+      .research-question {
+        margin: 6px 0 0;
+        color: #344154;
+        font-size: 12px;
+        font-weight: 650;
+        line-height: 1.5;
+      }
+
+      .dataset-list {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: #526070;
+        font-size: 10px;
+        line-height: 1.5;
+      }
+
+      .dataset-list li + li {
+        margin-top: 5px;
+      }
+
+      .dataset-note {
+        margin-top: 9px !important;
+        color: #687587 !important;
+        font-style: italic;
+      }
+
       .chart-card svg {
         display: block;
         width: 100%;
@@ -212,7 +238,6 @@
       .boxplot-median { stroke: #172033; stroke-width: 2; }
       .boxplot-whisker { stroke: #64748b; stroke-width: 1.25; }
       .boxplot-point { fill: #dc5a3a; fill-opacity: 0.8; }
-      .boxplot-zero { stroke: #475569; stroke-dasharray: 4 3; }
 
       .legend {
         bottom: 30px;
@@ -403,6 +428,20 @@
         <button id="charts-close" class="charts-close" type="button" aria-label="Hide charts">×</button>
       </header>
       <section class="chart-card">
+        <h3>Research question</h3>
+        <p class="research-question">How much does local media coverage affect the accuracy of AI estimates of homelessness across California CoCs, after accounting for population and actual homelessness levels?</p>
+      </section>
+      <section class="chart-card">
+        <h3>Datasets used</h3>
+        <ul class="dataset-list">
+          <li>HUD FY2024 California CoC administrative boundaries and 2024 CoC Performance Profiles, including January 2024 PIT and HIC data.</li>
+          <li>U.S. Census Bureau 2020–2024 ACS five-year population estimates from table B01003 and 2024 TIGER/Line census-tract boundaries.</li>
+          <li>Blind AI estimates of each CoC's 2024 PIT total, recorded before comparison with HUD's counts.</li>
+          <li>GDELT Article List headline matches captured from January 1 through August 31, 2024.</li>
+        </ul>
+        <p class="dataset-note">The current map and charts use the HUD, Census, and blind-estimate data. The GDELT file is a headline-discovery dataset—not every published article—and has not yet been assigned to CoCs or incorporated into these charts.</p>
+      </section>
+      <section class="chart-card">
         <h3>Actual PIT count vs. AI estimate</h3>
         <p>Both axes use a logarithmic scale. Points on the dashed line have identical counts. Hover for details.</p>
         <svg id="scatterplot" role="img" aria-label="Scatterplot of actual PIT count against AI estimate"></svg>
@@ -410,8 +449,6 @@
       <section class="chart-card">
         <h3>Error distribution by CoC category</h3>
         <p>Boxes show the middle 50%, center lines show medians, whiskers extend to 1.5× the interquartile range, and dots are outliers.</p>
-        <h4 class="boxplot-title">Signed percentage error (symmetric-log scale)</h4>
-        <svg id="category-signed-boxplot" role="img" aria-label="Box plot of signed percentage error by CoC category"></svg>
         <h4 class="boxplot-title">Absolute percentage error (log scale)</h4>
         <svg id="category-absolute-boxplot" role="img" aria-label="Box plot of absolute percentage error by CoC category"></svg>
       </section>
@@ -571,7 +608,6 @@
             category: properties.coc_category,
             actual: Number(properties.pit_total_homeless_persons),
             estimate: Number(properties.blind_guessed_pit_total_2024),
-            signedError: Number(properties.percent_error),
             absoluteError: Number.isFinite(Number(properties.absolute_percent_error))
               ? Number(properties.absolute_percent_error)
               : Math.abs(Number(properties.percent_error)),
@@ -582,7 +618,6 @@
               row.actual > 0 &&
               Number.isFinite(row.estimate) &&
               row.estimate > 0 &&
-              Number.isFinite(row.signedError) &&
               Number.isFinite(row.absoluteError),
           );
       }
@@ -740,7 +775,7 @@
           .text((row) => `${row.absoluteError.toFixed(1)}%`);
       }
 
-      function renderCategoryBoxplot(rows, selector, metric, signed = false) {
+      function renderCategoryBoxplot(rows, selector, metric) {
         const categoryOrder = ["Major City", "Urban", "Suburban", "Rural"];
         const categories = categoryOrder.map((category) => {
           const values = rows
@@ -780,14 +815,10 @@
           .padding(0.4);
         const allValues = categories.flatMap((row) => row.values.map((item) => item.value));
         const extent = d3.extent(allValues);
-        const lower = signed ? Math.min(extent[0], 0) : extent[0];
+        const lower = extent[0];
         const upper = Math.max(extent[1], 0);
-        const y = signed
-          ? d3.scaleSymlog().constant(10).domain([lower, upper]).nice().range([plotHeight, 0])
-          : d3.scaleLog().domain([lower, upper]).nice().range([plotHeight, 0]);
-        const tickCandidates = signed
-          ? [-300, -100, -30, -10, 0, 10, 30, 100, 300]
-          : [0.1, 0.3, 1, 3, 10, 30, 100, 300, 1000];
+        const y = d3.scaleLog().domain([lower, upper]).nice().range([plotHeight, 0]);
+        const tickCandidates = [0.1, 0.3, 1, 3, 10, 30, 100, 300, 1000];
         const tickValues = tickCandidates.filter(
           (value) => value >= y.domain()[0] && value <= y.domain()[1],
         );
@@ -816,13 +847,6 @@
               .tickValues(tickValues)
               .tickFormat((value) => `${value}%`),
           );
-
-        if (signed) {
-          plot.append("line")
-            .attr("class", "boxplot-zero")
-            .attr("x1", 0).attr("x2", plotWidth)
-            .attr("y1", y(0)).attr("y2", y(0));
-        }
 
         const groups = plot.selectAll(".boxplot-group")
           .data(categories)
@@ -866,7 +890,6 @@
       function renderCharts(features) {
         const rows = chartData(features);
         renderScatterplot(rows);
-        renderCategoryBoxplot(rows, "#category-signed-boxplot", "signedError", true);
         renderCategoryBoxplot(rows, "#category-absolute-boxplot", "absoluteError");
         renderErrorBars(rows);
       }
