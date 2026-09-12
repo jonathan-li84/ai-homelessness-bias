@@ -45,7 +45,7 @@ The population source is the 2020–2024 ACS 5-year estimate from Detailed Table
 
 `blind_guessed_pit_total_2024` contains rough guesses made from internal general knowledge after viewing only CoC identifiers and names. `percent_error` is `(blind guess - PIT total) / PIT total * 100`, rounded to one decimal. Positive error means the guess was too high and negative error means it was too low. These guesses are an informal experiment and must not be treated as an alternative homelessness dataset.
 
-`coc_category` comes from HUD's FY2024 `CoC_Geo_Type` layer and is normalized to four labels: `Major City`, `Urban`, `Suburban`, and `Rural`. In the category summary, `homeless_per_10000` is calculated from category totals. `average_absolute_percent_error` is the mean of `abs(blind guess - PIT total) / PIT total * 100` across the CoCs in each category, so overestimates and underestimates cannot cancel one another.
+`coc_category` comes from HUD's FY2024 `CoC_Geo_Type` layer and is normalized to four labels: `Major City`, `Urban`, `Suburban`, and `Rural`. In the category summary, `homeless_per_10000` is calculated from category totals. `mean_absolute_percent_error` and `median_absolute_percent_error` summarize `abs(blind guess - PIT total) / PIT total * 100` across the CoCs in each category, so overestimates and underestimates cannot cancel one another.
 
 ## Interactive map
 

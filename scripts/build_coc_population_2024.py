@@ -358,7 +358,8 @@ def main() -> int:
             count=("coc_number", "size"),
             total_homeless=("pit_total_2024", "sum"),
             total_population=("total_population_2024", "sum"),
-            average_absolute_percent_error=("_absolute_percent_error", "mean"),
+            mean_absolute_percent_error=("_absolute_percent_error", "mean"),
+            median_absolute_percent_error=("_absolute_percent_error", "median"),
         )
         .reindex(CATEGORY_ORDER)
         .reset_index()
@@ -372,8 +373,10 @@ def main() -> int:
             * 10_000
         ).round(1),
     )
-    category_summary["average_absolute_percent_error"] = category_summary[
-        "average_absolute_percent_error"
+    category_summary[
+        ["mean_absolute_percent_error", "median_absolute_percent_error"]
+    ] = category_summary[
+        ["mean_absolute_percent_error", "median_absolute_percent_error"]
     ].round(1)
     category_summary_path = PROCESSED / "ca_coc_category_summary_2024.csv"
     category_summary.to_csv(category_summary_path, index=False, quoting=csv.QUOTE_MINIMAL)

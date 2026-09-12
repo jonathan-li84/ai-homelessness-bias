@@ -1,0 +1,4 @@
+hypothesis,reduced_model,full_model,numerator_df,denominator_df,classical_f,classical_p_value,hc3_robust_f,hc3_robust_p_value
+linear_article_association,controls_only,log_linear_article_count,1,40,0.15636165282973438,0.6946296724051928,0.1529028579052501,0.6978516853280277
+overall_spline_article_association,controls_only,article_count_spline,2,39,0.2073850505335645,0.813597079418139,0.11175373643953199,0.8945497798590671
+article_association_nonlinearity,log_linear_article_count,article_count_spline,1,39,0.2612960724141233,0.6121130365619034,0.15521542349242212,0.6957462674917999

@@ -1,0 +1,4 @@
+model,n,parameters,r_squared,incremental_r_squared_vs_controls,loocv_rmse_log1p_absolute_error
+controls_only,44,3,0.4079050341761966,0.0,1.0393929046095454
+log_linear_article_count,44,4,0.4102105455242808,0.0023055113480842104,1.0604794318348347
+article_count_spline,44,5,0.41413577681877334,0.006230742642576725,1.099089522319422

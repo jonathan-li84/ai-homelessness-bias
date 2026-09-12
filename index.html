@@ -3,1117 +3,629 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Interactive map of California Continuums of Care and 2024 HUD homelessness data."
-    />
-    <title>California Continuums of Care — 2024</title>
-    <link
-      href="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.css"
-      rel="stylesheet"
-    />
+    <meta name="description" content="Research dashboard examining media coverage and AI estimates of homelessness across California Continuums of Care." />
+    <title>Media Coverage and AI Homelessness Estimates — California CoCs</title>
+    <link href="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.css" rel="stylesheet" />
     <script src="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] }, svg: { fontCache: "global" } };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <style>
       :root {
         color-scheme: light;
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body,
-      #map {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-      }
-
-      body {
-        overflow: hidden;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #273244;
         background: #e8ebed;
       }
-
-      #map {
-        position: fixed;
-        inset: 0;
+      * { box-sizing: border-box; }
+      body { min-width: 320px; margin: 0; background: #e8ebed; }
+      h1, h2, h3, p { margin-top: 0; }
+      .top-rule { height: 5px; background: linear-gradient(90deg, #253494, #2563eb 55%, #41b6c4); }
+      .page-shell {
+        width: min(1240px, calc(100% - 56px));
+        margin: 0 auto;
+        padding: 46px 0 28px;
       }
-
-      .map-heading,
-      .legend,
-      .status {
-        position: absolute;
-        z-index: 2;
-        border: 1px solid rgb(15 23 42 / 12%);
-        border-radius: 10px;
-        background: rgb(255 255 255 / 94%);
-        box-shadow: 0 4px 18px rgb(15 23 42 / 15%);
-        backdrop-filter: blur(8px);
+      .page-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.75fr);
+        gap: clamp(36px, 6vw, 86px);
+        align-items: end;
+        margin-bottom: 34px;
       }
-
-      .map-heading {
-        top: 16px;
-        left: 16px;
-        max-width: min(390px, calc(100vw - 88px));
-        padding: 13px 16px;
+      .eyebrow, .section-label {
+        display: block;
+        color: #2563eb;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
       }
-
-      .map-heading h1 {
-        margin: 0;
+      .eyebrow { margin: 0 0 13px; }
+      h1 {
+        max-width: 770px;
+        margin-bottom: 17px;
         color: #172033;
-        font-size: 17px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
+        font-size: clamp(38px, 5vw, 64px);
+        font-weight: 780;
+        letter-spacing: -0.045em;
+        line-height: 0.98;
       }
-
-      .map-heading p {
-        margin: 4px 0 0;
+      .intro {
+        max-width: 760px;
+        margin: 0;
         color: #526070;
-        font-size: 12px;
-        line-height: 1.4;
+        font-size: 14px;
+        line-height: 1.65;
       }
-
-      .charts-toggle,
-      .charts-close {
+      .research-question {
+        position: relative;
+        padding: 23px 24px 24px;
         border: 1px solid #cbd2da;
-        border-radius: 6px;
-        background: #fff;
+        border-top: 4px solid #2563eb;
+        border-radius: 8px;
+        background: rgb(255 255 255 / 74%);
+        box-shadow: 0 8px 24px rgb(23 32 51 / 6%);
+      }
+      .section-label { margin-bottom: 10px; }
+      .research-question p {
+        margin: 0;
         color: #273244;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 650;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.55;
       }
-
-      .charts-toggle {
-        margin-top: 10px;
-        padding: 6px 9px;
-        font-size: 11px;
-      }
-
-      .charts-toggle:hover,
-      .charts-close:hover {
-        background: #f1f5f9;
-      }
-
-      .charts-panel {
-        position: absolute;
-        z-index: 3;
-        top: 16px;
-        right: 58px;
-        bottom: 16px;
-        width: min(520px, calc(100vw - 90px));
-        overflow-y: auto;
-        border: 1px solid rgb(15 23 42 / 12%);
-        border-radius: 12px;
-        background: rgb(248 250 252 / 97%);
-        box-shadow: 0 8px 28px rgb(15 23 42 / 20%);
-        backdrop-filter: blur(10px);
-      }
-
-      .charts-panel[hidden] { display: none; }
-
-      .charts-header {
-        position: sticky;
-        z-index: 1;
-        top: 0;
-        display: flex;
+      .dashboard-grid {
+        display: grid;
+        grid-template-areas:
+          "map sidebar"
+          "chart sidebar";
+        grid-template-columns: minmax(0, 3fr) minmax(265px, 1fr);
+        gap: 22px;
         align-items: start;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 16px 18px 12px;
-        border-bottom: 1px solid #dbe1e8;
-        background: rgb(248 250 252 / 97%);
       }
-
-      .charts-header h2 {
+      .map-card, .side-card, .info-card {
+        border: 1px solid #dbe1e8;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 5px 20px rgb(23 32 51 / 7%);
+      }
+      .map-card { grid-area: map; overflow: hidden; }
+      .map-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 20px 22px 18px;
+      }
+      .map-card-header h2, .side-card h2, .info-card h2 {
         margin: 0;
         color: #172033;
-        font-size: 17px;
+        font-size: 16px;
+        font-weight: 760;
+        letter-spacing: -0.015em;
       }
-
-      .charts-header p {
-        margin: 4px 0 0;
+      .map-card-header p {
+        margin: 5px 0 0;
         color: #667384;
         font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .charts-close {
-        flex: 0 0 auto;
-        width: 28px;
-        height: 28px;
-        font-size: 18px;
-        line-height: 1;
-      }
-
-      .chart-card {
-        margin: 14px;
-        padding: 14px;
-        border: 1px solid #dbe1e8;
-        border-radius: 9px;
-        background: #fff;
-      }
-
-      .chart-card h3 {
-        margin: 0;
-        color: #273244;
-        font-size: 14px;
-      }
-
-      .chart-card p {
-        margin: 4px 0 10px;
-        color: #748092;
-        font-size: 10px;
-        line-height: 1.4;
-      }
-
-      .research-question {
-        margin: 6px 0 0;
-        color: #344154;
-        font-size: 12px;
-        font-weight: 650;
         line-height: 1.5;
       }
-
-      .dataset-list {
-        margin: 8px 0 0;
-        padding-left: 18px;
-        color: #526070;
-        font-size: 10px;
-        line-height: 1.5;
-      }
-
-      .dataset-list li + li {
-        margin-top: 5px;
-      }
-
-      .dataset-note {
-        margin-top: 9px !important;
-        color: #687587 !important;
-        font-style: italic;
-      }
-
-      .chart-card svg {
-        display: block;
-        width: 100%;
-        height: auto;
-        overflow: visible;
-      }
-
-      .chart-axis text { fill: #667384; font-size: 9px; }
-      .chart-axis path,
-      .chart-axis line { stroke: #cbd5e1; }
-      .chart-grid line { stroke: #e7ebf0; }
-      .chart-grid path { display: none; }
-      .axis-label { fill: #526070; font-size: 10px; font-weight: 650; }
-      .scatter-point {
-        fill: #2563eb;
-        fill-opacity: 0.78;
-        stroke: #fff;
-        stroke-width: 1;
-      }
-      .scatter-point:hover {
-        fill: #ea580c;
-        fill-opacity: 1;
-        stroke: #9a3412;
-      }
-      .error-bar { fill: #dc5a3a; }
-      .error-bar:hover { fill: #a92f20; }
-      .boxplot-title {
-        margin: 12px 0 0;
-        color: #526070;
-        font-size: 11px;
-        font-weight: 700;
-      }
-      .boxplot-box {
-        fill: #9ecae1;
-        stroke: #2563eb;
-        stroke-width: 1.5;
-      }
-      .boxplot-median { stroke: #172033; stroke-width: 2; }
-      .boxplot-whisker { stroke: #64748b; stroke-width: 1.25; }
-      .boxplot-point { fill: #dc5a3a; fill-opacity: 0.8; }
-
-      .legend {
-        bottom: 30px;
-        left: 16px;
-        width: 270px;
-        padding: 12px 14px;
-        color: #273244;
-        font-size: 11px;
-      }
-
-      .legend-control-label {
+      .map-control { flex: 0 0 230px; }
+      .map-control label {
         display: block;
         margin-bottom: 5px;
         color: #667384;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
         text-transform: uppercase;
       }
-
-      .legend-select {
+      .metric-select {
         width: 100%;
-        margin-bottom: 10px;
-        padding: 7px 28px 7px 9px;
+        padding: 9px 30px 9px 10px;
         border: 1px solid #cbd2da;
-        border-radius: 6px;
+        border-radius: 5px;
         background: #fff;
         color: #273244;
         font: inherit;
-        font-size: 12px;
+        font-size: 11px;
       }
-
-      .legend-select:focus-visible {
-        outline: 2px solid #2563eb;
-        outline-offset: 2px;
+      .metric-select:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+      .map-frame { position: relative; border-block: 1px solid #dbe1e8; }
+      #map { width: 100%; height: 610px; background: #e8ebed; }
+      .status {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+        padding: 10px 13px;
+        border: 1px solid #dbe1e8;
+        border-radius: 5px;
+        background: rgb(255 255 255 / 94%);
+        color: #344154;
+        box-shadow: 0 3px 14px rgb(23 32 51 / 10%);
+        font-size: 11px;
+        transform: translate(-50%, -50%);
       }
-
-      .legend-title {
-        margin-bottom: 8px;
-        font-size: 12px;
-        font-weight: 700;
-      }
-
-      .legend-scale {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        height: 9px;
-        overflow: hidden;
-        border-radius: 3px;
-      }
-
+      .status[hidden] { display: none; }
+      .status.error { width: min(430px, calc(100% - 30px)); color: #8b1e1e; line-height: 1.5; text-align: center; }
+      .map-card-footer { padding: 15px 22px 17px; }
+      .legend-title { margin-bottom: 7px; color: #273244; font-size: 10px; font-weight: 750; }
+      .legend-block { width: min(450px, 100%); }
+      .legend-scale { display: grid; grid-template-columns: repeat(5, 1fr); height: 9px; overflow: hidden; border-radius: 2px; }
       .legend-scale span:nth-child(1) { background: #fff7bc; }
       .legend-scale span:nth-child(2) { background: #7fcdbb; }
       .legend-scale span:nth-child(3) { background: #41b6c4; }
       .legend-scale span:nth-child(4) { background: #2c7fb8; }
       .legend-scale span:nth-child(5) { background: #253494; }
-
-      .legend-labels {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        margin-top: 5px;
-        color: #667384;
-        font-size: 9px;
-        font-variant-numeric: tabular-nums;
-      }
-
-      .legend-labels span {
-        text-align: center;
-      }
-
-      .legend-labels span:first-child {
-        text-align: left;
-      }
-
-      .legend-labels span:last-child {
-        text-align: right;
-      }
-
-      .legend-note {
-        margin-top: 7px;
-        color: #7a8696;
-        font-size: 9px;
-      }
-
-      .status {
-        top: 50%;
-        left: 50%;
-        padding: 11px 15px;
-        color: #344054;
-        font-size: 13px;
-        transform: translate(-50%, -50%);
-      }
-
-      .status[hidden] {
-        display: none;
-      }
-
-      .status.error {
-        width: min(430px, calc(100vw - 32px));
-        color: #8b1e1e;
-        line-height: 1.5;
-        text-align: center;
-      }
-
+      .legend-labels { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 5px; color: #667384; font-size: 9px; font-variant-numeric: tabular-nums; }
+      .legend-labels span { text-align: center; }
+      .legend-labels span:first-child { text-align: left; }
+      .legend-labels span:last-child { text-align: right; }
+      .legend-note { margin: 11px 0 0; color: #748092; font-size: 10px; line-height: 1.5; }
+      .sidebar { display: grid; grid-area: sidebar; gap: 18px; }
+      .side-card { padding: 23px; }
+      .side-card h2 { margin-bottom: 17px; }
+      .result-card { background: #172033; border-color: #172033; }
+      .result-card h2 { color: #fff; }
+      .result-number { margin-bottom: 15px; color: #7fcdbb; font-size: 52px; font-weight: 780; letter-spacing: -0.04em; line-height: 1; }
+      .result-number small { display: block; margin-top: 7px; color: #aab6c7; font-size: 9px; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
+      .secondary-result { margin: 18px 0; padding-top: 17px; border-top: 1px solid #344159; color: #fff7bc; font-size: 25px; font-weight: 760; line-height: 1; }
+      .secondary-result small { display: block; margin-top: 7px; color: #aab6c7; font-size: 9px; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
+      .result-card p { margin: 0; color: #d7deea; font-size: 12px; line-height: 1.65; }
+      .result-card strong { color: #fff; }
+      .regression-figure { grid-area: chart; margin: 0; padding: 22px 24px 18px; border: 1px solid #dbe1e8; border-radius: 10px; background: #fff; box-shadow: 0 5px 20px rgb(23 32 51 / 7%); }
+      .regression-figure figcaption { margin-bottom: 9px; color: #172033; font-size: 16px; font-weight: 760; letter-spacing: -0.015em; }
+      .regression-comparison { display: grid; grid-template-columns: 1fr; gap: 16px; }
+      .model-panel { min-width: 0; padding: 15px 15px 10px; border: 1px solid #dbe1e8; border-radius: 7px; background: #f8fafc; }
+      .model-panel-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+      .model-panel h3 { margin: 0; color: #273244; font-size: 12px; }
+      .model-r-squared { flex: none; color: #2563eb; font-size: 12px; font-weight: 800; }
+      .regression-equation { overflow-x: auto; min-height: 48px; margin: 9px 0 3px; color: #172033; font-size: 10px; white-space: nowrap; }
+      .regression-equation mjx-container { margin: 0 !important; }
+      .regression-chart { display: block; width: 100%; height: auto; overflow: visible; }
+      .regression-chart .domain, .regression-chart .tick line { stroke: #9aa6b5; }
+      .regression-chart .tick text { fill: #667384; font-size: 10px; }
+      .regression-chart .axis-label { fill: #526070; font-size: 11px; }
+      .regression-chart .fit-line { stroke: #ea580c; stroke-width: 2.2; }
+      .regression-chart .data-point { fill: #2c7fb8; fill-opacity: 0.68; stroke: #fff; stroke-width: 0.8; }
+      .chart-error { color: #8b1e1e; font-size: 11px; line-height: 1.4; }
+      .model-note { margin: 12px 0 0; color: #748092; font-size: 9px; line-height: 1.5; }
+      .incremental-test { margin-top: 16px; padding: 15px 17px; border-left: 3px solid #2563eb; background: #eef3fb; }
+      .incremental-test strong { display: block; margin-bottom: 5px; color: #172033; font-size: 11px; }
+      .incremental-test .test-equation { overflow-x: auto; color: #273244; font-size: 11px; white-space: nowrap; }
+      .incremental-test .test-equation mjx-container { margin: 0.35em 0 !important; text-align: left !important; }
+      .incremental-test p { margin: 5px 0 0; color: #526070; font-size: 10px; line-height: 1.55; }
+      .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+      .info-card { padding: 26px 28px; }
+      .info-card h2 { margin-bottom: 14px; }
+      .info-card p, .info-card li { color: #526070; font-size: 11px; line-height: 1.68; }
+      .info-card p { margin-bottom: 0; }
+      .info-card p + p { margin-top: 10px; }
+      .source-list { margin: 0; padding-left: 18px; }
+      .source-list li + li { margin-top: 8px; }
+      footer { padding-top: 18px; color: #748092; font-size: 9px; }
       .maplibregl-popup-content {
-        min-width: 240px;
+        min-width: 245px;
         padding: 14px 16px;
-        border-radius: 9px;
-        box-shadow: 0 5px 24px rgb(15 23 42 / 22%);
+        border-radius: 6px;
+        box-shadow: 0 5px 24px rgb(15 23 42 / 20%);
       }
-
-      .popup-title {
-        margin: 0 22px 2px 0;
-        color: #172033;
-        font-size: 14px;
-        line-height: 1.3;
-      }
-
+      .popup-title { margin: 0 22px 2px 0; color: #172033; font-size: 14px; line-height: 1.3; }
       .popup-code {
         margin-bottom: 10px;
-        color: #687587;
-        font-size: 11px;
-        font-weight: 700;
+        color: #667384;
+        font-size: 9px;
+        font-weight: 750;
         letter-spacing: 0.06em;
       }
-
       .popup-grid {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 5px 14px;
         margin: 0;
-        font-size: 12px;
+        font-size: 11px;
       }
-
-      .popup-grid dt {
-        color: #5d6979;
-      }
-
+      .popup-grid dt { color: #5d6979; }
       .popup-grid dd {
         margin: 0;
-        color: #1c2738;
+        color: #273244;
         font-variant-numeric: tabular-nums;
-        font-weight: 650;
+        font-weight: 700;
         text-align: right;
       }
-
-      @media (max-width: 560px) {
-        .map-heading {
-          top: 10px;
-          left: 10px;
-          padding: 10px 12px;
-        }
-
-        .map-heading p {
-          display: none;
-        }
-
-        .legend {
-          bottom: 24px;
-          left: 10px;
-        }
-
-        .charts-panel {
-          top: 64px;
-          right: 10px;
-          bottom: 10px;
-          width: calc(100vw - 20px);
-        }
+      @media (max-width: 980px) {
+        .page-header, .dashboard-grid { grid-template-columns: 1fr; }
+        .dashboard-grid { grid-template-areas: "map" "chart" "sidebar"; }
+        .page-header { gap: 25px; }
+        .research-question { max-width: 720px; }
+        .sidebar { grid-template-columns: 1fr 1fr; }
+        #map { height: 560px; }
+      }
+      @media (max-width: 680px) {
+        .page-shell { width: min(100% - 24px, 1240px); padding-top: 28px; }
+        h1 { font-size: 39px; }
+        .page-header { margin-bottom: 24px; }
+        .map-card-header { display: block; padding: 17px; }
+        .map-control { margin-top: 15px; }
+        #map { height: 470px; }
+        .map-card-footer { padding: 13px 17px 15px; }
+        .sidebar, .details-grid, .regression-comparison { grid-template-columns: 1fr; }
+        .info-card, .side-card { padding: 21px; }
       }
     </style>
   </head>
   <body>
-    <main id="map" aria-label="Interactive map of California Continuums of Care"></main>
-
-    <header class="map-heading">
-      <h1>California Continuums of Care</h1>
-      <p>2024 HUD homelessness, ACS population, and blind-guess error</p>
-      <button id="charts-toggle" class="charts-toggle" type="button"
-        aria-controls="charts-panel" aria-expanded="true">Hide charts</button>
-    </header>
-
-    <aside id="charts-panel" class="charts-panel" aria-label="CoC comparison charts">
-      <header class="charts-header">
+    <div class="top-rule" aria-hidden="true"></div>
+    <main class="page-shell">
+      <header class="page-header">
         <div>
-          <h2>Actual and AI estimates</h2>
-          <p>Each mark represents one California Continuum of Care.</p>
+          <p class="eyebrow">California · 2024 research dashboard</p>
+          <h1>Media Coverage and AI Estimates of Homelessness</h1>
+          <p class="intro">This dashboard compares blind AI estimates with HUD's January 2024 Point-in-Time counts, Census population estimates, and full-year GDELT homelessness-headline location mentions. The analysis measures association, not causation.</p>
         </div>
-        <button id="charts-close" class="charts-close" type="button" aria-label="Hide charts">×</button>
+        <div class="research-question">
+          <span class="section-label">Research question</span>
+          <p>How much does local media coverage affect the accuracy of AI estimates of homelessness across California CoCs, after accounting for population and actual homelessness levels?</p>
+        </div>
       </header>
-      <section class="chart-card">
-        <h3>Research question</h3>
-        <p class="research-question">How much does local media coverage affect the accuracy of AI estimates of homelessness across California CoCs, after accounting for population and actual homelessness levels?</p>
-      </section>
-      <section class="chart-card">
-        <h3>Datasets used</h3>
-        <ul class="dataset-list">
-          <li>HUD FY2024 California CoC administrative boundaries and 2024 CoC Performance Profiles, including January 2024 PIT and HIC data.</li>
-          <li>U.S. Census Bureau 2020–2024 ACS five-year population estimates from table B01003 and 2024 TIGER/Line census-tract boundaries.</li>
-          <li>Blind AI estimates of each CoC's 2024 PIT total, recorded before comparison with HUD's counts.</li>
-          <li>GDELT Article List headline matches captured from January 1 through August 31, 2024.</li>
-        </ul>
-        <p class="dataset-note">The current map and charts use the HUD, Census, and blind-estimate data. The GDELT file is a headline-discovery dataset—not every published article—and has not yet been assigned to CoCs or incorporated into these charts.</p>
-      </section>
-      <section class="chart-card">
-        <h3>Actual PIT count vs. AI estimate</h3>
-        <p>Both axes use a logarithmic scale. Points on the dashed line have identical counts. Hover for details.</p>
-        <svg id="scatterplot" role="img" aria-label="Scatterplot of actual PIT count against AI estimate"></svg>
-      </section>
-      <section class="chart-card">
-        <h3>Error distribution by CoC category</h3>
-        <p>Boxes show the middle 50%, center lines show medians, whiskers extend to 1.5× the interquartile range, and dots are outliers.</p>
-        <h4 class="boxplot-title">Absolute percentage error (log scale)</h4>
-        <svg id="category-absolute-boxplot" role="img" aria-label="Box plot of absolute percentage error by CoC category"></svg>
-      </section>
-      <section class="chart-card">
-        <h3>Absolute percentage error by CoC</h3>
-        <p>Sorted from highest to lowest error. Hover for the CoC name and values.</p>
-        <svg id="error-bars" role="img" aria-label="Bar graph of absolute percentage error by CoC"></svg>
-      </section>
-    </aside>
 
-    <aside class="legend" aria-label="Map legend">
-      <label class="legend-control-label" for="metric-select">Color map by</label>
-      <select id="metric-select" class="legend-select" disabled>
-        <option value="absoluteError">Absolute % error</option>
-        <option value="signedError">Signed % error</option>
-        <option value="homelessRate">Homeless per 10,000</option>
-        <option value="pitTotal">PIT total</option>
-        <option value="population">Total population</option>
-        <option value="blindGuess">Blind PIT guess</option>
-      </select>
-      <div id="legend-title" class="legend-title" aria-live="polite">
-        Absolute % error
-      </div>
-      <div id="legend-scale" class="legend-scale" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div id="legend-labels" class="legend-labels" aria-hidden="true">
-        <span>—</span><span>—</span><span>—</span><span>—</span><span>—</span>
-      </div>
-      <div class="legend-note">Error colors are capped at 100%; other scales use the CoC minimum, quartiles, and maximum.</div>
-    </aside>
+      <div class="dashboard-grid">
+        <section class="map-card" aria-labelledby="map-title">
+          <div class="map-card-header">
+            <div>
+              <h2 id="map-title">Explore California CoCs</h2>
+              <p>44 CoCs · 2024 HUD PIT data · ACS population · GDELT location mentions</p>
+            </div>
+            <div class="map-control">
+              <label for="metric-select">Color map by</label>
+              <select id="metric-select" class="metric-select" disabled>
+                <option value="absoluteError">Absolute % error</option>
+                <option value="signedError">Signed % error</option>
+                <option value="articleMentions">GDELT article mentions</option>
+                <option value="homelessRate">Homeless per 10,000</option>
+                <option value="pitTotal">PIT total</option>
+                <option value="population">Total population</option>
+                <option value="blindGuess">Blind PIT guess</option>
+              </select>
+            </div>
+          </div>
+          <div class="map-frame">
+            <div id="map" aria-label="Interactive map of California Continuums of Care"></div>
+            <div id="status" class="status" role="status">Loading 2024 CoC data…</div>
+          </div>
+          <div class="map-card-footer">
+            <div id="legend-title" class="legend-title" aria-live="polite">Absolute % error</div>
+            <div class="legend-block">
+              <div id="legend-scale" class="legend-scale" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div id="legend-labels" class="legend-labels" aria-hidden="true">
+                <span>—</span><span>—</span><span>—</span><span>—</span><span>—</span>
+              </div>
+            </div>
+            <p class="legend-note">Click a CoC for details. Use the selector to change the map measure. Error colors are capped at 100%; other scales use the minimum, quartiles, and maximum.</p>
+          </div>
+        </section>
 
-    <div id="status" class="status" role="status">Loading 2024 CoC data…</div>
+        <figure class="regression-figure">
+          <figcaption>Regression model comparison</figcaption>
+          <div class="regression-comparison">
+            <section class="model-panel" aria-labelledby="full-model-title">
+              <div class="model-panel-header">
+                <h3 id="full-model-title">Population, PIT, and articles</h3>
+                <span class="model-r-squared">R² = 0.410</span>
+              </div>
+              <div class="regression-equation">
+                \(\log\!(1+\text{Absolute }\)<span>%</span>\(\text{ Error}) = 6.625 + 0.128\log(\text{population}) - 0.817\log(\text{actual PIT count}) + 0.063\log(1+\text{article count})\)
+              </div>
+              <svg id="full-regression-chart" class="regression-chart" viewBox="0 0 760 270" role="img" aria-label="Observed versus predicted absolute percentage error for the regression model including population, PIT count, and article count"></svg>
+            </section>
+            <section class="model-panel" aria-labelledby="controls-model-title">
+              <div class="model-panel-header">
+                <h3 id="controls-model-title">Population and PIT only</h3>
+                <span class="model-r-squared">R² = 0.408</span>
+              </div>
+              <div class="regression-equation">
+                \(\log\!(1+\text{Absolute }\)<span>%</span>\(\text{ Error}) = 6.315 + 0.161\log(\text{population}) - 0.790\log(\text{actual PIT count})\)
+              </div>
+              <svg id="controls-regression-chart" class="regression-chart" viewBox="0 0 760 270" role="img" aria-label="Observed versus predicted absolute percentage error for the regression model including population and PIT count only"></svg>
+            </section>
+          </div>
+          <p class="model-note">R² is calculated for the log-transformed model outcome used in both regressions.</p>
+          <div class="incremental-test">
+            <strong>Incremental F-test for adding article count</strong>
+            <div class="test-equation">
+              \[
+                \begin{array}{l}
+                F=\dfrac{(0.4102105-0.4079050)/1}{(1-0.4102105)/40}=0.156,\\[0.8em]
+                f_{d_1,d_2}(x)
+                 =\dfrac{
+                    \sqrt{\dfrac{(d_1x)^{d_1}d_2^{d_2}}
+                    {(d_1x+d_2)^{d_1+d_2}}}}
+                    {x\,\mathrm{B}\!\left(\dfrac{d_1}{2},\dfrac{d_2}{2}\right)},\\[0.8em]
+                p=P\!\left(F_{1,40}\geq 0.1563617\right)
+                  =\int_{0.1563617}^{\infty}f_{1,40}(x)\,dx
+                  =0.695.
+                \end{array}
+              \]
+            </div>
+            <p>B is the beta function used to normalize the F-distribution so its total area equals 1. With 1 and 40 degrees of freedom, p = 0.695. If article count had no additional linear association, an F-statistic at least this large would occur about 69.5% of the time under repeated sampling.</p>
+          </div>
+        </figure>
+
+        <aside class="sidebar" aria-label="Analysis summary">
+          <section class="side-card result-card" aria-labelledby="result-title">
+            <h2 id="result-title">Main result</h2>
+            <div class="result-number">+0.0023<small>Change in R²</small></div>
+            <div class="secondary-result">p = 0.695<small>Incremental F-test</small></div>
+            <p>The population-and-PIT model had an R² of 0.4079. Adding article count raised it to 0.4102, so media coverage provided <strong>almost no additional explanatory value</strong> for AI absolute percentage error. If article count truly added no linear explanatory value, an F-statistic at least as large as the observed one would occur in 69.5% of repeated samples. The increase therefore provides no convincing evidence that article count improves the model.</p>
+          </section>
+        </aside>
+      </div>
+
+      <div class="details-grid">
+        <section class="info-card" aria-labelledby="sources-title">
+          <h2 id="sources-title">Data sources</h2>
+          <ul class="source-list">
+            <li><strong>U.S. Department of Housing and Urban Development:</strong> FY2024 California CoC boundaries, January 2024 PIT and HIC counts, and CoC Performance Profiles.</li>
+            <li><strong>U.S. Census Bureau:</strong> 2020–2024 ACS five-year population estimates from table B01003 and 2024 TIGER/Line census-tract boundaries.</li>
+            <li><strong>Blind AI estimates:</strong> One estimate of each CoC's 2024 PIT total, recorded before comparison with HUD's reported count.</li>
+            <li><strong>GDELT:</strong> English homelessness-related Article List headlines from January 1 through December 31, 2024, joined to GKG California location annotations and spatially assigned to CoCs.</li>
+          </ul>
+        </section>
+
+        <section class="info-card" aria-labelledby="limitations-title">
+          <h2 id="limitations-title">Limitations</h2>
+          <p>GDELT identifies every California location mention, not necessarily the main location of an article's homelessness discussion. Secondary comparisons can therefore count for a CoC, ambiguous place names may be assigned incorrectly, and syndicated stories may appear under multiple URLs. GDELT coordinates are fixed reference points for named places, which is why many articles share identical latitude and longitude.</p>
+          <p>The analysis includes only 44 CoCs and uses one blind AI estimate per CoC. Population and PIT counts are strongly related, which increases uncertainty. The regression describes an adjusted association and cannot show that media coverage caused the AI estimates to become more or less accurate.</p>
+        </section>
+      </div>
+      <footer>California CoC homelessness and AI-estimation research · 2024</footer>
+    </main>
 
     <script>
-      const DATA_URL =
-        "data/processed/ca_coc_organizations_boundaries_pit_hic_2024.geojson";
-      const CALIFORNIA_BOUNDS = [
-        [-124.65, 32.35],
-        [-113.85, 42.15],
-      ];
-
+      const DATA_URL = "data/processed/ca_coc_organizations_boundaries_pit_hic_2024.geojson";
+      const COVERAGE_DATA_URL = "data/processed/gdelt_gkg_article_counts_by_coc_2024.csv";
+      const REGRESSION_DATA_URL = "data/processed/coc_media_regression_data_2024.csv";
+      const REGRESSION_MODELS = {
+        full: { intercept: 6.62467842, population: 0.12777626, pit: -0.81658276, articles: 0.06319794 },
+        controls: { intercept: 6.31523968, population: 0.16102500, pit: -0.79027775, articles: 0 },
+      };
+      const CALIFORNIA_BOUNDS = [[-124.65, 32.35], [-113.85, 42.15]];
+      const COLOR_RAMP = ["#fff7bc", "#7fcdbb", "#41b6c4", "#2c7fb8", "#253494"];
+      const SIGNED_ERROR_RAMP = ["#253494", "#41b6c4", "#fff7bc", "#dd1c77", "#7a0177"];
       const statusElement = document.getElementById("status");
-      const chartsPanel = document.getElementById("charts-panel");
-      const chartsToggle = document.getElementById("charts-toggle");
-      const chartsClose = document.getElementById("charts-close");
       const metricSelect = document.getElementById("metric-select");
       const legendTitle = document.getElementById("legend-title");
       const legendScale = document.getElementById("legend-scale");
       const legendLabels = document.getElementById("legend-labels");
       const numberFormat = new Intl.NumberFormat("en-US");
-      const compactNumberFormat = new Intl.NumberFormat("en-US", {
-        notation: "compact",
-        maximumFractionDigits: 1,
-      });
-      const COLOR_RAMP = ["#fff7bc", "#7fcdbb", "#41b6c4", "#2c7fb8", "#253494"];
-      const SIGNED_ERROR_RAMP = ["#253494", "#41b6c4", "#fff7bc", "#dd1c77", "#7a0177"];
+      const compactNumberFormat = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
       let hoveredFeatureId = null;
       let cocData = null;
 
+      function formatNumber(value) { return value == null ? "—" : numberFormat.format(value); }
+      function formatSignedPercent(value) {
+        if (value == null) return "—";
+        return `${value > 0 ? "+" : ""}${value.toFixed(1)}%`;
+      }
+      function addPopupRow(list, label, value) {
+        const term = document.createElement("dt");
+        const description = document.createElement("dd");
+        term.textContent = label;
+        description.textContent = typeof value === "number" ? formatNumber(value) : (value ?? "—");
+        list.append(term, description);
+      }
+
       const coalescedProperty = (name) => ["coalesce", ["get", name], 0];
       const METRICS = {
-        absoluteError: {
-          label: "Absolute % error",
-          expression: coalescedProperty("absolute_percent_error"),
-          value: (properties) => properties.absolute_percent_error,
-          format: (value) => `${value.toFixed(1)}%`,
-          colorCap: 100,
-        },
-        signedError: {
-          label: "Signed % error",
-          expression: coalescedProperty("percent_error"),
-          value: (properties) => properties.percent_error,
-          format: formatSignedPercent,
-          colors: SIGNED_ERROR_RAMP,
-          diverging: true,
-          colorCap: 100,
-        },
-        homelessRate: {
-          label: "Homeless per 10,000",
-          expression: coalescedProperty("homeless_per_10000"),
-          value: (properties) => properties.homeless_per_10000,
-          format: (value) => value.toFixed(1),
-        },
-        pitTotal: {
-          label: "PIT total",
-          expression: coalescedProperty("pit_total_homeless_persons"),
-          value: (properties) => properties.pit_total_homeless_persons,
-          format: (value) => compactNumberFormat.format(value),
-        },
-        population: {
-          label: "Total population",
-          expression: coalescedProperty("total_population_2024"),
-          value: (properties) => properties.total_population_2024,
-          format: (value) => compactNumberFormat.format(value),
-        },
-        blindGuess: {
-          label: "Blind PIT guess",
-          expression: coalescedProperty("blind_guessed_pit_total_2024"),
-          value: (properties) => properties.blind_guessed_pit_total_2024,
-          format: (value) => compactNumberFormat.format(value),
-        },
+        absoluteError: { label: "Absolute % error", expression: coalescedProperty("absolute_percent_error"), value: (p) => p.absolute_percent_error, format: (v) => `${v.toFixed(1)}%`, colorCap: 100 },
+        signedError: { label: "Signed % error", expression: coalescedProperty("percent_error"), value: (p) => p.percent_error, format: formatSignedPercent, colors: SIGNED_ERROR_RAMP, diverging: true, colorCap: 100 },
+        articleMentions: { label: "GDELT article mentions", expression: coalescedProperty("gdelt_article_count_2024"), value: (p) => p.gdelt_article_count_2024, format: (v) => compactNumberFormat.format(v) },
+        homelessRate: { label: "Homeless per 10,000", expression: coalescedProperty("homeless_per_10000"), value: (p) => p.homeless_per_10000, format: (v) => v.toFixed(1) },
+        pitTotal: { label: "PIT total", expression: coalescedProperty("pit_total_homeless_persons"), value: (p) => p.pit_total_homeless_persons, format: (v) => compactNumberFormat.format(v) },
+        population: { label: "Total population", expression: coalescedProperty("total_population_2024"), value: (p) => p.total_population_2024, format: (v) => compactNumberFormat.format(v) },
+        blindGuess: { label: "Blind PIT guess", expression: coalescedProperty("blind_guessed_pit_total_2024"), value: (p) => p.blind_guessed_pit_total_2024, format: (v) => compactNumberFormat.format(v) },
       };
 
       const map = new maplibregl.Map({
         container: "map",
         style: "https://tiles.openfreemap.org/styles/positron",
         bounds: CALIFORNIA_BOUNDS,
-        fitBoundsOptions: { padding: 42 },
+        fitBoundsOptions: { padding: 38 },
         minZoom: 3.5,
         maxZoom: 14,
         attributionControl: false,
       });
+      map.scrollZoom.disable();
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
 
-      map.addControl(new maplibregl.NavigationControl(), "top-right");
-      map.addControl(new maplibregl.FullscreenControl(), "top-right");
-      map.addControl(
-        new maplibregl.AttributionControl({ compact: true }),
-        "bottom-right",
-      );
-
-      function formatNumber(value) {
-        return value == null ? "—" : numberFormat.format(value);
+      function quantile(values, probability) {
+        const position = (values.length - 1) * probability;
+        const lower = Math.floor(position);
+        const upper = Math.ceil(position);
+        if (lower === upper) return values[lower];
+        return values[lower] * (upper - position) + values[upper] * (position - lower);
       }
-
-      function addPopupRow(list, label, value) {
-        const term = document.createElement("dt");
-        term.textContent = label;
-        const description = document.createElement("dd");
-        description.textContent =
-          typeof value === "number" ? formatNumber(value) : (value ?? "—");
-        list.append(term, description);
-      }
-
-      function formatSignedPercent(value) {
-        if (value == null) return "—";
-        const sign = value > 0 ? "+" : "";
-        return `${sign}${value.toFixed(1)}%`;
-      }
-
-      function setChartsVisible(visible) {
-        chartsPanel.hidden = !visible;
-        chartsToggle.textContent = visible ? "Hide charts" : "Show charts";
-        chartsToggle.setAttribute("aria-expanded", String(visible));
-      }
-
-      chartsToggle.addEventListener("click", () => {
-        setChartsVisible(chartsPanel.hidden);
-      });
-      chartsClose.addEventListener("click", () => setChartsVisible(false));
-
-      function chartData(features) {
-        return features
-          .map(({ properties }) => ({
-            id: properties.COCNUM,
-            name: properties.COCNAME,
-            category: properties.coc_category,
-            actual: Number(properties.pit_total_homeless_persons),
-            estimate: Number(properties.blind_guessed_pit_total_2024),
-            absoluteError: Number.isFinite(Number(properties.absolute_percent_error))
-              ? Number(properties.absolute_percent_error)
-              : Math.abs(Number(properties.percent_error)),
-          }))
-          .filter(
-            (row) =>
-              Number.isFinite(row.actual) &&
-              row.actual > 0 &&
-              Number.isFinite(row.estimate) &&
-              row.estimate > 0 &&
-              Number.isFinite(row.absoluteError),
-          );
-      }
-
-      function renderScatterplot(rows) {
-        const width = 470;
-        const height = 390;
-        const margin = { top: 14, right: 18, bottom: 48, left: 60 };
-        const plotWidth = width - margin.left - margin.right;
-        const plotHeight = height - margin.top - margin.bottom;
-        const smallestValue = d3.min(rows, (row) => Math.min(row.actual, row.estimate));
-        const largestValue = d3.max(rows, (row) => Math.max(row.actual, row.estimate));
-        const minimum = 10 ** Math.floor(Math.log10(smallestValue));
-        const maximum = 10 ** Math.ceil(Math.log10(largestValue));
-        const x = d3.scaleLog().domain([minimum, maximum]).range([0, plotWidth]);
-        const y = d3.scaleLog().domain([minimum, maximum]).range([plotHeight, 0]);
-        const tickValues = [];
-        for (
-          let power = Math.floor(Math.log10(minimum));
-          power <= Math.ceil(Math.log10(maximum));
-          power += 1
-        ) {
-          [1, 3].forEach((factor) => {
-            const value = factor * 10 ** power;
-            if (value >= minimum && value <= maximum) tickValues.push(value);
-          });
-        }
-        const formatLogTick = (value) =>
-          value >= 1_000 ? `${value / 1_000}k` : numberFormat.format(value);
-        const svg = d3.select("#scatterplot").attr("viewBox", `0 0 ${width} ${height}`);
-        svg.selectAll("*").remove();
-        const plot = svg
-          .append("g")
-          .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        plot
-          .append("g")
-          .attr("class", "chart-grid")
-          .call(
-            d3.axisLeft(y).tickValues(tickValues).tickSize(-plotWidth).tickFormat(""),
-          );
-        plot
-          .append("line")
-          .attr("x1", x(minimum))
-          .attr("y1", y(minimum))
-          .attr("x2", x(maximum))
-          .attr("y2", y(maximum))
-          .attr("stroke", "#64748b")
-          .attr("stroke-width", 1.25)
-          .attr("stroke-dasharray", "5 4");
-        plot
-          .append("g")
-          .attr("class", "chart-axis")
-          .attr("transform", `translate(0,${plotHeight})`)
-          .call(d3.axisBottom(x).tickValues(tickValues).tickFormat(formatLogTick));
-        plot
-          .append("g")
-          .attr("class", "chart-axis")
-          .call(d3.axisLeft(y).tickValues(tickValues).tickFormat(formatLogTick));
-        plot
-          .selectAll("circle")
-          .data(rows)
-          .join("circle")
-          .attr("class", "scatter-point")
-          .attr("cx", (row) => x(row.actual))
-          .attr("cy", (row) => y(row.estimate))
-          .attr("r", 4.5)
-          .append("title")
-          .text(
-            (row) =>
-              `${row.id} — ${row.name}\nActual PIT: ${formatNumber(row.actual)}\nAI estimate: ${formatNumber(row.estimate)}\nAbsolute error: ${row.absoluteError.toFixed(1)}%`,
-          );
-        svg
-          .append("text")
-          .attr("class", "axis-label")
-          .attr("x", margin.left + plotWidth / 2)
-          .attr("y", height - 7)
-          .attr("text-anchor", "middle")
-          .text("Actual PIT count (log scale)");
-        svg
-          .append("text")
-          .attr("class", "axis-label")
-          .attr("transform", "rotate(-90)")
-          .attr("x", -(margin.top + plotHeight / 2))
-          .attr("y", 12)
-          .attr("text-anchor", "middle")
-          .text("AI estimate (log scale)");
-      }
-
-      function renderErrorBars(rows) {
-        const sorted = [...rows].sort(
-          (left, right) => d3.descending(left.absoluteError, right.absoluteError),
-        );
-        const width = 470;
-        const rowHeight = 23;
-        const margin = { top: 32, right: 50, bottom: 14, left: 58 };
-        const height = margin.top + margin.bottom + sorted.length * rowHeight;
-        const plotWidth = width - margin.left - margin.right;
-        const plotHeight = height - margin.top - margin.bottom;
-        const x = d3
-          .scaleLinear()
-          .domain([0, d3.max(sorted, (row) => row.absoluteError)])
-          .nice()
-          .range([0, plotWidth]);
-        const y = d3
-          .scaleBand()
-          .domain(sorted.map((row) => row.id))
-          .range([0, plotHeight])
-          .padding(0.2);
-        const svg = d3.select("#error-bars").attr("viewBox", `0 0 ${width} ${height}`);
-        svg.selectAll("*").remove();
-        const plot = svg
-          .append("g")
-          .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        plot
-          .append("g")
-          .attr("class", "chart-grid")
-          .call(d3.axisTop(x).ticks(5).tickSize(-plotHeight).tickFormat(""));
-        plot
-          .append("g")
-          .attr("class", "chart-axis")
-          .call(d3.axisTop(x).ticks(5).tickFormat((value) => `${value}%`));
-        plot
-          .append("g")
-          .attr("class", "chart-axis")
-          .call(d3.axisLeft(y).tickSize(0).tickPadding(7));
-
-        const bars = plot
-          .selectAll("rect")
-          .data(sorted)
-          .join("rect")
-          .attr("class", "error-bar")
-          .attr("x", 0)
-          .attr("y", (row) => y(row.id))
-          .attr("width", (row) => x(row.absoluteError))
-          .attr("height", y.bandwidth())
-          .attr("rx", 2);
-        bars
-          .append("title")
-          .text(
-            (row) =>
-              `${row.id} — ${row.name}\nAbsolute percentage error: ${row.absoluteError.toFixed(1)}%\nActual PIT: ${formatNumber(row.actual)}\nAI estimate: ${formatNumber(row.estimate)}`,
-          );
-        plot
-          .selectAll(".bar-value")
-          .data(sorted)
-          .join("text")
-          .attr("class", "bar-value")
-          .attr("x", (row) => x(row.absoluteError) + 5)
-          .attr("y", (row) => y(row.id) + y.bandwidth() / 2)
-          .attr("dy", "0.35em")
-          .attr("fill", "#526070")
-          .attr("font-size", 9)
-          .text((row) => `${row.absoluteError.toFixed(1)}%`);
-      }
-
-      function renderCategoryBoxplot(rows, selector, metric) {
-        const categoryOrder = ["Major City", "Urban", "Suburban", "Rural"];
-        const categories = categoryOrder.map((category) => {
-          const values = rows
-            .filter((row) => row.category === category)
-            .map((row) => ({ id: row.id, name: row.name, value: row[metric] }))
-            .sort((left, right) => d3.ascending(left.value, right.value));
-          const numeric = values.map((row) => row.value);
-          const q1 = d3.quantileSorted(numeric, 0.25);
-          const median = d3.quantileSorted(numeric, 0.5);
-          const q3 = d3.quantileSorted(numeric, 0.75);
-          const iqr = q3 - q1;
-          const lowerLimit = q1 - 1.5 * iqr;
-          const upperLimit = q3 + 1.5 * iqr;
-          const inside = numeric.filter((value) => value >= lowerLimit && value <= upperLimit);
-          return {
-            category,
-            values,
-            q1,
-            median,
-            q3,
-            low: d3.min(inside),
-            high: d3.max(inside),
-            outliers: values.filter(
-              (row) => row.value < lowerLimit || row.value > upperLimit,
-            ),
-          };
-        }).filter((row) => row.values.length);
-        const width = 470;
-        const height = 255;
-        const margin = { top: 16, right: 18, bottom: 48, left: 54 };
-        const plotWidth = width - margin.left - margin.right;
-        const plotHeight = height - margin.top - margin.bottom;
-        const x = d3
-          .scaleBand()
-          .domain(categoryOrder)
-          .range([0, plotWidth])
-          .padding(0.4);
-        const allValues = categories.flatMap((row) => row.values.map((item) => item.value));
-        const extent = d3.extent(allValues);
-        const lower = extent[0];
-        const upper = Math.max(extent[1], 0);
-        const y = d3.scaleLog().domain([lower, upper]).nice().range([plotHeight, 0]);
-        const tickCandidates = [0.1, 0.3, 1, 3, 10, 30, 100, 300, 1000];
-        const tickValues = tickCandidates.filter(
-          (value) => value >= y.domain()[0] && value <= y.domain()[1],
-        );
-        const svg = d3
-          .select(selector)
-          .attr("viewBox", `0 0 ${width} ${height}`);
-        svg.selectAll("*").remove();
-        const plot = svg
-          .append("g")
-          .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        plot
-          .append("g")
-          .attr("class", "chart-grid")
-          .call(d3.axisLeft(y).tickValues(tickValues).tickSize(-plotWidth).tickFormat(""));
-        plot
-          .append("g")
-          .attr("class", "chart-axis")
-          .attr("transform", `translate(0,${plotHeight})`)
-          .call(d3.axisBottom(x).tickSize(0).tickPadding(8));
-        plot
-          .append("g")
-          .attr("class", "chart-axis")
-          .call(
-            d3.axisLeft(y)
-              .tickValues(tickValues)
-              .tickFormat((value) => `${value}%`),
-          );
-
-        const groups = plot.selectAll(".boxplot-group")
-          .data(categories)
-          .join("g")
-          .attr("class", "boxplot-group")
-          .attr("transform", (row) => `translate(${x(row.category)},0)`);
-        const center = x.bandwidth() / 2;
-        const boxWidth = Math.min(x.bandwidth(), 56);
-        groups.append("line").attr("class", "boxplot-whisker")
-          .attr("x1", center).attr("x2", center)
-          .attr("y1", (row) => y(row.low)).attr("y2", (row) => y(row.high));
-        groups.append("line").attr("class", "boxplot-whisker")
-          .attr("x1", center - boxWidth / 3).attr("x2", center + boxWidth / 3)
-          .attr("y1", (row) => y(row.low)).attr("y2", (row) => y(row.low));
-        groups.append("line").attr("class", "boxplot-whisker")
-          .attr("x1", center - boxWidth / 3).attr("x2", center + boxWidth / 3)
-          .attr("y1", (row) => y(row.high)).attr("y2", (row) => y(row.high));
-        groups.append("rect").attr("class", "boxplot-box")
-          .attr("x", center - boxWidth / 2)
-          .attr("width", boxWidth)
-          .attr("y", (row) => y(row.q3))
-          .attr("height", (row) => Math.max(1, y(row.q1) - y(row.q3)))
-          .append("title")
-          .text((row) => `${row.category}\nMedian: ${row.median.toFixed(1)}%\nQ1: ${row.q1.toFixed(1)}%\nQ3: ${row.q3.toFixed(1)}%\nCoCs: ${row.values.length}`);
-        groups.append("line").attr("class", "boxplot-median")
-          .attr("x1", center - boxWidth / 2).attr("x2", center + boxWidth / 2)
-          .attr("y1", (row) => y(row.median)).attr("y2", (row) => y(row.median));
-        groups.each(function (row) {
-          d3.select(this).selectAll(".boxplot-point")
-            .data(row.outliers)
-            .join("circle")
-            .attr("class", "boxplot-point")
-            .attr("cx", center)
-            .attr("cy", (item) => y(item.value))
-            .attr("r", 3.5)
-            .append("title")
-            .text((item) => `${item.id} — ${item.name}\n${item.value.toFixed(1)}%`);
-        });
-      }
-
-      function renderCharts(features) {
-        const rows = chartData(features);
-        renderScatterplot(rows);
-        renderCategoryBoxplot(rows, "#category-absolute-boxplot", "absoluteError");
-        renderErrorBars(rows);
-      }
-
-      function quantile(sortedValues, probability) {
-        const position = (sortedValues.length - 1) * probability;
-        const lowerIndex = Math.floor(position);
-        const upperIndex = Math.ceil(position);
-        if (lowerIndex === upperIndex) return sortedValues[lowerIndex];
-        const fraction = position - lowerIndex;
-        return (
-          sortedValues[lowerIndex] * (1 - fraction) +
-          sortedValues[upperIndex] * fraction
-        );
-      }
-
       function metricStops(metric) {
-        const values = cocData.features
-          .map((feature) => metric.value(feature.properties))
-          .filter((value) => Number.isFinite(value))
-          .sort((left, right) => left - right);
+        const values = cocData.features.map((f) => metric.value(f.properties)).filter(Number.isFinite).sort((a, b) => a - b);
         if (!values.length) throw new Error(`No numeric values for ${metric.label}`);
         if (metric.diverging) {
           const minimum = Math.max(Math.min(...values, 0), -metric.colorCap);
           const maximum = Math.min(Math.max(...values, 0), metric.colorCap);
           return [minimum, minimum / 2, 0, maximum / 2, maximum];
         }
-        if (metric.colorCap) {
-          return [0, 0.25, 0.5, 0.75, 1].map(
-            (proportion) => proportion * metric.colorCap,
-          );
-        }
-        const stops = [0, 0.25, 0.5, 0.75, 1].map((probability) =>
-          quantile(values, probability),
-        );
-        for (let index = 1; index < stops.length; index += 1) {
-          if (stops[index] <= stops[index - 1]) {
-            stops[index] =
-              stops[index - 1] + Math.max(1e-9, Math.abs(stops[index - 1]) * 1e-9);
-          }
+        if (metric.colorCap) return [0, 0.25, 0.5, 0.75, 1].map((p) => p * metric.colorCap);
+        const stops = [0, 0.25, 0.5, 0.75, 1].map((p) => quantile(values, p));
+        for (let i = 1; i < stops.length; i += 1) {
+          if (stops[i] <= stops[i - 1]) stops[i] = stops[i - 1] + Math.max(1e-9, Math.abs(stops[i - 1]) * 1e-9);
         }
         return stops;
       }
-
       function colorExpression(metric, stops) {
         const expression = ["interpolate", ["linear"], metric.expression];
         const colors = metric.colors ?? COLOR_RAMP;
         stops.forEach((stop, index) => expression.push(stop, colors[index]));
         return expression;
       }
-
-      function applyMetric(metricKey) {
-        const metric = METRICS[metricKey];
+      function applyMetric(key) {
+        const metric = METRICS[key];
         if (!metric || !cocData || !map.getLayer("coc-fill")) return;
         const stops = metricStops(metric);
+        const colors = metric.colors ?? COLOR_RAMP;
         map.setPaintProperty("coc-fill", "fill-color", colorExpression(metric, stops));
         legendTitle.textContent = metric.label;
-        const colors = metric.colors ?? COLOR_RAMP;
-        [...legendScale.children].forEach((element, index) => {
-          element.style.background = colors[index];
-        });
-        [...legendLabels.children].forEach((element, index) => {
-          element.textContent = metric.format(stops[index]);
-        });
+        [...legendScale.children].forEach((element, index) => { element.style.background = colors[index]; });
+        [...legendLabels.children].forEach((element, index) => { element.textContent = metric.format(stops[index]); });
       }
-
       function createPopupContent(properties) {
         const container = document.createElement("section");
         const title = document.createElement("h2");
         const code = document.createElement("div");
         const list = document.createElement("dl");
-
         title.className = "popup-title";
         title.textContent = properties.COCNAME;
         code.className = "popup-code";
         code.textContent = `${properties.COCNUM} · ${properties.coc_category}`;
         list.className = "popup-grid";
-
         addPopupRow(list, "Total population", properties.total_population_2024);
         addPopupRow(list, "PIT total", properties.pit_total_homeless_persons);
-        addPopupRow(
-          list,
-          "Homeless per 10,000",
-          properties.homeless_per_10000 == null
-            ? null
-            : properties.homeless_per_10000.toFixed(1),
-        );
-        addPopupRow(
-          list,
-          "Blind PIT guess",
-          properties.blind_guessed_pit_total_2024,
-        );
-        addPopupRow(
-          list,
-          "Signed guess error",
-          formatSignedPercent(properties.percent_error),
-        );
-
+        addPopupRow(list, "Homeless per 10,000", properties.homeless_per_10000 == null ? null : properties.homeless_per_10000.toFixed(1));
+        addPopupRow(list, "Blind PIT guess", properties.blind_guessed_pit_total_2024);
+        addPopupRow(list, "Signed guess error", formatSignedPercent(properties.percent_error));
+        addPopupRow(list, "GDELT article mentions", properties.gdelt_article_count_2024);
         container.append(title, code, list);
         return container;
       }
 
+      function drawRegressionChart(selector, rows, predictionKey, sharedDomain) {
+        const svg = d3.select(selector);
+        const width = 760;
+        const height = 270;
+        const margin = { top: 14, right: 14, bottom: 52, left: 54 };
+        const x = d3.scaleLinear().domain(sharedDomain).nice().range([margin.left, width - margin.right]);
+        const y = d3.scaleLinear().domain(x.domain()).range([height - margin.bottom, margin.top]);
+
+        svg.append("line")
+          .attr("class", "fit-line")
+          .attr("x1", x(x.domain()[0])).attr("y1", y(x.domain()[0]))
+          .attr("x2", x(x.domain()[1])).attr("y2", y(x.domain()[1]));
+
+        const points = svg.append("g").selectAll("circle").data(rows).join("circle")
+          .attr("class", "data-point")
+          .attr("cx", (row) => x(row[predictionKey])).attr("cy", (row) => y(row.observed)).attr("r", 3.5);
+        points.append("title").text((row) => `${row.coc}: ${row.name}`);
+
+        svg.append("g").attr("transform", `translate(0,${height - margin.bottom})`).call(d3.axisBottom(x).ticks(4).tickSizeOuter(0));
+        svg.append("g").attr("transform", `translate(${margin.left},0)`).call(d3.axisLeft(y).ticks(5).tickSizeOuter(0));
+        svg.append("text").attr("class", "axis-label").attr("x", (margin.left + width - margin.right) / 2).attr("y", height - 8).attr("text-anchor", "middle").text("Predicted log(1 + Absolute % Error)");
+        svg.append("text").attr("class", "axis-label").attr("transform", "rotate(-90)").attr("x", -(margin.top + height - margin.bottom) / 2).attr("y", 10).attr("text-anchor", "middle").text("Observed log(1 + Absolute % Error)");
+      }
+
+      async function drawRegressionCharts() {
+        try {
+          const response = await fetch(REGRESSION_DATA_URL);
+          if (!response.ok) throw new Error(`Regression data request failed (${response.status})`);
+          const rows = d3.csvParse(await response.text(), (row) => ({
+            coc: row.coc_number,
+            name: row.coc_name,
+            observed: Number(row.log1p_absolute_percent_error),
+            population: Number(row.log_population),
+            pit: Number(row.log_pit_total),
+            articles: Number(row.log1p_article_count),
+          })).filter((row) => [row.observed, row.population, row.pit, row.articles].every(Number.isFinite));
+          if (rows.length !== 44) throw new Error("Expected regression data for 44 California CoCs");
+          rows.forEach((row) => {
+            row.fullPredicted = REGRESSION_MODELS.full.intercept
+              + REGRESSION_MODELS.full.population * row.population
+              + REGRESSION_MODELS.full.pit * row.pit
+              + REGRESSION_MODELS.full.articles * row.articles;
+            row.controlsPredicted = REGRESSION_MODELS.controls.intercept
+              + REGRESSION_MODELS.controls.population * row.population
+              + REGRESSION_MODELS.controls.pit * row.pit;
+          });
+
+          const combined = rows.flatMap((row) => [row.observed, row.fullPredicted, row.controlsPredicted]);
+          const extent = d3.extent(combined);
+          const padding = Math.max((extent[1] - extent[0]) * 0.08, 0.1);
+          const sharedDomain = [extent[0] - padding, extent[1] + padding];
+          drawRegressionChart("#full-regression-chart", rows, "fullPredicted", sharedDomain);
+          drawRegressionChart("#controls-regression-chart", rows, "controlsPredicted", sharedDomain);
+        } catch (error) {
+          console.error(error);
+          d3.selectAll(".regression-chart").remove();
+          d3.select(".regression-figure").append("div").attr("class", "chart-error").text("The regression chart could not be loaded.");
+        }
+      }
+
+      drawRegressionCharts();
+
       map.on("load", async () => {
         try {
-          const response = await fetch(DATA_URL);
-          if (!response.ok) {
-            throw new Error(`GeoJSON request failed (${response.status})`);
-          }
-          const data = await response.json();
-          if (data.type !== "FeatureCollection" || data.features.length !== 44) {
-            throw new Error("Expected a 44-feature California CoC collection");
-          }
+          const [boundaryResponse, coverageResponse] = await Promise.all([fetch(DATA_URL), fetch(COVERAGE_DATA_URL)]);
+          if (!boundaryResponse.ok || !coverageResponse.ok) throw new Error(`Data request failed (${boundaryResponse.status}; ${coverageResponse.status})`);
+          const data = await boundaryResponse.json();
+          const coverageRows = d3.csvParse(await coverageResponse.text());
+          if (data.type !== "FeatureCollection" || data.features.length !== 44 || coverageRows.length !== 44) throw new Error("Expected data for 44 California CoCs");
+          const coverageByCoc = new Map(coverageRows.map((row) => [row.coc_number, Number(row.article_count)]));
+          data.features.forEach((feature) => {
+            const count = coverageByCoc.get(feature.properties.COCNUM);
+            if (!Number.isFinite(count)) throw new Error(`Missing article count for ${feature.properties.COCNUM}`);
+            feature.properties.gdelt_article_count_2024 = count;
+          });
           cocData = data;
-          renderCharts(data.features);
           const initialMetric = METRICS[metricSelect.value];
           const initialStops = metricStops(initialMetric);
-
-          map.addSource("california-cocs", {
-            type: "geojson",
-            data,
-            generateId: true,
-          });
-
+          map.addSource("california-cocs", { type: "geojson", data, generateId: true });
           map.addLayer({
-            id: "coc-fill",
-            type: "fill",
-            source: "california-cocs",
+            id: "coc-fill", type: "fill", source: "california-cocs",
             paint: {
               "fill-color": colorExpression(initialMetric, initialStops),
-              "fill-opacity": [
-                "case",
-                ["boolean", ["feature-state", "hover"], false],
-                0.8,
-                0.58,
-              ],
+              "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.82, 0.62],
             },
           });
-
           map.addLayer({
-            id: "coc-outline",
-            type: "line",
-            source: "california-cocs",
+            id: "coc-outline", type: "line", source: "california-cocs",
             paint: {
-              "line-color": [
-                "case",
-                ["boolean", ["feature-state", "hover"], false],
-                "#f97316",
-                "#1e3a5f",
-              ],
-              "line-width": [
-                "case",
-                ["boolean", ["feature-state", "hover"], false],
-                2.8,
-                1.15,
-              ],
-              "line-opacity": 0.95,
+              "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#f97316", "#1e3a5f"],
+              "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 2.6, 0.9],
+              "line-opacity": 0.9,
             },
           });
-
           map.addLayer({
-            id: "coc-labels",
-            type: "symbol",
-            source: "california-cocs",
-            minzoom: 6,
-            layout: {
-              "text-field": ["get", "COCNUM"],
-              "text-font": ["Noto Sans Regular"],
-              "text-size": 10,
-              "text-allow-overlap": false,
-            },
-            paint: {
-              "text-color": "#172033",
-              "text-halo-color": "rgba(255,255,255,0.9)",
-              "text-halo-width": 1.5,
-            },
+            id: "coc-labels", type: "symbol", source: "california-cocs", minzoom: 6,
+            layout: { "text-field": ["get", "COCNUM"], "text-font": ["Noto Sans Regular"], "text-size": 10, "text-allow-overlap": false },
+            paint: { "text-color": "#172033", "text-halo-color": "rgba(255,255,255,0.9)", "text-halo-width": 1.5 },
           });
-
           map.on("mousemove", "coc-fill", (event) => {
             if (!event.features.length) return;
-            if (hoveredFeatureId !== null) {
-              map.setFeatureState(
-                { source: "california-cocs", id: hoveredFeatureId },
-                { hover: false },
-              );
-            }
+            if (hoveredFeatureId !== null) map.setFeatureState({ source: "california-cocs", id: hoveredFeatureId }, { hover: false });
             hoveredFeatureId = event.features[0].id;
-            map.setFeatureState(
-              { source: "california-cocs", id: hoveredFeatureId },
-              { hover: true },
-            );
+            map.setFeatureState({ source: "california-cocs", id: hoveredFeatureId }, { hover: true });
             map.getCanvas().style.cursor = "pointer";
           });
-
           map.on("mouseleave", "coc-fill", () => {
-            if (hoveredFeatureId !== null) {
-              map.setFeatureState(
-                { source: "california-cocs", id: hoveredFeatureId },
-                { hover: false },
-              );
-            }
+            if (hoveredFeatureId !== null) map.setFeatureState({ source: "california-cocs", id: hoveredFeatureId }, { hover: false });
             hoveredFeatureId = null;
             map.getCanvas().style.cursor = "";
           });
-
           map.on("click", "coc-fill", (event) => {
             const feature = event.features[0];
-            new maplibregl.Popup({ maxWidth: "320px" })
-              .setLngLat(event.lngLat)
-              .setDOMContent(createPopupContent(feature.properties))
-              .addTo(map);
+            new maplibregl.Popup({ maxWidth: "320px" }).setLngLat(event.lngLat).setDOMContent(createPopupContent(feature.properties)).addTo(map);
           });
-
-          metricSelect.addEventListener("change", () => {
-            applyMetric(metricSelect.value);
-          });
+          metricSelect.addEventListener("change", () => applyMetric(metricSelect.value));
           metricSelect.disabled = false;
           applyMetric(metricSelect.value);
-
           statusElement.hidden = true;
         } catch (error) {
           console.error(error);
           statusElement.classList.add("error");
-          statusElement.textContent =
-            "The CoC data could not be loaded. Start a local web server in this folder with “python3 -m http.server” and open http://localhost:8000/.";
+          statusElement.textContent = "The CoC data files could not be loaded. Start a local web server in this folder with “python3 -m http.server” and open http://localhost:8000/.";
         }
       });
     </script>
