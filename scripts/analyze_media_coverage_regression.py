@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""Test the adjusted association between GDELT mentions and AI estimate error.
+"""Run the incremental F-test presented on the research website.
 
-The analysis uses all 44 California CoCs. Because article counts and absolute
-percentage errors are right-skewed, both are log transformed. Population and
-the actual PIT count are also log transformed. A restricted cubic spline tests
-whether the article-count association departs from linearity.
-
-This is an associational analysis. It does not identify a causal effect.
+The analysis compares a population-and-PIT control model with the same model
+plus GDELT article count. All continuous variables are log transformed. This
+is an associational analysis and does not identify a causal effect.
 """
 
 from __future__ import annotations
@@ -25,114 +22,61 @@ ROOT = Path(__file__).resolve().parents[1]
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--summary",
-        type=Path,
+        "--summary", type=Path,
         default=ROOT / "data/processed/ca_coc_summary_2024.csv",
     )
     parser.add_argument(
-        "--article-counts",
-        type=Path,
+        "--article-counts", type=Path,
         default=ROOT / "data/processed/gdelt_gkg_article_counts_by_coc_2024.csv",
     )
     parser.add_argument(
-        "--analysis-data",
-        type=Path,
+        "--analysis-data", type=Path,
         default=ROOT / "data/processed/coc_media_regression_data_2024.csv",
     )
     parser.add_argument(
-        "--model-metrics",
-        type=Path,
+        "--model-metrics", type=Path,
         default=ROOT / "data/processed/coc_media_regression_model_metrics_2024.csv",
     )
     parser.add_argument(
-        "--tests",
-        type=Path,
+        "--tests", type=Path,
         default=ROOT / "data/processed/coc_media_regression_tests_2024.csv",
     )
     parser.add_argument(
-        "--report",
-        type=Path,
+        "--report", type=Path,
         default=ROOT / "data/processed/coc_media_regression_report_2024.md",
     )
     return parser.parse_args()
 
 
-def restricted_cubic_spline(
-    values: np.ndarray, probabilities: tuple[float, float, float] = (0.10, 0.50, 0.90)
-) -> tuple[np.ndarray, np.ndarray]:
-    """Return linear and nonlinear columns for a 3-knot natural cubic spline."""
-    knots = np.quantile(values, probabilities)
-    first, middle, last = knots
-    if not first < middle < last:
-        raise ValueError("Spline knots must be distinct")
-
-    def positive_cube(value: np.ndarray, knot: float) -> np.ndarray:
-        return np.maximum(value - knot, 0.0) ** 3
-
-    nonlinear = (
-        positive_cube(values, first)
-        - positive_cube(values, middle) * (last - first) / (last - middle)
-        + positive_cube(values, last) * (middle - first) / (last - middle)
-    ) / (last - first) ** 2
-    return np.column_stack([values, nonlinear]), knots
-
-
 def fit_ols(matrix: np.ndarray, outcome: np.ndarray) -> dict[str, object]:
     coefficients = np.linalg.lstsq(matrix, outcome, rcond=None)[0]
-    inverse = np.linalg.pinv(matrix.T @ matrix)
     residuals = outcome - matrix @ coefficients
     rss = float(residuals @ residuals)
-    leverage = np.sum(matrix * (matrix @ inverse), axis=1)
-    adjusted_residual_sq = (residuals / (1.0 - leverage)) ** 2
-    hc3_covariance = inverse @ (
-        matrix.T @ (adjusted_residual_sq[:, None] * matrix)
-    ) @ inverse
-    n, parameters = matrix.shape
     total_ss = float(np.sum((outcome - outcome.mean()) ** 2))
-    r_squared = 1.0 - rss / total_ss
-    loocv_rmse = float(np.sqrt(np.mean((residuals / (1.0 - leverage)) ** 2)))
     return {
         "coefficients": coefficients,
-        "residuals": residuals,
         "rss": rss,
-        "hc3_covariance": hc3_covariance,
-        "leverage": leverage,
-        "r_squared": r_squared,
-        "loocv_rmse": loocv_rmse,
-        "n": n,
-        "parameters": parameters,
+        "r_squared": 1.0 - rss / total_ss,
+        "n": len(outcome),
+        "parameters": matrix.shape[1],
     }
 
 
-def nested_f_test(
-    reduced: dict[str, object], full: dict[str, object], added_df: int
-) -> tuple[float, float]:
+def incremental_f_test(
+    reduced: dict[str, object], full: dict[str, object]
+) -> tuple[float, float, int, int]:
+    numerator_df = int(full["parameters"]) - int(reduced["parameters"])
     denominator_df = int(full["n"]) - int(full["parameters"])
     statistic = (
-        (float(reduced["rss"]) - float(full["rss"])) / added_df
+        (float(reduced["rss"]) - float(full["rss"])) / numerator_df
     ) / (float(full["rss"]) / denominator_df)
-    return statistic, float(stats.f.sf(statistic, added_df, denominator_df))
+    p_value = float(stats.f.sf(statistic, numerator_df, denominator_df))
+    return statistic, p_value, numerator_df, denominator_df
 
 
-def hc3_wald_test(
-    fit: dict[str, object], coefficient_indices: list[int]
-) -> tuple[float, float]:
-    indices = np.asarray(coefficient_indices)
-    coefficients = np.asarray(fit["coefficients"])[indices]
-    covariance = np.asarray(fit["hc3_covariance"])[np.ix_(indices, indices)]
-    numerator_df = len(indices)
-    denominator_df = int(fit["n"]) - int(fit["parameters"])
-    statistic = float(
-        coefficients @ np.linalg.pinv(covariance) @ coefficients / numerator_df
-    )
-    return statistic, float(stats.f.sf(statistic, numerator_df, denominator_df))
-
-
-def variance_inflation_factor(target: np.ndarray, others: np.ndarray) -> float:
-    matrix = np.column_stack([np.ones(len(target)), others])
-    residuals = target - matrix @ np.linalg.lstsq(matrix, target, rcond=None)[0]
-    r_squared = 1.0 - (residuals @ residuals) / np.sum((target - target.mean()) ** 2)
-    return float(1.0 / (1.0 - r_squared))
+def signed_term(coefficient: float, variable: str) -> str:
+    operator = "+" if coefficient >= 0 else "-"
+    return f" {operator} {abs(coefficient):.3f} {variable}"
 
 
 def main() -> None:
@@ -141,16 +85,15 @@ def main() -> None:
     counts = pd.read_csv(args.article_counts)
     data = summary.merge(
         counts[["coc_number", "article_count"]],
-        on="coc_number",
-        how="inner",
-        validate="one_to_one",
+        on="coc_number", how="inner", validate="one_to_one",
     )
     if len(data) != 44:
         raise RuntimeError(f"Expected 44 matched CoCs, found {len(data)}")
 
-    required_positive = ["total_population_2024", "pit_total_2024", "article_count"]
-    if (data[required_positive] <= 0).any().any():
+    positive_columns = ["total_population_2024", "pit_total_2024", "article_count"]
+    if (data[positive_columns] <= 0).any().any():
         raise RuntimeError("Population, PIT totals, and article counts must be positive")
+
     data["absolute_percent_error"] = data["percent_error"].abs()
     data["log1p_absolute_percent_error"] = np.log1p(data["absolute_percent_error"])
     data["log1p_article_count"] = np.log1p(data["article_count"])
@@ -158,134 +101,78 @@ def main() -> None:
     data["log_pit_total"] = np.log(data["pit_total_2024"])
 
     outcome = data["log1p_absolute_percent_error"].to_numpy()
-    controls = np.column_stack(
-        [
-            np.ones(len(data)),
-            data["log_population"],
-            data["log_pit_total"],
-        ]
-    )
-    spline_columns, knots = restricted_cubic_spline(
-        data["log1p_article_count"].to_numpy()
-    )
-    data["article_spline_nonlinear"] = spline_columns[:, 1]
-    matrices = {
-        "controls_only": controls,
-        "log_linear_article_count": np.column_stack([controls, spline_columns[:, 0]]),
-        "article_count_spline": np.column_stack([controls, spline_columns]),
+    controls = np.column_stack([
+        np.ones(len(data)), data["log_population"], data["log_pit_total"],
+    ])
+    full_matrix = np.column_stack([controls, data["log1p_article_count"]])
+    fits = {
+        "population_and_pit": fit_ols(controls, outcome),
+        "population_pit_and_articles": fit_ols(full_matrix, outcome),
     }
-    fits = {name: fit_ols(matrix, outcome) for name, matrix in matrices.items()}
 
-    # Partial-regression values used by the website to show exactly what the
-    # population/PIT adjustment removes (Frisch-Waugh-Lovell equivalence).
-    article_log = data["log1p_article_count"].to_numpy()
-    article_control_fit = fit_ols(controls, article_log)
-    data["article_residual_after_population_pit"] = article_control_fit["residuals"]
-    data["error_residual_after_population_pit"] = fits["controls_only"]["residuals"]
-    unadjusted_matrix = np.column_stack([np.ones(len(data)), article_log])
-    unadjusted_fit = fit_ols(unadjusted_matrix, outcome)
-    data["unadjusted_fitted_log1p_absolute_error"] = (
-        unadjusted_matrix @ np.asarray(unadjusted_fit["coefficients"])
+    reduced = fits["population_and_pit"]
+    full = fits["population_pit_and_articles"]
+    reduced_r_squared = float(reduced["r_squared"])
+    full_r_squared = float(full["r_squared"])
+    r_squared_change = full_r_squared - reduced_r_squared
+    f_statistic, p_value, numerator_df, denominator_df = incremental_f_test(
+        reduced, full
     )
 
     model_rows = []
-    control_r_squared = float(fits["controls_only"]["r_squared"])
     for name, fit in fits.items():
-        model_rows.append(
-            {
-                "model": name,
-                "n": fit["n"],
-                "parameters": fit["parameters"],
-                "r_squared": fit["r_squared"],
-                "incremental_r_squared_vs_controls": float(fit["r_squared"])
-                - control_r_squared,
-                "loocv_rmse_log1p_absolute_error": fit["loocv_rmse"],
-            }
-        )
-
-    comparisons = [
-        (
-            "linear_article_association",
-            "controls_only",
-            "log_linear_article_count",
-            [3],
-        ),
-        (
-            "overall_spline_article_association",
-            "controls_only",
-            "article_count_spline",
-            [3, 4],
-        ),
-        (
-            "article_association_nonlinearity",
-            "log_linear_article_count",
-            "article_count_spline",
-            [4],
-        ),
-    ]
-    test_rows = []
-    for hypothesis, reduced_name, full_name, coefficient_indices in comparisons:
-        reduced_fit = fits[reduced_name]
-        full_fit = fits[full_name]
-        added_df = matrices[full_name].shape[1] - matrices[reduced_name].shape[1]
-        classical_f, classical_p = nested_f_test(reduced_fit, full_fit, added_df)
-        robust_f, robust_p = hc3_wald_test(full_fit, coefficient_indices)
-        test_rows.append(
-            {
-                "hypothesis": hypothesis,
-                "reduced_model": reduced_name,
-                "full_model": full_name,
-                "numerator_df": added_df,
-                "denominator_df": len(data) - matrices[full_name].shape[1],
-                "classical_f": classical_f,
-                "classical_p_value": classical_p,
-                "hc3_robust_f": robust_f,
-                "hc3_robust_p_value": robust_p,
-            }
-        )
-
-    linear_fit = fits["log_linear_article_count"]
-    linear_coefficient = float(np.asarray(linear_fit["coefficients"])[3])
-    linear_se = float(np.sqrt(np.asarray(linear_fit["hc3_covariance"])[3, 3]))
-    linear_df = int(linear_fit["n"]) - int(linear_fit["parameters"])
-    critical_t = float(stats.t.ppf(0.975, linear_df))
-    lower = linear_coefficient - critical_t * linear_se
-    upper = linear_coefficient + critical_t * linear_se
-    doubling_change = 100.0 * (np.exp(linear_coefficient * np.log(2.0)) - 1.0)
-    doubling_lower = 100.0 * (np.exp(lower * np.log(2.0)) - 1.0)
-    doubling_upper = 100.0 * (np.exp(upper * np.log(2.0)) - 1.0)
-
-    article_vif = variance_inflation_factor(
-        data["log1p_article_count"].to_numpy(),
-        data[["log_population", "log_pit_total"]].to_numpy(),
-    )
-    population_vif = variance_inflation_factor(
-        data["log_population"].to_numpy(),
-        data[["log1p_article_count", "log_pit_total"]].to_numpy(),
-    )
-    pit_vif = variance_inflation_factor(
-        data["log_pit_total"].to_numpy(),
-        data[["log1p_article_count", "log_population"]].to_numpy(),
-    )
-
+        coefficients = np.asarray(fit["coefficients"])
+        model_rows.append({
+            "model": name,
+            "n": fit["n"],
+            "parameters": fit["parameters"],
+            "r_squared": fit["r_squared"],
+            "change_in_r_squared_vs_population_and_pit": (
+                float(fit["r_squared"]) - reduced_r_squared
+            ),
+            "intercept": coefficients[0],
+            "log_population_coefficient": coefficients[1],
+            "log_pit_total_coefficient": coefficients[2],
+            "log1p_article_count_coefficient": (
+                coefficients[3] if len(coefficients) == 4 else 0.0
+            ),
+        })
     model_metrics = pd.DataFrame(model_rows)
-    tests = pd.DataFrame(test_rows)
+
+    tests = pd.DataFrame([{
+        "test": "incremental_f_test_for_adding_article_count",
+        "reduced_model": "population_and_pit",
+        "full_model": "population_pit_and_articles",
+        "n": len(data),
+        "reduced_r_squared": reduced_r_squared,
+        "full_r_squared": full_r_squared,
+        "change_in_r_squared": r_squared_change,
+        "numerator_df": numerator_df,
+        "denominator_df": denominator_df,
+        "f_statistic": f_statistic,
+        "p_value": p_value,
+    }])
+
     for path in [args.analysis_data, args.model_metrics, args.tests, args.report]:
         path.parent.mkdir(parents=True, exist_ok=True)
     data.to_csv(args.analysis_data, index=False)
     model_metrics.to_csv(args.model_metrics, index=False)
     tests.to_csv(args.tests, index=False)
 
-    spline_test = tests.loc[
-        tests["hypothesis"].eq("overall_spline_article_association")
-    ].iloc[0]
-    nonlinear_test = tests.loc[
-        tests["hypothesis"].eq("article_association_nonlinearity")
-    ].iloc[0]
-    linear_test = tests.loc[
-        tests["hypothesis"].eq("linear_article_association")
-    ].iloc[0]
-    article_knots = np.expm1(knots)
+    control_coefficients = np.asarray(reduced["coefficients"])
+    full_coefficients = np.asarray(full["coefficients"])
+    control_equation = (
+        f"log(1 + Absolute % Error) = {control_coefficients[0]:.3f}"
+        + signed_term(control_coefficients[1], "log(population)")
+        + signed_term(control_coefficients[2], "log(actual PIT count)")
+    )
+    full_equation = (
+        f"log(1 + Absolute % Error) = {full_coefficients[0]:.3f}"
+        + signed_term(full_coefficients[1], "log(population)")
+        + signed_term(full_coefficients[2], "log(actual PIT count)")
+        + signed_term(full_coefficients[3], "log(1 + article count)")
+    )
+
     report = f"""# Media coverage regression — 2024 California CoCs
 
 ## Question
@@ -294,33 +181,34 @@ Is GDELT article count associated with the absolute percentage error of the blin
 
 This is an associational test, not a causal estimate.
 
-## Specification
+## Test
 
 - Observations: {len(data)} California CoCs.
 - Outcome: `log(1 + absolute percentage error)`.
-- Exposure: `log(1 + distinct GDELT article count)`.
 - Controls: `log(population)` and `log(actual PIT total)`.
-- Nonlinearity: three-knot restricted cubic spline with article-count knots at {article_knots[0]:.1f}, {article_knots[1]:.1f}, and {article_knots[2]:.1f}.
-- Inference: HC3 heteroskedasticity-robust Wald tests. The primary test evaluates whether the adjusted log-linear article-count coefficient equals zero.
+- Added variable: `log(1 + distinct GDELT article count)`.
+- Method: incremental F-test comparing two nested linear regression models.
 
-## Results
+## Models shown on the website
 
-- Primary log-linear article-count test: coefficient = {linear_coefficient:.3f}, HC3 95% CI [{lower:.3f}, {upper:.3f}], p = {linear_test['hc3_robust_p_value']:.3f}.
-- Overall spline association: HC3 p = {spline_test['hc3_robust_p_value']:.3f}.
-- Evidence of nonlinearity beyond a straight line: HC3 p = {nonlinear_test['hc3_robust_p_value']:.3f}.
-- Interpreted approximately, doubling article count corresponds to a {doubling_change:.1f}% change in `(1 + absolute percentage error)`; HC3 95% CI [{doubling_lower:.1f}%, {doubling_upper:.1f}%].
-- Incremental R² over population and PIT controls: linear = {model_metrics.loc[model_metrics['model'].eq('log_linear_article_count'), 'incremental_r_squared_vs_controls'].iloc[0]:.3f}; spline = {model_metrics.loc[model_metrics['model'].eq('article_count_spline'), 'incremental_r_squared_vs_controls'].iloc[0]:.3f}.
-- Leave-one-out RMSE (lower is better): controls only = {model_metrics.loc[model_metrics['model'].eq('controls_only'), 'loocv_rmse_log1p_absolute_error'].iloc[0]:.3f}; linear = {model_metrics.loc[model_metrics['model'].eq('log_linear_article_count'), 'loocv_rmse_log1p_absolute_error'].iloc[0]:.3f}; spline = {model_metrics.loc[model_metrics['model'].eq('article_count_spline'), 'loocv_rmse_log1p_absolute_error'].iloc[0]:.3f}.
+Population and PIT only:
 
-At the pre-specified 0.05 level, the article-count coefficient is not statistically significant (`p = {linear_test['hc3_robust_p_value']:.3f}`). These data therefore do not provide evidence of an adjusted article-count association. There is also no evidence that allowing a nonlinear relationship changes the conclusion. This does not prove that the association is zero; the sample contains only 44 CoCs and the article-count measure has known location-relevance errors.
+`{control_equation}`
 
-## Collinearity diagnostics
+Population, PIT, and articles:
 
-- Article count VIF: {article_vif:.2f}
-- Population VIF: {population_vif:.2f}
-- PIT total VIF: {pit_vif:.2f}
+`{full_equation}`
 
-Population and PIT total are strongly related, which widens uncertainty but does not invalidate the adjusted model. The GDELT measure counts any assigned California location mention, not necessarily the primary location of the homelessness discussion.
+## Results shown on the website
+
+- Population-and-PIT model R²: **{reduced_r_squared:.4f}**.
+- Population-PIT-and-articles model R²: **{full_r_squared:.4f}**.
+- Change in R²: **{r_squared_change:.4f}**.
+- Incremental test: **F({numerator_df}, {denominator_df}) = {f_statistic:.3f}, p = {p_value:.3f}**.
+
+Adding article count raised R² by only {r_squared_change:.4f}. If article count had no additional linear association with error, an F-statistic at least as large as {f_statistic:.3f} would occur about {p_value * 100:.1f}% of the time under repeated sampling. The result does not provide convincing evidence that article count improves the model after population and PIT count are included. It does not prove that the association is exactly zero.
+
+The GDELT measure counts assigned California location mentions, not necessarily the primary location of each article's homelessness discussion.
 """
     args.report.write_text(report)
 

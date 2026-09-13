@@ -1,4 +1,3 @@
-model,n,parameters,r_squared,incremental_r_squared_vs_controls,loocv_rmse_log1p_absolute_error
-controls_only,44,3,0.4079050341761966,0.0,1.0393929046095454
-log_linear_article_count,44,4,0.4102105455242808,0.0023055113480842104,1.0604794318348347
-article_count_spline,44,5,0.41413577681877334,0.006230742642576725,1.099089522319422
+model,n,parameters,r_squared,change_in_r_squared_vs_population_and_pit,intercept,log_population_coefficient,log_pit_total_coefficient,log1p_article_count_coefficient
+population_and_pit,44,3,0.4079050341761966,0.0,6.31523968110095,0.16102499576757434,-0.7902777492941058,0.0
+population_pit_and_articles,44,4,0.4102105455242808,0.0023055113480842104,6.624678424721442,0.1277762621259291,-0.8165827620457593,0.06319793877757852
