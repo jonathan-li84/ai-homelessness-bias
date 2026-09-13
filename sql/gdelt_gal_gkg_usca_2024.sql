@@ -1,7 +1,7 @@
 -- Full-year 2024 English homelessness-headline articles joined to GKG's
 -- point-level California (USCA) location annotations.
 --
--- The GAL predicate mirrors scripts/collect_gdelt_homeless_headlines.py.
+-- The GAL predicate selects English headlines containing homelessness terms.
 -- ADM1-only records (location_type = 2) are excluded because a state centroid
 -- cannot be assigned meaningfully to a Continuum of Care.
 

@@ -3,3 +3,9 @@
 __pycache__/
 data/raw/*.checkpoint.json
 data/raw/*.records.jsonl
+data/raw/census/tracts_2024/
+data/processed/shapefiles/*.cpg
+data/processed/shapefiles/*.dbf
+data/processed/shapefiles/*.prj
+data/processed/shapefiles/*.shp
+data/processed/shapefiles/*.shx

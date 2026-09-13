@@ -17,14 +17,12 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_CENSUS = ROOT / "data" / "raw" / "census"
-TRACT_DIR = RAW_CENSUS / "tracts_2024"
 PROCESSED = ROOT / "data" / "processed"
 SHAPEFILES = PROCESSED / "shapefiles"
 
 COC_GEOJSON = PROCESSED / "ca_coc_organizations_boundaries_pit_hic_2024.geojson"
 BLIND_GUESSES = PROCESSED / "ca_coc_blind_guesses_2024.csv"
 TRACT_ZIP = RAW_CENSUS / "tl_2024_06_tract.zip"
-TRACT_SHP = TRACT_DIR / "tl_2024_06_tract.shp"
 ACS_TABLE = RAW_CENSUS / "acsdt5y2024-b01003.dat"
 COC_CATEGORY_JSON = ROOT / "data" / "raw" / "hud_ca_coc_geography_type_2024.json"
 
@@ -78,13 +76,6 @@ def ensure_sources() -> None:
         download(ACS_URL, ACS_TABLE)
     if not COC_CATEGORY_JSON.exists():
         download(COC_CATEGORY_URL, COC_CATEGORY_JSON)
-    TRACT_DIR.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(TRACT_ZIP) as archive:
-        archive.extractall(TRACT_DIR)
-    if not TRACT_SHP.exists():
-        raise RuntimeError("The TIGER tract archive did not contain the expected shapefile")
-
-
 def read_acs_population() -> pd.DataFrame:
     data = pd.read_csv(ACS_TABLE, sep="|", dtype={"GEO_ID": "string"})
     data = data[data["GEO_ID"].str.startswith(f"1400000US{STATE_FIPS}")].copy()
@@ -145,6 +136,8 @@ def zip_shapefile(stem: Path) -> Path:
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for member in members:
             archive.write(member, arcname=member.name)
+    for member in members:
+        member.unlink()
     return output
 
 
@@ -160,7 +153,7 @@ def main() -> int:
     ensure_sources()
 
     acs = read_acs_population()
-    tracts = gpd.read_file(TRACT_SHP)
+    tracts = gpd.read_file(TRACT_ZIP)
     tracts = tracts.merge(acs, on="GEOID", how="left", validate="one_to_one")
     if len(tracts) != len(acs) or tracts["total_population_2024"].isna().any():
         raise RuntimeError("TIGER/ACS tract join was not one-to-one and complete")
