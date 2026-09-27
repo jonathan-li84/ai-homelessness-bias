@@ -9,9 +9,9 @@ Point-in-Time (PIT) count. The analysis measures association, not causation.
 
 ## Research question
 
-How much additional variation in the accuracy of AI homelessness estimates is
-associated with local media coverage across California CoCs, after accounting
-for population and actual homelessness levels?
+How much does local media coverage affect the accuracy of AI estimates of
+homelessness across California CoCs, after accounting for population and actual
+homelessness levels?
 
 The population-and-PIT regression explains 40.79% of the variation in the
 log-transformed absolute percentage error. Adding GDELT article count raises
@@ -25,9 +25,10 @@ included.
 `index.html` contains:
 
 - an interactive MapLibre map of all 44 California CoCs;
-- controls for coloring the map by AI error, article mentions, homelessness
-  rate, PIT count, population, or blind estimate;
+- controls for coloring the map by actual or model-predicted AI error, article
+  mentions, homelessness rate, PIT count, population, or blind estimate;
 - observed-versus-predicted charts for the two regression models;
+- a sortable comparison table for all 44 CoCs;
 - both model equations, their R² values, and the incremental F-test; and
 - data-source and limitation notes.
 

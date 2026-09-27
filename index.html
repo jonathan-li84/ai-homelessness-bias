@@ -86,7 +86,7 @@
         gap: 22px;
         align-items: start;
       }
-      .map-card, .side-card, .info-card {
+      .map-card, .side-card, .info-card, .table-card {
         border: 1px solid #dbe1e8;
         border-radius: 10px;
         background: #fff;
@@ -203,6 +203,27 @@
       .incremental-test .test-equation { overflow-x: auto; color: #273244; font-size: 11px; white-space: nowrap; }
       .incremental-test .test-equation mjx-container { margin: 0.35em 0 !important; text-align: left !important; }
       .incremental-test p { margin: 5px 0 0; color: #526070; font-size: 10px; line-height: 1.55; }
+      .table-card { margin-top: 22px; overflow: hidden; }
+      .table-card-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: 20px 22px 16px; }
+      .table-card-header h2 { margin: 0; color: #172033; font-size: 16px; font-weight: 760; letter-spacing: -0.015em; }
+      .table-card-header p { margin: 5px 0 0; color: #667384; font-size: 11px; line-height: 1.5; }
+      .table-count { flex: none; color: #2563eb; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+      .table-scroll { max-height: 610px; overflow: auto; border-top: 1px solid #dbe1e8; }
+      .coc-table { width: 100%; min-width: 1020px; border-collapse: collapse; font-size: 11px; font-variant-numeric: tabular-nums; }
+      .coc-table th { position: sticky; z-index: 1; top: 0; padding: 0; border-bottom: 1px solid #cbd2da; background: #eef3fb; text-align: left; }
+      .coc-table th.numeric, .coc-table td.numeric { text-align: right; }
+      .sort-button { display: inline-flex; width: 100%; align-items: center; justify-content: flex-start; gap: 5px; padding: 11px 12px; border: 0; background: transparent; color: #344154; font: inherit; font-size: 9px; font-weight: 800; letter-spacing: 0.055em; text-align: inherit; text-transform: uppercase; cursor: pointer; }
+      th.numeric .sort-button { justify-content: flex-end; }
+      .sort-button:hover { color: #2563eb; }
+      .sort-button:focus-visible { outline: 2px solid #2563eb; outline-offset: -3px; }
+      .sort-indicator { width: 9px; color: #2563eb; font-size: 10px; }
+      .coc-table td { padding: 10px 12px; border-bottom: 1px solid #e7ebf0; color: #344154; vertical-align: middle; }
+      .coc-table tbody tr:nth-child(even) { background: #fafbfc; }
+      .coc-table tbody tr:hover { background: #eef7f7; }
+      .coc-table tbody tr:last-child td { border-bottom: 0; }
+      .coc-table-name { min-width: 260px; color: #273244; font-weight: 650; }
+      .coc-table-code { display: block; margin-top: 2px; color: #748092; font-size: 9px; font-weight: 750; letter-spacing: 0.04em; }
+      .table-loading { padding: 24px !important; color: #748092 !important; text-align: center !important; }
       .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
       .info-card { padding: 26px 28px; }
       .info-card h2 { margin-bottom: 14px; }
@@ -273,7 +294,7 @@
         </div>
         <div class="research-question">
           <span class="section-label">Research question</span>
-          <p>How much additional variation in the accuracy of AI homelessness estimates is associated with local media coverage across California CoCs, after accounting for population and actual homelessness levels?</p>
+          <p>How much does local media coverage affect the accuracy of AI estimates of homelessness across California CoCs, after accounting for population and actual homelessness levels?</p>
         </div>
       </header>
 
@@ -288,6 +309,7 @@
               <label for="metric-select">Color map by</label>
               <select id="metric-select" class="metric-select" disabled>
                 <option value="absoluteError">Absolute % error</option>
+                <option value="predictedError">Predicted absolute % error</option>
                 <option value="signedError">Signed % error</option>
                 <option value="articleMentions">GDELT article mentions</option>
                 <option value="homelessRate">Homeless per 10,000</option>
@@ -375,6 +397,35 @@
         </aside>
       </div>
 
+      <section class="table-card" aria-labelledby="coc-table-title">
+        <div class="table-card-header">
+          <div>
+            <h2 id="coc-table-title">California CoC comparison</h2>
+            <p>Click any column heading to sort all 44 CoCs. Predicted error comes from the full population, PIT, and article-count model.</p>
+          </div>
+          <span class="table-count">44 CoCs</span>
+        </div>
+        <div class="table-scroll" tabindex="0" aria-label="Scrollable California CoC comparison table">
+          <table class="coc-table">
+            <thead>
+              <tr>
+                <th scope="col"><button class="sort-button" type="button" data-sort-key="name">CoC <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col"><button class="sort-button" type="button" data-sort-key="category">Category <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="population">Population <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="pit">Actual PIT <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="estimate">AI estimate <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="absoluteError">Absolute % error <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="predictedError">Predicted error <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="articles">Article count <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              </tr>
+            </thead>
+            <tbody id="coc-table-body">
+              <tr><td class="table-loading" colspan="8">Loading CoC data…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <div class="details-grid">
         <section class="info-card" aria-labelledby="sources-title">
           <h2 id="sources-title">Data sources</h2>
@@ -411,10 +462,14 @@
       const legendTitle = document.getElementById("legend-title");
       const legendScale = document.getElementById("legend-scale");
       const legendLabels = document.getElementById("legend-labels");
+      const cocTableBody = document.getElementById("coc-table-body");
+      const tableSortButtons = [...document.querySelectorAll(".sort-button[data-sort-key]")];
       const numberFormat = new Intl.NumberFormat("en-US");
       const compactNumberFormat = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
       let hoveredFeatureId = null;
       let cocData = null;
+      let cocTableRows = [];
+      let tableSort = { key: "absoluteError", direction: "desc" };
 
       function formatNumber(value) { return value == null ? "—" : numberFormat.format(value); }
       function formatSignedPercent(value) {
@@ -429,9 +484,85 @@
         list.append(term, description);
       }
 
+      const TABLE_COLUMNS = {
+        name: { type: "text", value: (row) => row.name },
+        category: { type: "text", value: (row) => row.category },
+        population: { type: "number", value: (row) => row.population },
+        pit: { type: "number", value: (row) => row.pit },
+        estimate: { type: "number", value: (row) => row.estimate },
+        absoluteError: { type: "number", value: (row) => row.absoluteError },
+        predictedError: { type: "number", value: (row) => row.predictedError },
+        articles: { type: "number", value: (row) => row.articles },
+      };
+
+      function appendTableCell(rowElement, value, className = "") {
+        const cell = document.createElement("td");
+        cell.className = className;
+        cell.textContent = value;
+        rowElement.append(cell);
+        return cell;
+      }
+
+      function renderCocTable() {
+        if (!cocTableRows.length) return;
+        const column = TABLE_COLUMNS[tableSort.key];
+        const direction = tableSort.direction === "asc" ? 1 : -1;
+        const rows = [...cocTableRows].sort((first, second) => {
+          const firstValue = column.value(first);
+          const secondValue = column.value(second);
+          if (column.type === "text") return direction * String(firstValue).localeCompare(String(secondValue));
+          return direction * (firstValue - secondValue);
+        });
+
+        const fragment = document.createDocumentFragment();
+        rows.forEach((row) => {
+          const rowElement = document.createElement("tr");
+          const nameCell = appendTableCell(rowElement, row.name, "coc-table-name");
+          const code = document.createElement("span");
+          code.className = "coc-table-code";
+          code.textContent = row.code;
+          nameCell.append(code);
+          appendTableCell(rowElement, row.category);
+          appendTableCell(rowElement, formatNumber(row.population), "numeric");
+          appendTableCell(rowElement, formatNumber(row.pit), "numeric");
+          appendTableCell(rowElement, formatNumber(row.estimate), "numeric");
+          appendTableCell(rowElement, `${row.absoluteError.toFixed(1)}%`, "numeric");
+          appendTableCell(rowElement, `${row.predictedError.toFixed(1)}%`, "numeric");
+          appendTableCell(rowElement, formatNumber(row.articles), "numeric");
+          fragment.append(rowElement);
+        });
+        cocTableBody.replaceChildren(fragment);
+
+        tableSortButtons.forEach((button) => {
+          const active = button.dataset.sortKey === tableSort.key;
+          const header = button.closest("th");
+          const indicator = button.querySelector(".sort-indicator");
+          if (active) {
+            header.setAttribute("aria-sort", tableSort.direction === "asc" ? "ascending" : "descending");
+            indicator.textContent = tableSort.direction === "asc" ? "▲" : "▼";
+          } else {
+            header.removeAttribute("aria-sort");
+            indicator.textContent = "";
+          }
+        });
+      }
+
+      tableSortButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const key = button.dataset.sortKey;
+          if (tableSort.key === key) {
+            tableSort.direction = tableSort.direction === "asc" ? "desc" : "asc";
+          } else {
+            tableSort = { key, direction: TABLE_COLUMNS[key].type === "text" ? "asc" : "desc" };
+          }
+          renderCocTable();
+        });
+      });
+
       const coalescedProperty = (name) => ["coalesce", ["get", name], 0];
       const METRICS = {
         absoluteError: { label: "Absolute % error", expression: coalescedProperty("absolute_percent_error"), value: (p) => p.absolute_percent_error, format: (v) => `${v.toFixed(1)}%`, colorCap: 100 },
+        predictedError: { label: "Predicted absolute % error", expression: coalescedProperty("predicted_absolute_percent_error"), value: (p) => p.predicted_absolute_percent_error, format: (v) => `${v.toFixed(1)}%`, colorCap: 100 },
         signedError: { label: "Signed % error", expression: coalescedProperty("percent_error"), value: (p) => p.percent_error, format: formatSignedPercent, colors: SIGNED_ERROR_RAMP, diverging: true, colorCap: 100 },
         articleMentions: { label: "GDELT article mentions", expression: coalescedProperty("gdelt_article_count_2024"), value: (p) => p.gdelt_article_count_2024, format: (v) => compactNumberFormat.format(v) },
         homelessRate: { label: "Homeless per 10,000", expression: coalescedProperty("homeless_per_10000"), value: (p) => p.homeless_per_10000, format: (v) => v.toFixed(1) },
@@ -506,6 +637,7 @@
         addPopupRow(list, "Homeless per 10,000", properties.homeless_per_10000 == null ? null : properties.homeless_per_10000.toFixed(1));
         addPopupRow(list, "Blind PIT guess", properties.blind_guessed_pit_total_2024);
         addPopupRow(list, "Signed guess error", formatSignedPercent(properties.percent_error));
+        addPopupRow(list, "Predicted absolute error", `${properties.predicted_absolute_percent_error.toFixed(1)}%`);
         addPopupRow(list, "GDELT article mentions", properties.gdelt_article_count_2024);
         container.append(title, code, list);
         return container;
@@ -585,8 +717,25 @@
             const count = coverageByCoc.get(feature.properties.COCNUM);
             if (!Number.isFinite(count)) throw new Error(`Missing article count for ${feature.properties.COCNUM}`);
             feature.properties.gdelt_article_count_2024 = count;
+            const predictedLogError = REGRESSION_MODELS.full.intercept
+              + REGRESSION_MODELS.full.population * Math.log(feature.properties.total_population_2024)
+              + REGRESSION_MODELS.full.pit * Math.log(feature.properties.pit_total_homeless_persons)
+              + REGRESSION_MODELS.full.articles * Math.log1p(count);
+            feature.properties.predicted_absolute_percent_error = Math.expm1(predictedLogError);
           });
           cocData = data;
+          cocTableRows = data.features.map(({ properties }) => ({
+            code: properties.COCNUM,
+            name: properties.COCNAME,
+            category: properties.coc_category,
+            population: Number(properties.total_population_2024),
+            pit: Number(properties.pit_total_homeless_persons),
+            estimate: Number(properties.blind_guessed_pit_total_2024),
+            absoluteError: Number(properties.absolute_percent_error),
+            predictedError: Number(properties.predicted_absolute_percent_error),
+            articles: Number(properties.gdelt_article_count_2024),
+          }));
+          renderCocTable();
           const initialMetric = METRICS[metricSelect.value];
           const initialStops = metricStops(initialMetric);
           map.addSource("california-cocs", { type: "geojson", data, generateId: true });
