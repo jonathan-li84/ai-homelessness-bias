@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--summary", type=Path,
-        default=ROOT / "data/processed/ca_coc_summary_2024.csv",
+        default=ROOT / "data/processed/ai_estimate_coc_summary_2024.csv",
     )
     parser.add_argument(
         "--article-counts", type=Path,
@@ -94,7 +94,7 @@ def main() -> None:
     if (data[positive_columns] <= 0).any().any():
         raise RuntimeError("Population, PIT totals, and article counts must be positive")
 
-    data["absolute_percent_error"] = data["percent_error"].abs()
+    data["absolute_percent_error"] = data["mean_absolute_percent_error"]
     data["log1p_absolute_percent_error"] = np.log1p(data["absolute_percent_error"])
     data["log1p_article_count"] = np.log1p(data["article_count"])
     data["log_population"] = np.log(data["total_population_2024"])
@@ -162,12 +162,12 @@ def main() -> None:
     control_coefficients = np.asarray(reduced["coefficients"])
     full_coefficients = np.asarray(full["coefficients"])
     control_equation = (
-        f"log(1 + Absolute % Error) = {control_coefficients[0]:.3f}"
+        f"log(1 + Mean Absolute % Error) = {control_coefficients[0]:.3f}"
         + signed_term(control_coefficients[1], "log(population)")
         + signed_term(control_coefficients[2], "log(actual PIT count)")
     )
     full_equation = (
-        f"log(1 + Absolute % Error) = {full_coefficients[0]:.3f}"
+        f"log(1 + Mean Absolute % Error) = {full_coefficients[0]:.3f}"
         + signed_term(full_coefficients[1], "log(population)")
         + signed_term(full_coefficients[2], "log(actual PIT count)")
         + signed_term(full_coefficients[3], "log(1 + article count)")
@@ -177,19 +177,19 @@ def main() -> None:
 
 ## Question
 
-Is GDELT article count associated with the absolute percentage error of the blind AI estimate after accounting for CoC population and the actual PIT count?
+Is GDELT article count associated with the absolute percentage error of the 50-run AI estimates after accounting for CoC population and the actual PIT count?
 
 This is an associational test, not a causal estimate.
 
 ## Test
 
 - Observations: {len(data)} California CoCs.
-- Outcome: `log(1 + absolute percentage error)`.
+- Outcome: `log(1 + mean absolute percentage error across 50 runs)`.
 - Controls: `log(population)` and `log(actual PIT total)`.
 - Added variable: `log(1 + distinct GDELT article count)`.
 - Method: incremental F-test comparing two nested linear regression models.
 
-## Models shown on the website
+## Fitted models
 
 Population and PIT only:
 

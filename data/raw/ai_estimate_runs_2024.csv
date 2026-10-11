@@ -1,0 +1,2201 @@
+model,run,source_batch,source_run,coc_number,coc_name,estimated_pit_total_2024
+gemini-3.8-flash,1,1,1,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,1,1,1,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,1,1,1,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,1,1,1,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,1,1,1,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2090
+gemini-3.8-flash,1,1,1,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,1,1,1,CA-506,"Salinas/Monterey, San Benito Counties CoC",2623
+gemini-3.8-flash,1,1,1,CA-507,Marin County CoC,1090
+gemini-3.8-flash,1,1,1,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,1,1,1,CA-509,Mendocino County CoC,670
+gemini-3.8-flash,1,1,1,CA-510,"Turlock, Modesto/Stanislaus County CoC",2115
+gemini-3.8-flash,1,1,1,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,1,1,1,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,1,1,1,CA-513,"Visalia/Kings, Tulare Counties CoC",1214
+gemini-3.8-flash,1,1,1,CA-514,Fresno City & County/Madera County CoC,4518
+gemini-3.8-flash,1,1,1,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,1,1,1,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2412
+gemini-3.8-flash,1,1,1,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,1,1,1,CA-518,Vallejo/Solano County CoC,1352
+gemini-3.8-flash,1,1,1,CA-519,"Chico, Paradise/Butte County CoC",1245
+gemini-3.8-flash,1,1,1,CA-520,Merced City & County CoC,795
+gemini-3.8-flash,1,1,1,CA-521,"Davis, Woodland/Yolo County CoC",815
+gemini-3.8-flash,1,1,1,CA-522,Humboldt County CoC,1612
+gemini-3.8-flash,1,1,1,CA-523,"Colusa, Glenn, Trinity Counties CoC",315
+gemini-3.8-flash,1,1,1,CA-524,Yuba City & County/Sutter County CoC,938
+gemini-3.8-flash,1,1,1,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,1,1,1,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",642
+gemini-3.8-flash,1,1,1,CA-527,Tehama County CoC,268
+gemini-3.8-flash,1,1,1,CA-529,Lake County CoC,453
+gemini-3.8-flash,1,1,1,CA-530,"Alpine, Inyo, Mono Counties CoC",235
+gemini-3.8-flash,1,1,1,CA-531,Nevada County CoC,498
+gemini-3.8-flash,1,1,1,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,1,1,1,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,1,1,1,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,1,1,1,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,1,1,1,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,1,1,1,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,1,1,1,CA-607,Pasadena CoC,327
+gemini-3.8-flash,1,1,1,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,1,1,1,CA-609,San Bernardino City & County CoC,4330
+gemini-3.8-flash,1,1,1,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,1,1,1,CA-612,Glendale CoC,163
+gemini-3.8-flash,1,1,1,CA-613,Imperial County CoC,1340
+gemini-3.8-flash,1,1,1,CA-614,San Luis Obispo County CoC,1495
+gemini-3.8-flash,2,1,2,CA-500,San Jose/Santa Clara City & County CoC,9820
+gemini-3.8-flash,2,1,2,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,2,1,2,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,2,1,2,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,2,1,2,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2048
+gemini-3.8-flash,2,1,2,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,2,1,2,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,2,1,2,CA-507,Marin County CoC,1121
+gemini-3.8-flash,2,1,2,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,2,1,2,CA-509,Mendocino County CoC,780
+gemini-3.8-flash,2,1,2,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,2,1,2,CA-511,Stockton/San Joaquin County CoC,2450
+gemini-3.8-flash,2,1,2,CA-512,Daly City/San Mateo County CoC,1808
+gemini-3.8-flash,2,1,2,CA-513,"Visalia/Kings, Tulare Counties CoC",1350
+gemini-3.8-flash,2,1,2,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,2,1,2,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,2,1,2,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2150
+gemini-3.8-flash,2,1,2,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,2,1,2,CA-518,Vallejo/Solano County CoC,1280
+gemini-3.8-flash,2,1,2,CA-519,"Chico, Paradise/Butte County CoC",1156
+gemini-3.8-flash,2,1,2,CA-520,Merced City & County CoC,840
+gemini-3.8-flash,2,1,2,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,2,1,2,CA-522,Humboldt County CoC,1570
+gemini-3.8-flash,2,1,2,CA-523,"Colusa, Glenn, Trinity Counties CoC",215
+gemini-3.8-flash,2,1,2,CA-524,Yuba City & County/Sutter County CoC,940
+gemini-3.8-flash,2,1,2,CA-525,El Dorado County CoC,490
+gemini-3.8-flash,2,1,2,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",620
+gemini-3.8-flash,2,1,2,CA-527,Tehama County CoC,310
+gemini-3.8-flash,2,1,2,CA-529,Lake County CoC,410
+gemini-3.8-flash,2,1,2,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,2,1,2,CA-531,Nevada County CoC,495
+gemini-3.8-flash,2,1,2,CA-600,Los Angeles City & County CoC,71136
+gemini-3.8-flash,2,1,2,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,2,1,2,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,2,1,2,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,2,1,2,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,2,1,2,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,2,1,2,CA-607,Pasadena CoC,543
+gemini-3.8-flash,2,1,2,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,2,1,2,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,2,1,2,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,2,1,2,CA-612,Glendale CoC,248
+gemini-3.8-flash,2,1,2,CA-613,Imperial County CoC,1350
+gemini-3.8-flash,2,1,2,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,3,1,3,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,3,1,3,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,3,1,3,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,3,1,3,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,3,1,3,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",3781
+gemini-3.8-flash,3,1,3,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,3,1,3,CA-506,"Salinas/Monterey, San Benito Counties CoC",2409
+gemini-3.8-flash,3,1,3,CA-507,Marin County CoC,1090
+gemini-3.8-flash,3,1,3,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,3,1,3,CA-509,Mendocino County CoC,742
+gemini-3.8-flash,3,1,3,CA-510,"Turlock, Modesto/Stanislaus County CoC",2102
+gemini-3.8-flash,3,1,3,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,3,1,3,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,3,1,3,CA-513,"Visalia/Kings, Tulare Counties CoC",1387
+gemini-3.8-flash,3,1,3,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,3,1,3,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,3,1,3,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1685
+gemini-3.8-flash,3,1,3,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,3,1,3,CA-518,Vallejo/Solano County CoC,1278
+gemini-3.8-flash,3,1,3,CA-519,"Chico, Paradise/Butte County CoC",1225
+gemini-3.8-flash,3,1,3,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,3,1,3,CA-521,"Davis, Woodland/Yolo County CoC",731
+gemini-3.8-flash,3,1,3,CA-522,Humboldt County CoC,1572
+gemini-3.8-flash,3,1,3,CA-523,"Colusa, Glenn, Trinity Counties CoC",218
+gemini-3.8-flash,3,1,3,CA-524,Yuba City & County/Sutter County CoC,924
+gemini-3.8-flash,3,1,3,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,3,1,3,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",615
+gemini-3.8-flash,3,1,3,CA-527,Tehama County CoC,276
+gemini-3.8-flash,3,1,3,CA-529,Lake County CoC,419
+gemini-3.8-flash,3,1,3,CA-530,"Alpine, Inyo, Mono Counties CoC",184
+gemini-3.8-flash,3,1,3,CA-531,Nevada County CoC,486
+gemini-3.8-flash,3,1,3,CA-600,Los Angeles City & County CoC,71102
+gemini-3.8-flash,3,1,3,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,3,1,3,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,3,1,3,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,3,1,3,CA-604,Bakersfield/Kern County CoC,2154
+gemini-3.8-flash,3,1,3,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,3,1,3,CA-607,Pasadena CoC,556
+gemini-3.8-flash,3,1,3,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,3,1,3,CA-609,San Bernardino City & County CoC,4142
+gemini-3.8-flash,3,1,3,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,3,1,3,CA-612,Glendale CoC,278
+gemini-3.8-flash,3,1,3,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,3,1,3,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,4,1,4,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,4,1,4,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,4,1,4,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,4,1,4,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,4,1,4,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2014
+gemini-3.8-flash,4,1,4,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,4,1,4,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,4,1,4,CA-507,Marin County CoC,1090
+gemini-3.8-flash,4,1,4,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,4,1,4,CA-509,Mendocino County CoC,780
+gemini-3.8-flash,4,1,4,CA-510,"Turlock, Modesto/Stanislaus County CoC",2100
+gemini-3.8-flash,4,1,4,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,4,1,4,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,4,1,4,CA-513,"Visalia/Kings, Tulare Counties CoC",1500
+gemini-3.8-flash,4,1,4,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,4,1,4,CA-515,"Roseville, Rocklin/Placer County CoC",700
+gemini-3.8-flash,4,1,4,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2800
+gemini-3.8-flash,4,1,4,CA-517,Napa City & County CoC,513
+gemini-3.8-flash,4,1,4,CA-518,Vallejo/Solano County CoC,1179
+gemini-3.8-flash,4,1,4,CA-519,"Chico, Paradise/Butte County CoC",1250
+gemini-3.8-flash,4,1,4,CA-520,Merced City & County CoC,800
+gemini-3.8-flash,4,1,4,CA-521,"Davis, Woodland/Yolo County CoC",800
+gemini-3.8-flash,4,1,4,CA-522,Humboldt County CoC,1500
+gemini-3.8-flash,4,1,4,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,4,1,4,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,4,1,4,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,4,1,4,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",650
+gemini-3.8-flash,4,1,4,CA-527,Tehama County CoC,300
+gemini-3.8-flash,4,1,4,CA-529,Lake County CoC,500
+gemini-3.8-flash,4,1,4,CA-530,"Alpine, Inyo, Mono Counties CoC",200
+gemini-3.8-flash,4,1,4,CA-531,Nevada County CoC,500
+gemini-3.8-flash,4,1,4,CA-600,Los Angeles City & County CoC,71106
+gemini-3.8-flash,4,1,4,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,4,1,4,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,4,1,4,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,4,1,4,CA-604,Bakersfield/Kern County CoC,2100
+gemini-3.8-flash,4,1,4,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,4,1,4,CA-607,Pasadena CoC,556
+gemini-3.8-flash,4,1,4,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,4,1,4,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,4,1,4,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,4,1,4,CA-612,Glendale CoC,274
+gemini-3.8-flash,4,1,4,CA-613,Imperial County CoC,1300
+gemini-3.8-flash,4,1,4,CA-614,San Luis Obispo County CoC,1400
+gemini-3.8-flash,5,1,6,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,5,1,6,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,5,1,6,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,5,1,6,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,5,1,6,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2118
+gemini-3.8-flash,5,1,6,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,5,1,6,CA-506,"Salinas/Monterey, San Benito Counties CoC",2422
+gemini-3.8-flash,5,1,6,CA-507,Marin County CoC,1090
+gemini-3.8-flash,5,1,6,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,5,1,6,CA-509,Mendocino County CoC,792
+gemini-3.8-flash,5,1,6,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,5,1,6,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,5,1,6,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,5,1,6,CA-513,"Visalia/Kings, Tulare Counties CoC",1518
+gemini-3.8-flash,5,1,6,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,5,1,6,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,5,1,6,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2215
+gemini-3.8-flash,5,1,6,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,5,1,6,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,5,1,6,CA-519,"Chico, Paradise/Butte County CoC",1156
+gemini-3.8-flash,5,1,6,CA-520,Merced City & County CoC,840
+gemini-3.8-flash,5,1,6,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,5,1,6,CA-522,Humboldt County CoC,1570
+gemini-3.8-flash,5,1,6,CA-523,"Colusa, Glenn, Trinity Counties CoC",254
+gemini-3.8-flash,5,1,6,CA-524,Yuba City & County/Sutter County CoC,947
+gemini-3.8-flash,5,1,6,CA-525,El Dorado County CoC,511
+gemini-3.8-flash,5,1,6,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",685
+gemini-3.8-flash,5,1,6,CA-527,Tehama County CoC,295
+gemini-3.8-flash,5,1,6,CA-529,Lake County CoC,412
+gemini-3.8-flash,5,1,6,CA-530,"Alpine, Inyo, Mono Counties CoC",198
+gemini-3.8-flash,5,1,6,CA-531,Nevada County CoC,442
+gemini-3.8-flash,5,1,6,CA-600,Los Angeles City & County CoC,71348
+gemini-3.8-flash,5,1,6,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,5,1,6,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,5,1,6,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,5,1,6,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,5,1,6,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,5,1,6,CA-607,Pasadena CoC,340
+gemini-3.8-flash,5,1,6,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,5,1,6,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,5,1,6,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,5,1,6,CA-612,Glendale CoC,248
+gemini-3.8-flash,5,1,6,CA-613,Imperial County CoC,1328
+gemini-3.8-flash,5,1,6,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,6,1,7,CA-500,San Jose/Santa Clara City & County CoC,9804
+gemini-3.8-flash,6,1,7,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,6,1,7,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,6,1,7,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,6,1,7,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2822
+gemini-3.8-flash,6,1,7,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,6,1,7,CA-506,"Salinas/Monterey, San Benito Counties CoC",2438
+gemini-3.8-flash,6,1,7,CA-507,Marin County CoC,1090
+gemini-3.8-flash,6,1,7,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,6,1,7,CA-509,Mendocino County CoC,768
+gemini-3.8-flash,6,1,7,CA-510,"Turlock, Modesto/Stanislaus County CoC",2051
+gemini-3.8-flash,6,1,7,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,6,1,7,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,6,1,7,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,6,1,7,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,6,1,7,CA-515,"Roseville, Rocklin/Placer County CoC",752
+gemini-3.8-flash,6,1,7,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1845
+gemini-3.8-flash,6,1,7,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,6,1,7,CA-518,Vallejo/Solano County CoC,1342
+gemini-3.8-flash,6,1,7,CA-519,"Chico, Paradise/Butte County CoC",1215
+gemini-3.8-flash,6,1,7,CA-520,Merced City & County CoC,832
+gemini-3.8-flash,6,1,7,CA-521,"Davis, Woodland/Yolo County CoC",795
+gemini-3.8-flash,6,1,7,CA-522,Humboldt County CoC,1582
+gemini-3.8-flash,6,1,7,CA-523,"Colusa, Glenn, Trinity Counties CoC",247
+gemini-3.8-flash,6,1,7,CA-524,Yuba City & County/Sutter County CoC,954
+gemini-3.8-flash,6,1,7,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,6,1,7,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",628
+gemini-3.8-flash,6,1,7,CA-527,Tehama County CoC,315
+gemini-3.8-flash,6,1,7,CA-529,Lake County CoC,524
+gemini-3.8-flash,6,1,7,CA-530,"Alpine, Inyo, Mono Counties CoC",198
+gemini-3.8-flash,6,1,7,CA-531,Nevada County CoC,496
+gemini-3.8-flash,6,1,7,CA-600,Los Angeles City & County CoC,71020
+gemini-3.8-flash,6,1,7,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,6,1,7,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,6,1,7,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,6,1,7,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,6,1,7,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,6,1,7,CA-607,Pasadena CoC,523
+gemini-3.8-flash,6,1,7,CA-608,Riverside City & County CoC,3847
+gemini-3.8-flash,6,1,7,CA-609,San Bernardino City & County CoC,4374
+gemini-3.8-flash,6,1,7,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,6,1,7,CA-612,Glendale CoC,248
+gemini-3.8-flash,6,1,7,CA-613,Imperial County CoC,1315
+gemini-3.8-flash,6,1,7,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,7,1,8,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,7,1,8,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,7,1,8,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,7,1,8,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,7,1,8,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2748
+gemini-3.8-flash,7,1,8,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,7,1,8,CA-506,"Salinas/Monterey, San Benito Counties CoC",2342
+gemini-3.8-flash,7,1,8,CA-507,Marin County CoC,1090
+gemini-3.8-flash,7,1,8,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,7,1,8,CA-509,Mendocino County CoC,785
+gemini-3.8-flash,7,1,8,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,7,1,8,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,7,1,8,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,7,1,8,CA-513,"Visalia/Kings, Tulare Counties CoC",1328
+gemini-3.8-flash,7,1,8,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,7,1,8,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,7,1,8,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1692
+gemini-3.8-flash,7,1,8,CA-517,Napa City & County CoC,512
+gemini-3.8-flash,7,1,8,CA-518,Vallejo/Solano County CoC,1447
+gemini-3.8-flash,7,1,8,CA-519,"Chico, Paradise/Butte County CoC",1189
+gemini-3.8-flash,7,1,8,CA-520,Merced City & County CoC,843
+gemini-3.8-flash,7,1,8,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,7,1,8,CA-522,Humboldt County CoC,1570
+gemini-3.8-flash,7,1,8,CA-523,"Colusa, Glenn, Trinity Counties CoC",295
+gemini-3.8-flash,7,1,8,CA-524,Yuba City & County/Sutter County CoC,914
+gemini-3.8-flash,7,1,8,CA-525,El Dorado County CoC,510
+gemini-3.8-flash,7,1,8,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",588
+gemini-3.8-flash,7,1,8,CA-527,Tehama County CoC,298
+gemini-3.8-flash,7,1,8,CA-529,Lake County CoC,412
+gemini-3.8-flash,7,1,8,CA-530,"Alpine, Inyo, Mono Counties CoC",215
+gemini-3.8-flash,7,1,8,CA-531,Nevada County CoC,486
+gemini-3.8-flash,7,1,8,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,7,1,8,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,7,1,8,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,7,1,8,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,7,1,8,CA-604,Bakersfield/Kern County CoC,2580
+gemini-3.8-flash,7,1,8,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,7,1,8,CA-607,Pasadena CoC,561
+gemini-3.8-flash,7,1,8,CA-608,Riverside City & County CoC,4248
+gemini-3.8-flash,7,1,8,CA-609,San Bernardino City & County CoC,4330
+gemini-3.8-flash,7,1,8,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,7,1,8,CA-612,Glendale CoC,238
+gemini-3.8-flash,7,1,8,CA-613,Imperial County CoC,1316
+gemini-3.8-flash,7,1,8,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,8,1,10,CA-500,San Jose/Santa Clara City & County CoC,9760
+gemini-3.8-flash,8,1,10,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,8,1,10,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,8,1,10,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,8,1,10,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2822
+gemini-3.8-flash,8,1,10,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,8,1,10,CA-506,"Salinas/Monterey, San Benito Counties CoC",2412
+gemini-3.8-flash,8,1,10,CA-507,Marin County CoC,1121
+gemini-3.8-flash,8,1,10,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,8,1,10,CA-509,Mendocino County CoC,768
+gemini-3.8-flash,8,1,10,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,8,1,10,CA-511,Stockton/San Joaquin County CoC,2473
+gemini-3.8-flash,8,1,10,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,8,1,10,CA-513,"Visalia/Kings, Tulare Counties CoC",1511
+gemini-3.8-flash,8,1,10,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,8,1,10,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,8,1,10,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1685
+gemini-3.8-flash,8,1,10,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,8,1,10,CA-518,Vallejo/Solano County CoC,1347
+gemini-3.8-flash,8,1,10,CA-519,"Chico, Paradise/Butte County CoC",1244
+gemini-3.8-flash,8,1,10,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,8,1,10,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,8,1,10,CA-522,Humboldt County CoC,1312
+gemini-3.8-flash,8,1,10,CA-523,"Colusa, Glenn, Trinity Counties CoC",262
+gemini-3.8-flash,8,1,10,CA-524,Yuba City & County/Sutter County CoC,921
+gemini-3.8-flash,8,1,10,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,8,1,10,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",643
+gemini-3.8-flash,8,1,10,CA-527,Tehama County CoC,315
+gemini-3.8-flash,8,1,10,CA-529,Lake County CoC,428
+gemini-3.8-flash,8,1,10,CA-530,"Alpine, Inyo, Mono Counties CoC",164
+gemini-3.8-flash,8,1,10,CA-531,Nevada County CoC,498
+gemini-3.8-flash,8,1,10,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,8,1,10,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,8,1,10,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,8,1,10,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,8,1,10,CA-604,Bakersfield/Kern County CoC,2128
+gemini-3.8-flash,8,1,10,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,8,1,10,CA-607,Pasadena CoC,570
+gemini-3.8-flash,8,1,10,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,8,1,10,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,8,1,10,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,8,1,10,CA-612,Glendale CoC,248
+gemini-3.8-flash,8,1,10,CA-613,Imperial County CoC,1324
+gemini-3.8-flash,8,1,10,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,9,1,11,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,9,1,11,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,9,1,11,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,9,1,11,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,9,1,11,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2975
+gemini-3.8-flash,9,1,11,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,9,1,11,CA-506,"Salinas/Monterey, San Benito Counties CoC",2468
+gemini-3.8-flash,9,1,11,CA-507,Marin County CoC,1121
+gemini-3.8-flash,9,1,11,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,9,1,11,CA-509,Mendocino County CoC,784
+gemini-3.8-flash,9,1,11,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,9,1,11,CA-511,Stockton/San Joaquin County CoC,2432
+gemini-3.8-flash,9,1,11,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,9,1,11,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,9,1,11,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,9,1,11,CA-515,"Roseville, Rocklin/Placer County CoC",709
+gemini-3.8-flash,9,1,11,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1762
+gemini-3.8-flash,9,1,11,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,9,1,11,CA-518,Vallejo/Solano County CoC,1298
+gemini-3.8-flash,9,1,11,CA-519,"Chico, Paradise/Butte County CoC",1245
+gemini-3.8-flash,9,1,11,CA-520,Merced City & County CoC,782
+gemini-3.8-flash,9,1,11,CA-521,"Davis, Woodland/Yolo County CoC",795
+gemini-3.8-flash,9,1,11,CA-522,Humboldt County CoC,1612
+gemini-3.8-flash,9,1,11,CA-523,"Colusa, Glenn, Trinity Counties CoC",247
+gemini-3.8-flash,9,1,11,CA-524,Yuba City & County/Sutter County CoC,918
+gemini-3.8-flash,9,1,11,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,9,1,11,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",628
+gemini-3.8-flash,9,1,11,CA-527,Tehama County CoC,294
+gemini-3.8-flash,9,1,11,CA-529,Lake County CoC,512
+gemini-3.8-flash,9,1,11,CA-530,"Alpine, Inyo, Mono Counties CoC",143
+gemini-3.8-flash,9,1,11,CA-531,Nevada County CoC,496
+gemini-3.8-flash,9,1,11,CA-600,Los Angeles City & County CoC,70897
+gemini-3.8-flash,9,1,11,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,9,1,11,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,9,1,11,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,9,1,11,CA-604,Bakersfield/Kern County CoC,2154
+gemini-3.8-flash,9,1,11,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,9,1,11,CA-607,Pasadena CoC,556
+gemini-3.8-flash,9,1,11,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,9,1,11,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,9,1,11,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,9,1,11,CA-612,Glendale CoC,247
+gemini-3.8-flash,9,1,11,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,9,1,11,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,10,1,12,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,10,1,12,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,10,1,12,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,10,1,12,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,10,1,12,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2050
+gemini-3.8-flash,10,1,12,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,10,1,12,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,10,1,12,CA-507,Marin County CoC,1121
+gemini-3.8-flash,10,1,12,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,10,1,12,CA-509,Mendocino County CoC,650
+gemini-3.8-flash,10,1,12,CA-510,"Turlock, Modesto/Stanislaus County CoC",2052
+gemini-3.8-flash,10,1,12,CA-511,Stockton/San Joaquin County CoC,2311
+gemini-3.8-flash,10,1,12,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,10,1,12,CA-513,"Visalia/Kings, Tulare Counties CoC",1225
+gemini-3.8-flash,10,1,12,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,10,1,12,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,10,1,12,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1850
+gemini-3.8-flash,10,1,12,CA-517,Napa City & County CoC,485
+gemini-3.8-flash,10,1,12,CA-518,Vallejo/Solano County CoC,1250
+gemini-3.8-flash,10,1,12,CA-519,"Chico, Paradise/Butte County CoC",1234
+gemini-3.8-flash,10,1,12,CA-520,Merced City & County CoC,785
+gemini-3.8-flash,10,1,12,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,10,1,12,CA-522,Humboldt County CoC,1340
+gemini-3.8-flash,10,1,12,CA-523,"Colusa, Glenn, Trinity Counties CoC",260
+gemini-3.8-flash,10,1,12,CA-524,Yuba City & County/Sutter County CoC,915
+gemini-3.8-flash,10,1,12,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,10,1,12,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",620
+gemini-3.8-flash,10,1,12,CA-527,Tehama County CoC,315
+gemini-3.8-flash,10,1,12,CA-529,Lake County CoC,360
+gemini-3.8-flash,10,1,12,CA-530,"Alpine, Inyo, Mono Counties CoC",195
+gemini-3.8-flash,10,1,12,CA-531,Nevada County CoC,445
+gemini-3.8-flash,10,1,12,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,10,1,12,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,10,1,12,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,10,1,12,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,10,1,12,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,10,1,12,CA-606,Long Beach CoC,3447
+gemini-3.8-flash,10,1,12,CA-607,Pasadena CoC,556
+gemini-3.8-flash,10,1,12,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,10,1,12,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,10,1,12,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2444
+gemini-3.8-flash,10,1,12,CA-612,Glendale CoC,247
+gemini-3.8-flash,10,1,12,CA-613,Imperial County CoC,1105
+gemini-3.8-flash,10,1,12,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,11,1,13,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,11,1,13,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,11,1,13,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,11,1,13,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,11,1,13,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2829
+gemini-3.8-flash,11,1,13,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,11,1,13,CA-506,"Salinas/Monterey, San Benito Counties CoC",2423
+gemini-3.8-flash,11,1,13,CA-507,Marin County CoC,1090
+gemini-3.8-flash,11,1,13,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,11,1,13,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,11,1,13,CA-510,"Turlock, Modesto/Stanislaus County CoC",2100
+gemini-3.8-flash,11,1,13,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,11,1,13,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,11,1,13,CA-513,"Visalia/Kings, Tulare Counties CoC",1150
+gemini-3.8-flash,11,1,13,CA-514,Fresno City & County/Madera County CoC,4500
+gemini-3.8-flash,11,1,13,CA-515,"Roseville, Rocklin/Placer County CoC",700
+gemini-3.8-flash,11,1,13,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2500
+gemini-3.8-flash,11,1,13,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,11,1,13,CA-518,Vallejo/Solano County CoC,1200
+gemini-3.8-flash,11,1,13,CA-519,"Chico, Paradise/Butte County CoC",1100
+gemini-3.8-flash,11,1,13,CA-520,Merced City & County CoC,750
+gemini-3.8-flash,11,1,13,CA-521,"Davis, Woodland/Yolo County CoC",800
+gemini-3.8-flash,11,1,13,CA-522,Humboldt County CoC,1300
+gemini-3.8-flash,11,1,13,CA-523,"Colusa, Glenn, Trinity Counties CoC",200
+gemini-3.8-flash,11,1,13,CA-524,Yuba City & County/Sutter County CoC,900
+gemini-3.8-flash,11,1,13,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,11,1,13,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",600
+gemini-3.8-flash,11,1,13,CA-527,Tehama County CoC,300
+gemini-3.8-flash,11,1,13,CA-529,Lake County CoC,400
+gemini-3.8-flash,11,1,13,CA-530,"Alpine, Inyo, Mono Counties CoC",200
+gemini-3.8-flash,11,1,13,CA-531,Nevada County CoC,500
+gemini-3.8-flash,11,1,13,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,11,1,13,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,11,1,13,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,11,1,13,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,11,1,13,CA-604,Bakersfield/Kern County CoC,2100
+gemini-3.8-flash,11,1,13,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,11,1,13,CA-607,Pasadena CoC,556
+gemini-3.8-flash,11,1,13,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,11,1,13,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,11,1,13,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,11,1,13,CA-612,Glendale CoC,247
+gemini-3.8-flash,11,1,13,CA-613,Imperial County CoC,1300
+gemini-3.8-flash,11,1,13,CA-614,San Luis Obispo County CoC,1173
+gemini-3.8-flash,12,1,14,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,12,1,14,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,12,1,14,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,12,1,14,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,12,1,14,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2266
+gemini-3.8-flash,12,1,14,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,12,1,14,CA-506,"Salinas/Monterey, San Benito Counties CoC",2474
+gemini-3.8-flash,12,1,14,CA-507,Marin County CoC,1121
+gemini-3.8-flash,12,1,14,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,12,1,14,CA-509,Mendocino County CoC,768
+gemini-3.8-flash,12,1,14,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,12,1,14,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,12,1,14,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,12,1,14,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,12,1,14,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,12,1,14,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,12,1,14,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2240
+gemini-3.8-flash,12,1,14,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,12,1,14,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,12,1,14,CA-519,"Chico, Paradise/Butte County CoC",1214
+gemini-3.8-flash,12,1,14,CA-520,Merced City & County CoC,842
+gemini-3.8-flash,12,1,14,CA-521,"Davis, Woodland/Yolo County CoC",786
+gemini-3.8-flash,12,1,14,CA-522,Humboldt County CoC,1573
+gemini-3.8-flash,12,1,14,CA-523,"Colusa, Glenn, Trinity Counties CoC",268
+gemini-3.8-flash,12,1,14,CA-524,Yuba City & County/Sutter County CoC,953
+gemini-3.8-flash,12,1,14,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,12,1,14,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",624
+gemini-3.8-flash,12,1,14,CA-527,Tehama County CoC,312
+gemini-3.8-flash,12,1,14,CA-529,Lake County CoC,417
+gemini-3.8-flash,12,1,14,CA-530,"Alpine, Inyo, Mono Counties CoC",214
+gemini-3.8-flash,12,1,14,CA-531,Nevada County CoC,512
+gemini-3.8-flash,12,1,14,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,12,1,14,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,12,1,14,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,12,1,14,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,12,1,14,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,12,1,14,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,12,1,14,CA-607,Pasadena CoC,556
+gemini-3.8-flash,12,1,14,CA-608,Riverside City & County CoC,3960
+gemini-3.8-flash,12,1,14,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,12,1,14,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,12,1,14,CA-612,Glendale CoC,244
+gemini-3.8-flash,12,1,14,CA-613,Imperial County CoC,1412
+gemini-3.8-flash,12,1,14,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,13,1,15,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,13,1,15,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,13,1,15,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,13,1,15,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,13,1,15,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1940
+gemini-3.8-flash,13,1,15,CA-505,Contra Costa County CoC,2849
+gemini-3.8-flash,13,1,15,CA-506,"Salinas/Monterey, San Benito Counties CoC",2420
+gemini-3.8-flash,13,1,15,CA-507,Marin County CoC,1090
+gemini-3.8-flash,13,1,15,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,13,1,15,CA-509,Mendocino County CoC,720
+gemini-3.8-flash,13,1,15,CA-510,"Turlock, Modesto/Stanislaus County CoC",2200
+gemini-3.8-flash,13,1,15,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,13,1,15,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,13,1,15,CA-513,"Visalia/Kings, Tulare Counties CoC",1415
+gemini-3.8-flash,13,1,15,CA-514,Fresno City & County/Madera County CoC,4500
+gemini-3.8-flash,13,1,15,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,13,1,15,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1800
+gemini-3.8-flash,13,1,15,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,13,1,15,CA-518,Vallejo/Solano County CoC,1350
+gemini-3.8-flash,13,1,15,CA-519,"Chico, Paradise/Butte County CoC",1225
+gemini-3.8-flash,13,1,15,CA-520,Merced City & County CoC,820
+gemini-3.8-flash,13,1,15,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,13,1,15,CA-522,Humboldt County CoC,1570
+gemini-3.8-flash,13,1,15,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,13,1,15,CA-524,Yuba City & County/Sutter County CoC,940
+gemini-3.8-flash,13,1,15,CA-525,El Dorado County CoC,510
+gemini-3.8-flash,13,1,15,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",615
+gemini-3.8-flash,13,1,15,CA-527,Tehama County CoC,310
+gemini-3.8-flash,13,1,15,CA-529,Lake County CoC,450
+gemini-3.8-flash,13,1,15,CA-530,"Alpine, Inyo, Mono Counties CoC",265
+gemini-3.8-flash,13,1,15,CA-531,Nevada County CoC,455
+gemini-3.8-flash,13,1,15,CA-600,Los Angeles City & County CoC,75312
+gemini-3.8-flash,13,1,15,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,13,1,15,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,13,1,15,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,13,1,15,CA-604,Bakersfield/Kern County CoC,2100
+gemini-3.8-flash,13,1,15,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,13,1,15,CA-607,Pasadena CoC,527
+gemini-3.8-flash,13,1,15,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,13,1,15,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,13,1,15,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,13,1,15,CA-612,Glendale CoC,248
+gemini-3.8-flash,13,1,15,CA-613,Imperial County CoC,1315
+gemini-3.8-flash,13,1,15,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,14,1,16,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,14,1,16,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,14,1,16,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,14,1,16,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,14,1,16,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2054
+gemini-3.8-flash,14,1,16,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,14,1,16,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,14,1,16,CA-507,Marin County CoC,1090
+gemini-3.8-flash,14,1,16,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,14,1,16,CA-509,Mendocino County CoC,754
+gemini-3.8-flash,14,1,16,CA-510,"Turlock, Modesto/Stanislaus County CoC",2105
+gemini-3.8-flash,14,1,16,CA-511,Stockton/San Joaquin County CoC,2311
+gemini-3.8-flash,14,1,16,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,14,1,16,CA-513,"Visalia/Kings, Tulare Counties CoC",1488
+gemini-3.8-flash,14,1,16,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,14,1,16,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,14,1,16,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1720
+gemini-3.8-flash,14,1,16,CA-517,Napa City & County CoC,504
+gemini-3.8-flash,14,1,16,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,14,1,16,CA-519,"Chico, Paradise/Butte County CoC",1265
+gemini-3.8-flash,14,1,16,CA-520,Merced City & County CoC,842
+gemini-3.8-flash,14,1,16,CA-521,"Davis, Woodland/Yolo County CoC",786
+gemini-3.8-flash,14,1,16,CA-522,Humboldt County CoC,1590
+gemini-3.8-flash,14,1,16,CA-523,"Colusa, Glenn, Trinity Counties CoC",215
+gemini-3.8-flash,14,1,16,CA-524,Yuba City & County/Sutter County CoC,920
+gemini-3.8-flash,14,1,16,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,14,1,16,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",635
+gemini-3.8-flash,14,1,16,CA-527,Tehama County CoC,318
+gemini-3.8-flash,14,1,16,CA-529,Lake County CoC,420
+gemini-3.8-flash,14,1,16,CA-530,"Alpine, Inyo, Mono Counties CoC",145
+gemini-3.8-flash,14,1,16,CA-531,Nevada County CoC,495
+gemini-3.8-flash,14,1,16,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,14,1,16,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,14,1,16,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,14,1,16,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,14,1,16,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,14,1,16,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,14,1,16,CA-607,Pasadena CoC,327
+gemini-3.8-flash,14,1,16,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,14,1,16,CA-609,San Bernardino City & County CoC,4329
+gemini-3.8-flash,14,1,16,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,14,1,16,CA-612,Glendale CoC,247
+gemini-3.8-flash,14,1,16,CA-613,Imperial County CoC,1315
+gemini-3.8-flash,14,1,16,CA-614,San Luis Obispo County CoC,1520
+gemini-3.8-flash,15,1,17,CA-500,San Jose/Santa Clara City & County CoC,9652
+gemini-3.8-flash,15,1,17,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,15,1,17,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,15,1,17,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,15,1,17,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1873
+gemini-3.8-flash,15,1,17,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,15,1,17,CA-506,"Salinas/Monterey, San Benito Counties CoC",2347
+gemini-3.8-flash,15,1,17,CA-507,Marin County CoC,1090
+gemini-3.8-flash,15,1,17,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,15,1,17,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,15,1,17,CA-510,"Turlock, Modesto/Stanislaus County CoC",2050
+gemini-3.8-flash,15,1,17,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,15,1,17,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,15,1,17,CA-513,"Visalia/Kings, Tulare Counties CoC",1100
+gemini-3.8-flash,15,1,17,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,15,1,17,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,15,1,17,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2415
+gemini-3.8-flash,15,1,17,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,15,1,17,CA-518,Vallejo/Solano County CoC,1405
+gemini-3.8-flash,15,1,17,CA-519,"Chico, Paradise/Butte County CoC",1225
+gemini-3.8-flash,15,1,17,CA-520,Merced City & County CoC,785
+gemini-3.8-flash,15,1,17,CA-521,"Davis, Woodland/Yolo County CoC",804
+gemini-3.8-flash,15,1,17,CA-522,Humboldt County CoC,1602
+gemini-3.8-flash,15,1,17,CA-523,"Colusa, Glenn, Trinity Counties CoC",254
+gemini-3.8-flash,15,1,17,CA-524,Yuba City & County/Sutter County CoC,952
+gemini-3.8-flash,15,1,17,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,15,1,17,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",612
+gemini-3.8-flash,15,1,17,CA-527,Tehama County CoC,318
+gemini-3.8-flash,15,1,17,CA-529,Lake County CoC,534
+gemini-3.8-flash,15,1,17,CA-530,"Alpine, Inyo, Mono Counties CoC",246
+gemini-3.8-flash,15,1,17,CA-531,Nevada County CoC,495
+gemini-3.8-flash,15,1,17,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,15,1,17,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,15,1,17,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,15,1,17,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,15,1,17,CA-604,Bakersfield/Kern County CoC,1948
+gemini-3.8-flash,15,1,17,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,15,1,17,CA-607,Pasadena CoC,572
+gemini-3.8-flash,15,1,17,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,15,1,17,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,15,1,17,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,15,1,17,CA-612,Glendale CoC,264
+gemini-3.8-flash,15,1,17,CA-613,Imperial County CoC,1340
+gemini-3.8-flash,15,1,17,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,16,1,18,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,16,1,18,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,16,1,18,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,16,1,18,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,16,1,18,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1942
+gemini-3.8-flash,16,1,18,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,16,1,18,CA-506,"Salinas/Monterey, San Benito Counties CoC",2475
+gemini-3.8-flash,16,1,18,CA-507,Marin County CoC,1121
+gemini-3.8-flash,16,1,18,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,16,1,18,CA-509,Mendocino County CoC,720
+gemini-3.8-flash,16,1,18,CA-510,"Turlock, Modesto/Stanislaus County CoC",2096
+gemini-3.8-flash,16,1,18,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,16,1,18,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,16,1,18,CA-513,"Visalia/Kings, Tulare Counties CoC",1320
+gemini-3.8-flash,16,1,18,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,16,1,18,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,16,1,18,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2410
+gemini-3.8-flash,16,1,18,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,16,1,18,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,16,1,18,CA-519,"Chico, Paradise/Butte County CoC",1263
+gemini-3.8-flash,16,1,18,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,16,1,18,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,16,1,18,CA-522,Humboldt County CoC,1650
+gemini-3.8-flash,16,1,18,CA-523,"Colusa, Glenn, Trinity Counties CoC",235
+gemini-3.8-flash,16,1,18,CA-524,Yuba City & County/Sutter County CoC,945
+gemini-3.8-flash,16,1,18,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,16,1,18,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",580
+gemini-3.8-flash,16,1,18,CA-527,Tehama County CoC,260
+gemini-3.8-flash,16,1,18,CA-529,Lake County CoC,410
+gemini-3.8-flash,16,1,18,CA-530,"Alpine, Inyo, Mono Counties CoC",220
+gemini-3.8-flash,16,1,18,CA-531,Nevada County CoC,490
+gemini-3.8-flash,16,1,18,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,16,1,18,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,16,1,18,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,16,1,18,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,16,1,18,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,16,1,18,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,16,1,18,CA-607,Pasadena CoC,523
+gemini-3.8-flash,16,1,18,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,16,1,18,CA-609,San Bernardino City & County CoC,4320
+gemini-3.8-flash,16,1,18,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,16,1,18,CA-612,Glendale CoC,248
+gemini-3.8-flash,16,1,18,CA-613,Imperial County CoC,1340
+gemini-3.8-flash,16,1,18,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,17,1,19,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,17,1,19,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,17,1,19,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,17,1,19,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,17,1,19,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2756
+gemini-3.8-flash,17,1,19,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,17,1,19,CA-506,"Salinas/Monterey, San Benito Counties CoC",2345
+gemini-3.8-flash,17,1,19,CA-507,Marin County CoC,1090
+gemini-3.8-flash,17,1,19,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,17,1,19,CA-509,Mendocino County CoC,812
+gemini-3.8-flash,17,1,19,CA-510,"Turlock, Modesto/Stanislaus County CoC",2095
+gemini-3.8-flash,17,1,19,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,17,1,19,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,17,1,19,CA-513,"Visalia/Kings, Tulare Counties CoC",1215
+gemini-3.8-flash,17,1,19,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,17,1,19,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,17,1,19,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1720
+gemini-3.8-flash,17,1,19,CA-517,Napa City & County CoC,504
+gemini-3.8-flash,17,1,19,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,17,1,19,CA-519,"Chico, Paradise/Butte County CoC",1240
+gemini-3.8-flash,17,1,19,CA-520,Merced City & County CoC,782
+gemini-3.8-flash,17,1,19,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,17,1,19,CA-522,Humboldt County CoC,1340
+gemini-3.8-flash,17,1,19,CA-523,"Colusa, Glenn, Trinity Counties CoC",165
+gemini-3.8-flash,17,1,19,CA-524,Yuba City & County/Sutter County CoC,954
+gemini-3.8-flash,17,1,19,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,17,1,19,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",645
+gemini-3.8-flash,17,1,19,CA-527,Tehama County CoC,262
+gemini-3.8-flash,17,1,19,CA-529,Lake County CoC,355
+gemini-3.8-flash,17,1,19,CA-530,"Alpine, Inyo, Mono Counties CoC",152
+gemini-3.8-flash,17,1,19,CA-531,Nevada County CoC,498
+gemini-3.8-flash,17,1,19,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,17,1,19,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,17,1,19,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,17,1,19,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,17,1,19,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,17,1,19,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,17,1,19,CA-607,Pasadena CoC,556
+gemini-3.8-flash,17,1,19,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,17,1,19,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,17,1,19,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,17,1,19,CA-612,Glendale CoC,250
+gemini-3.8-flash,17,1,19,CA-613,Imperial County CoC,1315
+gemini-3.8-flash,17,1,19,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,18,2,2,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,18,2,2,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,18,2,2,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,18,2,2,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,18,2,2,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2048
+gemini-3.8-flash,18,2,2,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,18,2,2,CA-506,"Salinas/Monterey, San Benito Counties CoC",2289
+gemini-3.8-flash,18,2,2,CA-507,Marin County CoC,1090
+gemini-3.8-flash,18,2,2,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,18,2,2,CA-509,Mendocino County CoC,768
+gemini-3.8-flash,18,2,2,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,18,2,2,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,18,2,2,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,18,2,2,CA-513,"Visalia/Kings, Tulare Counties CoC",1475
+gemini-3.8-flash,18,2,2,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,18,2,2,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,18,2,2,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2365
+gemini-3.8-flash,18,2,2,CA-517,Napa City & County CoC,509
+gemini-3.8-flash,18,2,2,CA-518,Vallejo/Solano County CoC,1342
+gemini-3.8-flash,18,2,2,CA-519,"Chico, Paradise/Butte County CoC",1184
+gemini-3.8-flash,18,2,2,CA-520,Merced City & County CoC,785
+gemini-3.8-flash,18,2,2,CA-521,"Davis, Woodland/Yolo County CoC",824
+gemini-3.8-flash,18,2,2,CA-522,Humboldt County CoC,1592
+gemini-3.8-flash,18,2,2,CA-523,"Colusa, Glenn, Trinity Counties CoC",295
+gemini-3.8-flash,18,2,2,CA-524,Yuba City & County/Sutter County CoC,938
+gemini-3.8-flash,18,2,2,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,18,2,2,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",588
+gemini-3.8-flash,18,2,2,CA-527,Tehama County CoC,312
+gemini-3.8-flash,18,2,2,CA-529,Lake County CoC,518
+gemini-3.8-flash,18,2,2,CA-530,"Alpine, Inyo, Mono Counties CoC",242
+gemini-3.8-flash,18,2,2,CA-531,Nevada County CoC,494
+gemini-3.8-flash,18,2,2,CA-600,Los Angeles City & County CoC,75312
+gemini-3.8-flash,18,2,2,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,18,2,2,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,18,2,2,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,18,2,2,CA-604,Bakersfield/Kern County CoC,1948
+gemini-3.8-flash,18,2,2,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,18,2,2,CA-607,Pasadena CoC,532
+gemini-3.8-flash,18,2,2,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,18,2,2,CA-609,San Bernardino City & County CoC,4142
+gemini-3.8-flash,18,2,2,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,18,2,2,CA-612,Glendale CoC,237
+gemini-3.8-flash,18,2,2,CA-613,Imperial County CoC,1317
+gemini-3.8-flash,18,2,2,CA-614,San Luis Obispo County CoC,1177
+gemini-3.8-flash,19,2,3,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,19,2,3,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,19,2,3,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,19,2,3,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,19,2,3,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1772
+gemini-3.8-flash,19,2,3,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,19,2,3,CA-506,"Salinas/Monterey, San Benito Counties CoC",2475
+gemini-3.8-flash,19,2,3,CA-507,Marin County CoC,1090
+gemini-3.8-flash,19,2,3,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,19,2,3,CA-509,Mendocino County CoC,775
+gemini-3.8-flash,19,2,3,CA-510,"Turlock, Modesto/Stanislaus County CoC",2105
+gemini-3.8-flash,19,2,3,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,19,2,3,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,19,2,3,CA-513,"Visalia/Kings, Tulare Counties CoC",1320
+gemini-3.8-flash,19,2,3,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,19,2,3,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,19,2,3,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2250
+gemini-3.8-flash,19,2,3,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,19,2,3,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,19,2,3,CA-519,"Chico, Paradise/Butte County CoC",1215
+gemini-3.8-flash,19,2,3,CA-520,Merced City & County CoC,840
+gemini-3.8-flash,19,2,3,CA-521,"Davis, Woodland/Yolo County CoC",785
+gemini-3.8-flash,19,2,3,CA-522,Humboldt County CoC,1510
+gemini-3.8-flash,19,2,3,CA-523,"Colusa, Glenn, Trinity Counties CoC",275
+gemini-3.8-flash,19,2,3,CA-524,Yuba City & County/Sutter County CoC,940
+gemini-3.8-flash,19,2,3,CA-525,El Dorado County CoC,490
+gemini-3.8-flash,19,2,3,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",585
+gemini-3.8-flash,19,2,3,CA-527,Tehama County CoC,260
+gemini-3.8-flash,19,2,3,CA-529,Lake County CoC,425
+gemini-3.8-flash,19,2,3,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,19,2,3,CA-531,Nevada County CoC,495
+gemini-3.8-flash,19,2,3,CA-600,Los Angeles City & County CoC,71116
+gemini-3.8-flash,19,2,3,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,19,2,3,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,19,2,3,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,19,2,3,CA-604,Bakersfield/Kern County CoC,2125
+gemini-3.8-flash,19,2,3,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,19,2,3,CA-607,Pasadena CoC,572
+gemini-3.8-flash,19,2,3,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,19,2,3,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,19,2,3,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,19,2,3,CA-612,Glendale CoC,248
+gemini-3.8-flash,19,2,3,CA-613,Imperial County CoC,1205
+gemini-3.8-flash,19,2,3,CA-614,San Luis Obispo County CoC,1177
+gemini-3.8-flash,20,2,4,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,20,2,4,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,20,2,4,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,20,2,4,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,20,2,4,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2468
+gemini-3.8-flash,20,2,4,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,20,2,4,CA-506,"Salinas/Monterey, San Benito Counties CoC",2423
+gemini-3.8-flash,20,2,4,CA-507,Marin County CoC,1059
+gemini-3.8-flash,20,2,4,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,20,2,4,CA-509,Mendocino County CoC,752
+gemini-3.8-flash,20,2,4,CA-510,"Turlock, Modesto/Stanislaus County CoC",2105
+gemini-3.8-flash,20,2,4,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,20,2,4,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,20,2,4,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,20,2,4,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,20,2,4,CA-515,"Roseville, Rocklin/Placer County CoC",724
+gemini-3.8-flash,20,2,4,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2145
+gemini-3.8-flash,20,2,4,CA-517,Napa City & County CoC,489
+gemini-3.8-flash,20,2,4,CA-518,Vallejo/Solano County CoC,1214
+gemini-3.8-flash,20,2,4,CA-519,"Chico, Paradise/Butte County CoC",1183
+gemini-3.8-flash,20,2,4,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,20,2,4,CA-521,"Davis, Woodland/Yolo County CoC",786
+gemini-3.8-flash,20,2,4,CA-522,Humboldt County CoC,1587
+gemini-3.8-flash,20,2,4,CA-523,"Colusa, Glenn, Trinity Counties CoC",264
+gemini-3.8-flash,20,2,4,CA-524,Yuba City & County/Sutter County CoC,941
+gemini-3.8-flash,20,2,4,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,20,2,4,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",638
+gemini-3.8-flash,20,2,4,CA-527,Tehama County CoC,315
+gemini-3.8-flash,20,2,4,CA-529,Lake County CoC,437
+gemini-3.8-flash,20,2,4,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,20,2,4,CA-531,Nevada County CoC,496
+gemini-3.8-flash,20,2,4,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,20,2,4,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,20,2,4,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,20,2,4,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,20,2,4,CA-604,Bakersfield/Kern County CoC,2418
+gemini-3.8-flash,20,2,4,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,20,2,4,CA-607,Pasadena CoC,527
+gemini-3.8-flash,20,2,4,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,20,2,4,CA-609,San Bernardino City & County CoC,4374
+gemini-3.8-flash,20,2,4,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,20,2,4,CA-612,Glendale CoC,251
+gemini-3.8-flash,20,2,4,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,20,2,4,CA-614,San Luis Obispo County CoC,1531
+gemini-3.8-flash,21,2,5,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,21,2,5,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,21,2,5,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,21,2,5,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,21,2,5,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2497
+gemini-3.8-flash,21,2,5,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,21,2,5,CA-506,"Salinas/Monterey, San Benito Counties CoC",2398
+gemini-3.8-flash,21,2,5,CA-507,Marin County CoC,1090
+gemini-3.8-flash,21,2,5,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,21,2,5,CA-509,Mendocino County CoC,720
+gemini-3.8-flash,21,2,5,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,21,2,5,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,21,2,5,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,21,2,5,CA-513,"Visalia/Kings, Tulare Counties CoC",1120
+gemini-3.8-flash,21,2,5,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,21,2,5,CA-515,"Roseville, Rocklin/Placer County CoC",750
+gemini-3.8-flash,21,2,5,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2100
+gemini-3.8-flash,21,2,5,CA-517,Napa City & County CoC,486
+gemini-3.8-flash,21,2,5,CA-518,Vallejo/Solano County CoC,1180
+gemini-3.8-flash,21,2,5,CA-519,"Chico, Paradise/Butte County CoC",1220
+gemini-3.8-flash,21,2,5,CA-520,Merced City & County CoC,785
+gemini-3.8-flash,21,2,5,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,21,2,5,CA-522,Humboldt County CoC,1580
+gemini-3.8-flash,21,2,5,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,21,2,5,CA-524,Yuba City & County/Sutter County CoC,955
+gemini-3.8-flash,21,2,5,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,21,2,5,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",650
+gemini-3.8-flash,21,2,5,CA-527,Tehama County CoC,285
+gemini-3.8-flash,21,2,5,CA-529,Lake County CoC,512
+gemini-3.8-flash,21,2,5,CA-530,"Alpine, Inyo, Mono Counties CoC",185
+gemini-3.8-flash,21,2,5,CA-531,Nevada County CoC,496
+gemini-3.8-flash,21,2,5,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,21,2,5,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,21,2,5,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,21,2,5,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,21,2,5,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,21,2,5,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,21,2,5,CA-607,Pasadena CoC,556
+gemini-3.8-flash,21,2,5,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,21,2,5,CA-609,San Bernardino City & County CoC,4196
+gemini-3.8-flash,21,2,5,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,21,2,5,CA-612,Glendale CoC,247
+gemini-3.8-flash,21,2,5,CA-613,Imperial County CoC,1250
+gemini-3.8-flash,21,2,5,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,22,2,6,CA-500,San Jose/Santa Clara City & County CoC,9800
+gemini-3.8-flash,22,2,6,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,22,2,6,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,22,2,6,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,22,2,6,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2600
+gemini-3.8-flash,22,2,6,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,22,2,6,CA-506,"Salinas/Monterey, San Benito Counties CoC",2400
+gemini-3.8-flash,22,2,6,CA-507,Marin County CoC,1090
+gemini-3.8-flash,22,2,6,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,22,2,6,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,22,2,6,CA-510,"Turlock, Modesto/Stanislaus County CoC",2100
+gemini-3.8-flash,22,2,6,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,22,2,6,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,22,2,6,CA-513,"Visalia/Kings, Tulare Counties CoC",1500
+gemini-3.8-flash,22,2,6,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,22,2,6,CA-515,"Roseville, Rocklin/Placer County CoC",700
+gemini-3.8-flash,22,2,6,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1800
+gemini-3.8-flash,22,2,6,CA-517,Napa City & County CoC,500
+gemini-3.8-flash,22,2,6,CA-518,Vallejo/Solano County CoC,1350
+gemini-3.8-flash,22,2,6,CA-519,"Chico, Paradise/Butte County CoC",1200
+gemini-3.8-flash,22,2,6,CA-520,Merced City & County CoC,800
+gemini-3.8-flash,22,2,6,CA-521,"Davis, Woodland/Yolo County CoC",750
+gemini-3.8-flash,22,2,6,CA-522,Humboldt County CoC,1600
+gemini-3.8-flash,22,2,6,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,22,2,6,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,22,2,6,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,22,2,6,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",600
+gemini-3.8-flash,22,2,6,CA-527,Tehama County CoC,300
+gemini-3.8-flash,22,2,6,CA-529,Lake County CoC,450
+gemini-3.8-flash,22,2,6,CA-530,"Alpine, Inyo, Mono Counties CoC",200
+gemini-3.8-flash,22,2,6,CA-531,Nevada County CoC,500
+gemini-3.8-flash,22,2,6,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,22,2,6,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,22,2,6,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,22,2,6,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,22,2,6,CA-604,Bakersfield/Kern County CoC,2200
+gemini-3.8-flash,22,2,6,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,22,2,6,CA-607,Pasadena CoC,540
+gemini-3.8-flash,22,2,6,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,22,2,6,CA-609,San Bernardino City & County CoC,4374
+gemini-3.8-flash,22,2,6,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,22,2,6,CA-612,Glendale CoC,247
+gemini-3.8-flash,22,2,6,CA-613,Imperial County CoC,1300
+gemini-3.8-flash,22,2,6,CA-614,San Luis Obispo County CoC,1400
+gemini-3.8-flash,23,2,7,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,23,2,7,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,23,2,7,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,23,2,7,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,23,2,7,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2822
+gemini-3.8-flash,23,2,7,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,23,2,7,CA-506,"Salinas/Monterey, San Benito Counties CoC",2411
+gemini-3.8-flash,23,2,7,CA-507,Marin County CoC,1090
+gemini-3.8-flash,23,2,7,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,23,2,7,CA-509,Mendocino County CoC,795
+gemini-3.8-flash,23,2,7,CA-510,"Turlock, Modesto/Stanislaus County CoC",2051
+gemini-3.8-flash,23,2,7,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,23,2,7,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,23,2,7,CA-513,"Visalia/Kings, Tulare Counties CoC",1145
+gemini-3.8-flash,23,2,7,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,23,2,7,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,23,2,7,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1523
+gemini-3.8-flash,23,2,7,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,23,2,7,CA-518,Vallejo/Solano County CoC,1245
+gemini-3.8-flash,23,2,7,CA-519,"Chico, Paradise/Butte County CoC",1214
+gemini-3.8-flash,23,2,7,CA-520,Merced City & County CoC,772
+gemini-3.8-flash,23,2,7,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,23,2,7,CA-522,Humboldt County CoC,1340
+gemini-3.8-flash,23,2,7,CA-523,"Colusa, Glenn, Trinity Counties CoC",215
+gemini-3.8-flash,23,2,7,CA-524,Yuba City & County/Sutter County CoC,912
+gemini-3.8-flash,23,2,7,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,23,2,7,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",605
+gemini-3.8-flash,23,2,7,CA-527,Tehama County CoC,312
+gemini-3.8-flash,23,2,7,CA-529,Lake County CoC,463
+gemini-3.8-flash,23,2,7,CA-530,"Alpine, Inyo, Mono Counties CoC",195
+gemini-3.8-flash,23,2,7,CA-531,Nevada County CoC,498
+gemini-3.8-flash,23,2,7,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,23,2,7,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,23,2,7,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,23,2,7,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,23,2,7,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,23,2,7,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,23,2,7,CA-607,Pasadena CoC,523
+gemini-3.8-flash,23,2,7,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,23,2,7,CA-609,San Bernardino City & County CoC,4149
+gemini-3.8-flash,23,2,7,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,23,2,7,CA-612,Glendale CoC,262
+gemini-3.8-flash,23,2,7,CA-613,Imperial County CoC,1218
+gemini-3.8-flash,23,2,7,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,24,2,8,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,24,2,8,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,24,2,8,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,24,2,8,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,24,2,8,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2048
+gemini-3.8-flash,24,2,8,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,24,2,8,CA-506,"Salinas/Monterey, San Benito Counties CoC",2412
+gemini-3.8-flash,24,2,8,CA-507,Marin County CoC,1090
+gemini-3.8-flash,24,2,8,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,24,2,8,CA-509,Mendocino County CoC,784
+gemini-3.8-flash,24,2,8,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,24,2,8,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,24,2,8,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,24,2,8,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,24,2,8,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,24,2,8,CA-515,"Roseville, Rocklin/Placer County CoC",750
+gemini-3.8-flash,24,2,8,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1785
+gemini-3.8-flash,24,2,8,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,24,2,8,CA-518,Vallejo/Solano County CoC,1347
+gemini-3.8-flash,24,2,8,CA-519,"Chico, Paradise/Butte County CoC",1156
+gemini-3.8-flash,24,2,8,CA-520,Merced City & County CoC,842
+gemini-3.8-flash,24,2,8,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,24,2,8,CA-522,Humboldt County CoC,1582
+gemini-3.8-flash,24,2,8,CA-523,"Colusa, Glenn, Trinity Counties CoC",264
+gemini-3.8-flash,24,2,8,CA-524,Yuba City & County/Sutter County CoC,885
+gemini-3.8-flash,24,2,8,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,24,2,8,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",635
+gemini-3.8-flash,24,2,8,CA-527,Tehama County CoC,315
+gemini-3.8-flash,24,2,8,CA-529,Lake County CoC,421
+gemini-3.8-flash,24,2,8,CA-530,"Alpine, Inyo, Mono Counties CoC",162
+gemini-3.8-flash,24,2,8,CA-531,Nevada County CoC,498
+gemini-3.8-flash,24,2,8,CA-600,Los Angeles City & County CoC,71020
+gemini-3.8-flash,24,2,8,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,24,2,8,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,24,2,8,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,24,2,8,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,24,2,8,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,24,2,8,CA-607,Pasadena CoC,672
+gemini-3.8-flash,24,2,8,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,24,2,8,CA-609,San Bernardino City & County CoC,4374
+gemini-3.8-flash,24,2,8,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,24,2,8,CA-612,Glendale CoC,230
+gemini-3.8-flash,24,2,8,CA-613,Imperial County CoC,1315
+gemini-3.8-flash,24,2,8,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,25,2,9,CA-500,San Jose/Santa Clara City & County CoC,9800
+gemini-3.8-flash,25,2,9,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,25,2,9,CA-502,"Oakland, Berkeley/Alameda County CoC",9747
+gemini-3.8-flash,25,2,9,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,25,2,9,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1940
+gemini-3.8-flash,25,2,9,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,25,2,9,CA-506,"Salinas/Monterey, San Benito Counties CoC",2050
+gemini-3.8-flash,25,2,9,CA-507,Marin County CoC,1120
+gemini-3.8-flash,25,2,9,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,25,2,9,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,25,2,9,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,25,2,9,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,25,2,9,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,25,2,9,CA-513,"Visalia/Kings, Tulare Counties CoC",1350
+gemini-3.8-flash,25,2,9,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,25,2,9,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,25,2,9,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2450
+gemini-3.8-flash,25,2,9,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,25,2,9,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,25,2,9,CA-519,"Chico, Paradise/Butte County CoC",1240
+gemini-3.8-flash,25,2,9,CA-520,Merced City & County CoC,840
+gemini-3.8-flash,25,2,9,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,25,2,9,CA-522,Humboldt County CoC,1570
+gemini-3.8-flash,25,2,9,CA-523,"Colusa, Glenn, Trinity Counties CoC",320
+gemini-3.8-flash,25,2,9,CA-524,Yuba City & County/Sutter County CoC,915
+gemini-3.8-flash,25,2,9,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,25,2,9,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",615
+gemini-3.8-flash,25,2,9,CA-527,Tehama County CoC,295
+gemini-3.8-flash,25,2,9,CA-529,Lake County CoC,420
+gemini-3.8-flash,25,2,9,CA-530,"Alpine, Inyo, Mono Counties CoC",165
+gemini-3.8-flash,25,2,9,CA-531,Nevada County CoC,410
+gemini-3.8-flash,25,2,9,CA-600,Los Angeles City & County CoC,71110
+gemini-3.8-flash,25,2,9,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,25,2,9,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,25,2,9,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,25,2,9,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,25,2,9,CA-606,Long Beach CoC,3639
+gemini-3.8-flash,25,2,9,CA-607,Pasadena CoC,527
+gemini-3.8-flash,25,2,9,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,25,2,9,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,25,2,9,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,25,2,9,CA-612,Glendale CoC,260
+gemini-3.8-flash,25,2,9,CA-613,Imperial County CoC,1180
+gemini-3.8-flash,25,2,9,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,26,2,10,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,26,2,10,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,26,2,10,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,26,2,10,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,26,2,10,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1770
+gemini-3.8-flash,26,2,10,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,26,2,10,CA-506,"Salinas/Monterey, San Benito Counties CoC",2200
+gemini-3.8-flash,26,2,10,CA-507,Marin County CoC,1090
+gemini-3.8-flash,26,2,10,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,26,2,10,CA-509,Mendocino County CoC,650
+gemini-3.8-flash,26,2,10,CA-510,"Turlock, Modesto/Stanislaus County CoC",2100
+gemini-3.8-flash,26,2,10,CA-511,Stockton/San Joaquin County CoC,2311
+gemini-3.8-flash,26,2,10,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,26,2,10,CA-513,"Visalia/Kings, Tulare Counties CoC",1400
+gemini-3.8-flash,26,2,10,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,26,2,10,CA-515,"Roseville, Rocklin/Placer County CoC",700
+gemini-3.8-flash,26,2,10,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1800
+gemini-3.8-flash,26,2,10,CA-517,Napa City & County CoC,500
+gemini-3.8-flash,26,2,10,CA-518,Vallejo/Solano County CoC,1400
+gemini-3.8-flash,26,2,10,CA-519,"Chico, Paradise/Butte County CoC",1200
+gemini-3.8-flash,26,2,10,CA-520,Merced City & County CoC,800
+gemini-3.8-flash,26,2,10,CA-521,"Davis, Woodland/Yolo County CoC",750
+gemini-3.8-flash,26,2,10,CA-522,Humboldt County CoC,1600
+gemini-3.8-flash,26,2,10,CA-523,"Colusa, Glenn, Trinity Counties CoC",150
+gemini-3.8-flash,26,2,10,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,26,2,10,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,26,2,10,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",600
+gemini-3.8-flash,26,2,10,CA-527,Tehama County CoC,300
+gemini-3.8-flash,26,2,10,CA-529,Lake County CoC,350
+gemini-3.8-flash,26,2,10,CA-530,"Alpine, Inyo, Mono Counties CoC",200
+gemini-3.8-flash,26,2,10,CA-531,Nevada County CoC,450
+gemini-3.8-flash,26,2,10,CA-600,Los Angeles City & County CoC,71126
+gemini-3.8-flash,26,2,10,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,26,2,10,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,26,2,10,CA-603,Santa Maria/Santa Barbara County CoC,2119
+gemini-3.8-flash,26,2,10,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,26,2,10,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,26,2,10,CA-607,Pasadena CoC,523
+gemini-3.8-flash,26,2,10,CA-608,Riverside City & County CoC,4195
+gemini-3.8-flash,26,2,10,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,26,2,10,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,26,2,10,CA-612,Glendale CoC,287
+gemini-3.8-flash,26,2,10,CA-613,Imperial County CoC,1300
+gemini-3.8-flash,26,2,10,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,27,2,11,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,27,2,11,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,27,2,11,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,27,2,11,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,27,2,11,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2468
+gemini-3.8-flash,27,2,11,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,27,2,11,CA-506,"Salinas/Monterey, San Benito Counties CoC",2419
+gemini-3.8-flash,27,2,11,CA-507,Marin County CoC,1090
+gemini-3.8-flash,27,2,11,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,27,2,11,CA-509,Mendocino County CoC,742
+gemini-3.8-flash,27,2,11,CA-510,"Turlock, Modesto/Stanislaus County CoC",2100
+gemini-3.8-flash,27,2,11,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,27,2,11,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,27,2,11,CA-513,"Visalia/Kings, Tulare Counties CoC",1245
+gemini-3.8-flash,27,2,11,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,27,2,11,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,27,2,11,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1550
+gemini-3.8-flash,27,2,11,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,27,2,11,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,27,2,11,CA-519,"Chico, Paradise/Butte County CoC",1264
+gemini-3.8-flash,27,2,11,CA-520,Merced City & County CoC,785
+gemini-3.8-flash,27,2,11,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,27,2,11,CA-522,Humboldt County CoC,1620
+gemini-3.8-flash,27,2,11,CA-523,"Colusa, Glenn, Trinity Counties CoC",215
+gemini-3.8-flash,27,2,11,CA-524,Yuba City & County/Sutter County CoC,940
+gemini-3.8-flash,27,2,11,CA-525,El Dorado County CoC,495
+gemini-3.8-flash,27,2,11,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",660
+gemini-3.8-flash,27,2,11,CA-527,Tehama County CoC,295
+gemini-3.8-flash,27,2,11,CA-529,Lake County CoC,410
+gemini-3.8-flash,27,2,11,CA-530,"Alpine, Inyo, Mono Counties CoC",185
+gemini-3.8-flash,27,2,11,CA-531,Nevada County CoC,490
+gemini-3.8-flash,27,2,11,CA-600,Los Angeles City & County CoC,75312
+gemini-3.8-flash,27,2,11,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,27,2,11,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,27,2,11,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,27,2,11,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,27,2,11,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,27,2,11,CA-607,Pasadena CoC,527
+gemini-3.8-flash,27,2,11,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,27,2,11,CA-609,San Bernardino City & County CoC,4374
+gemini-3.8-flash,27,2,11,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,27,2,11,CA-612,Glendale CoC,243
+gemini-3.8-flash,27,2,11,CA-613,Imperial County CoC,1350
+gemini-3.8-flash,27,2,11,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,28,2,12,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,28,2,12,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,28,2,12,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,28,2,12,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,28,2,12,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1946
+gemini-3.8-flash,28,2,12,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,28,2,12,CA-506,"Salinas/Monterey, San Benito Counties CoC",2425
+gemini-3.8-flash,28,2,12,CA-507,Marin County CoC,1090
+gemini-3.8-flash,28,2,12,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,28,2,12,CA-509,Mendocino County CoC,765
+gemini-3.8-flash,28,2,12,CA-510,"Turlock, Modesto/Stanislaus County CoC",2132
+gemini-3.8-flash,28,2,12,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,28,2,12,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,28,2,12,CA-513,"Visalia/Kings, Tulare Counties CoC",1450
+gemini-3.8-flash,28,2,12,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,28,2,12,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,28,2,12,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1950
+gemini-3.8-flash,28,2,12,CA-517,Napa City & County CoC,500
+gemini-3.8-flash,28,2,12,CA-518,Vallejo/Solano County CoC,1400
+gemini-3.8-flash,28,2,12,CA-519,"Chico, Paradise/Butte County CoC",1200
+gemini-3.8-flash,28,2,12,CA-520,Merced City & County CoC,800
+gemini-3.8-flash,28,2,12,CA-521,"Davis, Woodland/Yolo County CoC",750
+gemini-3.8-flash,28,2,12,CA-522,Humboldt County CoC,1570
+gemini-3.8-flash,28,2,12,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,28,2,12,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,28,2,12,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,28,2,12,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",600
+gemini-3.8-flash,28,2,12,CA-527,Tehama County CoC,300
+gemini-3.8-flash,28,2,12,CA-529,Lake County CoC,400
+gemini-3.8-flash,28,2,12,CA-530,"Alpine, Inyo, Mono Counties CoC",200
+gemini-3.8-flash,28,2,12,CA-531,Nevada County CoC,500
+gemini-3.8-flash,28,2,12,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,28,2,12,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,28,2,12,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,28,2,12,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,28,2,12,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,28,2,12,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,28,2,12,CA-607,Pasadena CoC,527
+gemini-3.8-flash,28,2,12,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,28,2,12,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,28,2,12,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,28,2,12,CA-612,Glendale CoC,149
+gemini-3.8-flash,28,2,12,CA-613,Imperial County CoC,1350
+gemini-3.8-flash,28,2,12,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,29,2,13,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,29,2,13,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,29,2,13,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,29,2,13,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,29,2,13,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",3944
+gemini-3.8-flash,29,2,13,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,29,2,13,CA-506,"Salinas/Monterey, San Benito Counties CoC",2548
+gemini-3.8-flash,29,2,13,CA-507,Marin County CoC,1090
+gemini-3.8-flash,29,2,13,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,29,2,13,CA-509,Mendocino County CoC,812
+gemini-3.8-flash,29,2,13,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,29,2,13,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,29,2,13,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,29,2,13,CA-513,"Visalia/Kings, Tulare Counties CoC",1735
+gemini-3.8-flash,29,2,13,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,29,2,13,CA-515,"Roseville, Rocklin/Placer County CoC",750
+gemini-3.8-flash,29,2,13,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1845
+gemini-3.8-flash,29,2,13,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,29,2,13,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,29,2,13,CA-519,"Chico, Paradise/Butte County CoC",1264
+gemini-3.8-flash,29,2,13,CA-520,Merced City & County CoC,820
+gemini-3.8-flash,29,2,13,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,29,2,13,CA-522,Humboldt County CoC,1360
+gemini-3.8-flash,29,2,13,CA-523,"Colusa, Glenn, Trinity Counties CoC",280
+gemini-3.8-flash,29,2,13,CA-524,Yuba City & County/Sutter County CoC,985
+gemini-3.8-flash,29,2,13,CA-525,El Dorado County CoC,495
+gemini-3.8-flash,29,2,13,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",720
+gemini-3.8-flash,29,2,13,CA-527,Tehama County CoC,310
+gemini-3.8-flash,29,2,13,CA-529,Lake County CoC,450
+gemini-3.8-flash,29,2,13,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,29,2,13,CA-531,Nevada County CoC,490
+gemini-3.8-flash,29,2,13,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,29,2,13,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,29,2,13,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,29,2,13,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,29,2,13,CA-604,Bakersfield/Kern County CoC,2200
+gemini-3.8-flash,29,2,13,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,29,2,13,CA-607,Pasadena CoC,556
+gemini-3.8-flash,29,2,13,CA-608,Riverside City & County CoC,3962
+gemini-3.8-flash,29,2,13,CA-609,San Bernardino City & County CoC,4118
+gemini-3.8-flash,29,2,13,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,29,2,13,CA-612,Glendale CoC,253
+gemini-3.8-flash,29,2,13,CA-613,Imperial County CoC,1334
+gemini-3.8-flash,29,2,13,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,30,2,14,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,30,2,14,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,30,2,14,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,30,2,14,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,30,2,14,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",3771
+gemini-3.8-flash,30,2,14,CA-505,Contra Costa County CoC,2849
+gemini-3.8-flash,30,2,14,CA-506,"Salinas/Monterey, San Benito Counties CoC",2414
+gemini-3.8-flash,30,2,14,CA-507,Marin County CoC,1090
+gemini-3.8-flash,30,2,14,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,30,2,14,CA-509,Mendocino County CoC,755
+gemini-3.8-flash,30,2,14,CA-510,"Turlock, Modesto/Stanislaus County CoC",2051
+gemini-3.8-flash,30,2,14,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,30,2,14,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,30,2,14,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,30,2,14,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,30,2,14,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,30,2,14,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2486
+gemini-3.8-flash,30,2,14,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,30,2,14,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,30,2,14,CA-519,"Chico, Paradise/Butte County CoC",1243
+gemini-3.8-flash,30,2,14,CA-520,Merced City & County CoC,832
+gemini-3.8-flash,30,2,14,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,30,2,14,CA-522,Humboldt County CoC,1612
+gemini-3.8-flash,30,2,14,CA-523,"Colusa, Glenn, Trinity Counties CoC",268
+gemini-3.8-flash,30,2,14,CA-524,Yuba City & County/Sutter County CoC,953
+gemini-3.8-flash,30,2,14,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,30,2,14,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",619
+gemini-3.8-flash,30,2,14,CA-527,Tehama County CoC,315
+gemini-3.8-flash,30,2,14,CA-529,Lake County CoC,458
+gemini-3.8-flash,30,2,14,CA-530,"Alpine, Inyo, Mono Counties CoC",214
+gemini-3.8-flash,30,2,14,CA-531,Nevada County CoC,462
+gemini-3.8-flash,30,2,14,CA-600,Los Angeles City & County CoC,71161
+gemini-3.8-flash,30,2,14,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,30,2,14,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,30,2,14,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,30,2,14,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,30,2,14,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,30,2,14,CA-607,Pasadena CoC,527
+gemini-3.8-flash,30,2,14,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,30,2,14,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,30,2,14,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,30,2,14,CA-612,Glendale CoC,248
+gemini-3.8-flash,30,2,14,CA-613,Imperial County CoC,1341
+gemini-3.8-flash,30,2,14,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,31,2,15,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,31,2,15,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,31,2,15,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,31,2,15,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,31,2,15,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2059
+gemini-3.8-flash,31,2,15,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,31,2,15,CA-506,"Salinas/Monterey, San Benito Counties CoC",2475
+gemini-3.8-flash,31,2,15,CA-507,Marin County CoC,1090
+gemini-3.8-flash,31,2,15,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,31,2,15,CA-509,Mendocino County CoC,790
+gemini-3.8-flash,31,2,15,CA-510,"Turlock, Modesto/Stanislaus County CoC",2075
+gemini-3.8-flash,31,2,15,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,31,2,15,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,31,2,15,CA-513,"Visalia/Kings, Tulare Counties CoC",1480
+gemini-3.8-flash,31,2,15,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,31,2,15,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,31,2,15,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1640
+gemini-3.8-flash,31,2,15,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,31,2,15,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,31,2,15,CA-519,"Chico, Paradise/Butte County CoC",1264
+gemini-3.8-flash,31,2,15,CA-520,Merced City & County CoC,840
+gemini-3.8-flash,31,2,15,CA-521,"Davis, Woodland/Yolo County CoC",785
+gemini-3.8-flash,31,2,15,CA-522,Humboldt County CoC,1650
+gemini-3.8-flash,31,2,15,CA-523,"Colusa, Glenn, Trinity Counties CoC",320
+gemini-3.8-flash,31,2,15,CA-524,Yuba City & County/Sutter County CoC,940
+gemini-3.8-flash,31,2,15,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,31,2,15,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",630
+gemini-3.8-flash,31,2,15,CA-527,Tehama County CoC,285
+gemini-3.8-flash,31,2,15,CA-529,Lake County CoC,490
+gemini-3.8-flash,31,2,15,CA-530,"Alpine, Inyo, Mono Counties CoC",240
+gemini-3.8-flash,31,2,15,CA-531,Nevada County CoC,480
+gemini-3.8-flash,31,2,15,CA-600,Los Angeles City & County CoC,71180
+gemini-3.8-flash,31,2,15,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,31,2,15,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,31,2,15,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,31,2,15,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,31,2,15,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,31,2,15,CA-607,Pasadena CoC,556
+gemini-3.8-flash,31,2,15,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,31,2,15,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,31,2,15,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,31,2,15,CA-612,Glendale CoC,247
+gemini-3.8-flash,31,2,15,CA-613,Imperial County CoC,1325
+gemini-3.8-flash,31,2,15,CA-614,San Luis Obispo County CoC,1480
+gemini-3.8-flash,32,2,16,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,32,2,16,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,32,2,16,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,32,2,16,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,32,2,16,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1770
+gemini-3.8-flash,32,2,16,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,32,2,16,CA-506,"Salinas/Monterey, San Benito Counties CoC",2360
+gemini-3.8-flash,32,2,16,CA-507,Marin County CoC,1090
+gemini-3.8-flash,32,2,16,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,32,2,16,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,32,2,16,CA-510,"Turlock, Modesto/Stanislaus County CoC",2110
+gemini-3.8-flash,32,2,16,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,32,2,16,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,32,2,16,CA-513,"Visalia/Kings, Tulare Counties CoC",1605
+gemini-3.8-flash,32,2,16,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,32,2,16,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,32,2,16,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1620
+gemini-3.8-flash,32,2,16,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,32,2,16,CA-518,Vallejo/Solano County CoC,1180
+gemini-3.8-flash,32,2,16,CA-519,"Chico, Paradise/Butte County CoC",1210
+gemini-3.8-flash,32,2,16,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,32,2,16,CA-521,"Davis, Woodland/Yolo County CoC",760
+gemini-3.8-flash,32,2,16,CA-522,Humboldt County CoC,1520
+gemini-3.8-flash,32,2,16,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,32,2,16,CA-524,Yuba City & County/Sutter County CoC,905
+gemini-3.8-flash,32,2,16,CA-525,El Dorado County CoC,495
+gemini-3.8-flash,32,2,16,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",610
+gemini-3.8-flash,32,2,16,CA-527,Tehama County CoC,315
+gemini-3.8-flash,32,2,16,CA-529,Lake County CoC,405
+gemini-3.8-flash,32,2,16,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,32,2,16,CA-531,Nevada County CoC,450
+gemini-3.8-flash,32,2,16,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,32,2,16,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,32,2,16,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,32,2,16,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,32,2,16,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,32,2,16,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,32,2,16,CA-607,Pasadena CoC,556
+gemini-3.8-flash,32,2,16,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,32,2,16,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,32,2,16,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,32,2,16,CA-612,Glendale CoC,208
+gemini-3.8-flash,32,2,16,CA-613,Imperial County CoC,1340
+gemini-3.8-flash,32,2,16,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,33,2,17,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,33,2,17,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,33,2,17,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,33,2,17,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,33,2,17,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2746
+gemini-3.8-flash,33,2,17,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,33,2,17,CA-506,"Salinas/Monterey, San Benito Counties CoC",2412
+gemini-3.8-flash,33,2,17,CA-507,Marin County CoC,1090
+gemini-3.8-flash,33,2,17,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,33,2,17,CA-509,Mendocino County CoC,784
+gemini-3.8-flash,33,2,17,CA-510,"Turlock, Modesto/Stanislaus County CoC",2154
+gemini-3.8-flash,33,2,17,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,33,2,17,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,33,2,17,CA-513,"Visalia/Kings, Tulare Counties CoC",1523
+gemini-3.8-flash,33,2,17,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,33,2,17,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,33,2,17,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2240
+gemini-3.8-flash,33,2,17,CA-517,Napa City & County CoC,504
+gemini-3.8-flash,33,2,17,CA-518,Vallejo/Solano County CoC,1432
+gemini-3.8-flash,33,2,17,CA-519,"Chico, Paradise/Butte County CoC",1215
+gemini-3.8-flash,33,2,17,CA-520,Merced City & County CoC,842
+gemini-3.8-flash,33,2,17,CA-521,"Davis, Woodland/Yolo County CoC",814
+gemini-3.8-flash,33,2,17,CA-522,Humboldt County CoC,1572
+gemini-3.8-flash,33,2,17,CA-523,"Colusa, Glenn, Trinity Counties CoC",210
+gemini-3.8-flash,33,2,17,CA-524,Yuba City & County/Sutter County CoC,938
+gemini-3.8-flash,33,2,17,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,33,2,17,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",643
+gemini-3.8-flash,33,2,17,CA-527,Tehama County CoC,312
+gemini-3.8-flash,33,2,17,CA-529,Lake County CoC,428
+gemini-3.8-flash,33,2,17,CA-530,"Alpine, Inyo, Mono Counties CoC",195
+gemini-3.8-flash,33,2,17,CA-531,Nevada County CoC,486
+gemini-3.8-flash,33,2,17,CA-600,Los Angeles City & County CoC,75312
+gemini-3.8-flash,33,2,17,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,33,2,17,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,33,2,17,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,33,2,17,CA-604,Bakersfield/Kern County CoC,2342
+gemini-3.8-flash,33,2,17,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,33,2,17,CA-607,Pasadena CoC,540
+gemini-3.8-flash,33,2,17,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,33,2,17,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,33,2,17,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2444
+gemini-3.8-flash,33,2,17,CA-612,Glendale CoC,248
+gemini-3.8-flash,33,2,17,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,33,2,17,CA-614,San Luis Obispo County CoC,1498
+gemini-3.8-flash,34,2,18,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,34,2,18,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,34,2,18,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,34,2,18,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,34,2,18,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2048
+gemini-3.8-flash,34,2,18,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,34,2,18,CA-506,"Salinas/Monterey, San Benito Counties CoC",2340
+gemini-3.8-flash,34,2,18,CA-507,Marin County CoC,1090
+gemini-3.8-flash,34,2,18,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,34,2,18,CA-509,Mendocino County CoC,742
+gemini-3.8-flash,34,2,18,CA-510,"Turlock, Modesto/Stanislaus County CoC",2142
+gemini-3.8-flash,34,2,18,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,34,2,18,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,34,2,18,CA-513,"Visalia/Kings, Tulare Counties CoC",1415
+gemini-3.8-flash,34,2,18,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,34,2,18,CA-515,"Roseville, Rocklin/Placer County CoC",763
+gemini-3.8-flash,34,2,18,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1680
+gemini-3.8-flash,34,2,18,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,34,2,18,CA-518,Vallejo/Solano County CoC,1245
+gemini-3.8-flash,34,2,18,CA-519,"Chico, Paradise/Butte County CoC",1264
+gemini-3.8-flash,34,2,18,CA-520,Merced City & County CoC,785
+gemini-3.8-flash,34,2,18,CA-521,"Davis, Woodland/Yolo County CoC",780
+gemini-3.8-flash,34,2,18,CA-522,Humboldt County CoC,1590
+gemini-3.8-flash,34,2,18,CA-523,"Colusa, Glenn, Trinity Counties CoC",265
+gemini-3.8-flash,34,2,18,CA-524,Yuba City & County/Sutter County CoC,943
+gemini-3.8-flash,34,2,18,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,34,2,18,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",618
+gemini-3.8-flash,34,2,18,CA-527,Tehama County CoC,315
+gemini-3.8-flash,34,2,18,CA-529,Lake County CoC,492
+gemini-3.8-flash,34,2,18,CA-530,"Alpine, Inyo, Mono Counties CoC",235
+gemini-3.8-flash,34,2,18,CA-531,Nevada County CoC,486
+gemini-3.8-flash,34,2,18,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,34,2,18,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,34,2,18,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,34,2,18,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,34,2,18,CA-604,Bakersfield/Kern County CoC,2150
+gemini-3.8-flash,34,2,18,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,34,2,18,CA-607,Pasadena CoC,552
+gemini-3.8-flash,34,2,18,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,34,2,18,CA-609,San Bernardino City & County CoC,4115
+gemini-3.8-flash,34,2,18,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,34,2,18,CA-612,Glendale CoC,315
+gemini-3.8-flash,34,2,18,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,34,2,18,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,35,2,19,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,35,2,19,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,35,2,19,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,35,2,19,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,35,2,19,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1965
+gemini-3.8-flash,35,2,19,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,35,2,19,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,35,2,19,CA-507,Marin County CoC,1059
+gemini-3.8-flash,35,2,19,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,35,2,19,CA-509,Mendocino County CoC,768
+gemini-3.8-flash,35,2,19,CA-510,"Turlock, Modesto/Stanislaus County CoC",2105
+gemini-3.8-flash,35,2,19,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,35,2,19,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,35,2,19,CA-513,"Visalia/Kings, Tulare Counties CoC",1182
+gemini-3.8-flash,35,2,19,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,35,2,19,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,35,2,19,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2420
+gemini-3.8-flash,35,2,19,CA-517,Napa City & County CoC,484
+gemini-3.8-flash,35,2,19,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,35,2,19,CA-519,"Chico, Paradise/Butte County CoC",1215
+gemini-3.8-flash,35,2,19,CA-520,Merced City & County CoC,742
+gemini-3.8-flash,35,2,19,CA-521,"Davis, Woodland/Yolo County CoC",840
+gemini-3.8-flash,35,2,19,CA-522,Humboldt County CoC,1340
+gemini-3.8-flash,35,2,19,CA-523,"Colusa, Glenn, Trinity Counties CoC",245
+gemini-3.8-flash,35,2,19,CA-524,Yuba City & County/Sutter County CoC,934
+gemini-3.8-flash,35,2,19,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,35,2,19,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",620
+gemini-3.8-flash,35,2,19,CA-527,Tehama County CoC,268
+gemini-3.8-flash,35,2,19,CA-529,Lake County CoC,415
+gemini-3.8-flash,35,2,19,CA-530,"Alpine, Inyo, Mono Counties CoC",195
+gemini-3.8-flash,35,2,19,CA-531,Nevada County CoC,428
+gemini-3.8-flash,35,2,19,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,35,2,19,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,35,2,19,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,35,2,19,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,35,2,19,CA-604,Bakersfield/Kern County CoC,2450
+gemini-3.8-flash,35,2,19,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,35,2,19,CA-607,Pasadena CoC,556
+gemini-3.8-flash,35,2,19,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,35,2,19,CA-609,San Bernardino City & County CoC,4374
+gemini-3.8-flash,35,2,19,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,35,2,19,CA-612,Glendale CoC,251
+gemini-3.8-flash,35,2,19,CA-613,Imperial County CoC,1345
+gemini-3.8-flash,35,2,19,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,36,2,20,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,36,2,20,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,36,2,20,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,36,2,20,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,36,2,20,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",1828
+gemini-3.8-flash,36,2,20,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,36,2,20,CA-506,"Salinas/Monterey, San Benito Counties CoC",2474
+gemini-3.8-flash,36,2,20,CA-507,Marin County CoC,1090
+gemini-3.8-flash,36,2,20,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,36,2,20,CA-509,Mendocino County CoC,764
+gemini-3.8-flash,36,2,20,CA-510,"Turlock, Modesto/Stanislaus County CoC",2075
+gemini-3.8-flash,36,2,20,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,36,2,20,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,36,2,20,CA-513,"Visalia/Kings, Tulare Counties CoC",1215
+gemini-3.8-flash,36,2,20,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,36,2,20,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,36,2,20,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1523
+gemini-3.8-flash,36,2,20,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,36,2,20,CA-518,Vallejo/Solano County CoC,1342
+gemini-3.8-flash,36,2,20,CA-519,"Chico, Paradise/Butte County CoC",1245
+gemini-3.8-flash,36,2,20,CA-520,Merced City & County CoC,784
+gemini-3.8-flash,36,2,20,CA-521,"Davis, Woodland/Yolo County CoC",814
+gemini-3.8-flash,36,2,20,CA-522,Humboldt County CoC,1580
+gemini-3.8-flash,36,2,20,CA-523,"Colusa, Glenn, Trinity Counties CoC",248
+gemini-3.8-flash,36,2,20,CA-524,Yuba City & County/Sutter County CoC,946
+gemini-3.8-flash,36,2,20,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,36,2,20,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",627
+gemini-3.8-flash,36,2,20,CA-527,Tehama County CoC,315
+gemini-3.8-flash,36,2,20,CA-529,Lake County CoC,431
+gemini-3.8-flash,36,2,20,CA-530,"Alpine, Inyo, Mono Counties CoC",185
+gemini-3.8-flash,36,2,20,CA-531,Nevada County CoC,492
+gemini-3.8-flash,36,2,20,CA-600,Los Angeles City & County CoC,71380
+gemini-3.8-flash,36,2,20,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,36,2,20,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,36,2,20,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,36,2,20,CA-604,Bakersfield/Kern County CoC,2125
+gemini-3.8-flash,36,2,20,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,36,2,20,CA-607,Pasadena CoC,552
+gemini-3.8-flash,36,2,20,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,36,2,20,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,36,2,20,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,36,2,20,CA-612,Glendale CoC,238
+gemini-3.8-flash,36,2,20,CA-613,Imperial County CoC,1327
+gemini-3.8-flash,36,2,20,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,37,3,1,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,37,3,1,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,37,3,1,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,37,3,1,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,37,3,1,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",3822
+gemini-3.8-flash,37,3,1,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,37,3,1,CA-506,"Salinas/Monterey, San Benito Counties CoC",2398
+gemini-3.8-flash,37,3,1,CA-507,Marin County CoC,1090
+gemini-3.8-flash,37,3,1,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,37,3,1,CA-509,Mendocino County CoC,795
+gemini-3.8-flash,37,3,1,CA-510,"Turlock, Modesto/Stanislaus County CoC",2154
+gemini-3.8-flash,37,3,1,CA-511,Stockton/San Joaquin County CoC,2415
+gemini-3.8-flash,37,3,1,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,37,3,1,CA-513,"Visalia/Kings, Tulare Counties CoC",1485
+gemini-3.8-flash,37,3,1,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,37,3,1,CA-515,"Roseville, Rocklin/Placer County CoC",744
+gemini-3.8-flash,37,3,1,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1872
+gemini-3.8-flash,37,3,1,CA-517,Napa City & County CoC,504
+gemini-3.8-flash,37,3,1,CA-518,Vallejo/Solano County CoC,1276
+gemini-3.8-flash,37,3,1,CA-519,"Chico, Paradise/Butte County CoC",1264
+gemini-3.8-flash,37,3,1,CA-520,Merced City & County CoC,842
+gemini-3.8-flash,37,3,1,CA-521,"Davis, Woodland/Yolo County CoC",815
+gemini-3.8-flash,37,3,1,CA-522,Humboldt County CoC,1625
+gemini-3.8-flash,37,3,1,CA-523,"Colusa, Glenn, Trinity Counties CoC",312
+gemini-3.8-flash,37,3,1,CA-524,Yuba City & County/Sutter County CoC,986
+gemini-3.8-flash,37,3,1,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,37,3,1,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",675
+gemini-3.8-flash,37,3,1,CA-527,Tehama County CoC,320
+gemini-3.8-flash,37,3,1,CA-529,Lake County CoC,538
+gemini-3.8-flash,37,3,1,CA-530,"Alpine, Inyo, Mono Counties CoC",246
+gemini-3.8-flash,37,3,1,CA-531,Nevada County CoC,510
+gemini-3.8-flash,37,3,1,CA-600,Los Angeles City & County CoC,75312
+gemini-3.8-flash,37,3,1,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,37,3,1,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,37,3,1,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,37,3,1,CA-604,Bakersfield/Kern County CoC,2078
+gemini-3.8-flash,37,3,1,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,37,3,1,CA-607,Pasadena CoC,572
+gemini-3.8-flash,37,3,1,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,37,3,1,CA-609,San Bernardino City & County CoC,4149
+gemini-3.8-flash,37,3,1,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,37,3,1,CA-612,Glendale CoC,263
+gemini-3.8-flash,37,3,1,CA-613,Imperial County CoC,1345
+gemini-3.8-flash,37,3,1,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,38,3,2,CA-500,San Jose/Santa Clara City & County CoC,9650
+gemini-3.8-flash,38,3,2,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,38,3,2,CA-502,"Oakland, Berkeley/Alameda County CoC",9147
+gemini-3.8-flash,38,3,2,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,38,3,2,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2745
+gemini-3.8-flash,38,3,2,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,38,3,2,CA-506,"Salinas/Monterey, San Benito Counties CoC",2674
+gemini-3.8-flash,38,3,2,CA-507,Marin County CoC,1090
+gemini-3.8-flash,38,3,2,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,38,3,2,CA-509,Mendocino County CoC,775
+gemini-3.8-flash,38,3,2,CA-510,"Turlock, Modesto/Stanislaus County CoC",2246
+gemini-3.8-flash,38,3,2,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,38,3,2,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,38,3,2,CA-513,"Visalia/Kings, Tulare Counties CoC",1350
+gemini-3.8-flash,38,3,2,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,38,3,2,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,38,3,2,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1625
+gemini-3.8-flash,38,3,2,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,38,3,2,CA-518,Vallejo/Solano County CoC,1429
+gemini-3.8-flash,38,3,2,CA-519,"Chico, Paradise/Butte County CoC",1217
+gemini-3.8-flash,38,3,2,CA-520,Merced City & County CoC,784
+gemini-3.8-flash,38,3,2,CA-521,"Davis, Woodland/Yolo County CoC",775
+gemini-3.8-flash,38,3,2,CA-522,Humboldt County CoC,1592
+gemini-3.8-flash,38,3,2,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,38,3,2,CA-524,Yuba City & County/Sutter County CoC,850
+gemini-3.8-flash,38,3,2,CA-525,El Dorado County CoC,450
+gemini-3.8-flash,38,3,2,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",650
+gemini-3.8-flash,38,3,2,CA-527,Tehama County CoC,260
+gemini-3.8-flash,38,3,2,CA-529,Lake County CoC,450
+gemini-3.8-flash,38,3,2,CA-530,"Alpine, Inyo, Mono Counties CoC",200
+gemini-3.8-flash,38,3,2,CA-531,Nevada County CoC,480
+gemini-3.8-flash,38,3,2,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,38,3,2,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,38,3,2,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,38,3,2,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,38,3,2,CA-604,Bakersfield/Kern County CoC,2298
+gemini-3.8-flash,38,3,2,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,38,3,2,CA-607,Pasadena CoC,556
+gemini-3.8-flash,38,3,2,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,38,3,2,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,38,3,2,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,38,3,2,CA-612,Glendale CoC,265
+gemini-3.8-flash,38,3,2,CA-613,Imperial County CoC,1340
+gemini-3.8-flash,38,3,2,CA-614,San Luis Obispo County CoC,1177
+gemini-3.8-flash,39,3,3,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,39,3,3,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,39,3,3,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,39,3,3,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,39,3,3,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2058
+gemini-3.8-flash,39,3,3,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,39,3,3,CA-506,"Salinas/Monterey, San Benito Counties CoC",2329
+gemini-3.8-flash,39,3,3,CA-507,Marin County CoC,1090
+gemini-3.8-flash,39,3,3,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,39,3,3,CA-509,Mendocino County CoC,732
+gemini-3.8-flash,39,3,3,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,39,3,3,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,39,3,3,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,39,3,3,CA-513,"Visalia/Kings, Tulare Counties CoC",1508
+gemini-3.8-flash,39,3,3,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,39,3,3,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,39,3,3,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1803
+gemini-3.8-flash,39,3,3,CA-517,Napa City & County CoC,486
+gemini-3.8-flash,39,3,3,CA-518,Vallejo/Solano County CoC,1330
+gemini-3.8-flash,39,3,3,CA-519,"Chico, Paradise/Butte County CoC",1214
+gemini-3.8-flash,39,3,3,CA-520,Merced City & County CoC,772
+gemini-3.8-flash,39,3,3,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,39,3,3,CA-522,Humboldt County CoC,1312
+gemini-3.8-flash,39,3,3,CA-523,"Colusa, Glenn, Trinity Counties CoC",183
+gemini-3.8-flash,39,3,3,CA-524,Yuba City & County/Sutter County CoC,915
+gemini-3.8-flash,39,3,3,CA-525,El Dorado County CoC,448
+gemini-3.8-flash,39,3,3,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",624
+gemini-3.8-flash,39,3,3,CA-527,Tehama County CoC,312
+gemini-3.8-flash,39,3,3,CA-529,Lake County CoC,405
+gemini-3.8-flash,39,3,3,CA-530,"Alpine, Inyo, Mono Counties CoC",152
+gemini-3.8-flash,39,3,3,CA-531,Nevada County CoC,504
+gemini-3.8-flash,39,3,3,CA-600,Los Angeles City & County CoC,71138
+gemini-3.8-flash,39,3,3,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,39,3,3,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,39,3,3,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,39,3,3,CA-604,Bakersfield/Kern County CoC,1948
+gemini-3.8-flash,39,3,3,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,39,3,3,CA-607,Pasadena CoC,556
+gemini-3.8-flash,39,3,3,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,39,3,3,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,39,3,3,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,39,3,3,CA-612,Glendale CoC,242
+gemini-3.8-flash,39,3,3,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,39,3,3,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,40,3,4,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,40,3,4,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,40,3,4,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,40,3,4,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,40,3,4,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2019
+gemini-3.8-flash,40,3,4,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,40,3,4,CA-506,"Salinas/Monterey, San Benito Counties CoC",2475
+gemini-3.8-flash,40,3,4,CA-507,Marin County CoC,1090
+gemini-3.8-flash,40,3,4,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,40,3,4,CA-509,Mendocino County CoC,769
+gemini-3.8-flash,40,3,4,CA-510,"Turlock, Modesto/Stanislaus County CoC",2139
+gemini-3.8-flash,40,3,4,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,40,3,4,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,40,3,4,CA-513,"Visalia/Kings, Tulare Counties CoC",1512
+gemini-3.8-flash,40,3,4,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,40,3,4,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,40,3,4,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1820
+gemini-3.8-flash,40,3,4,CA-517,Napa City & County CoC,471
+gemini-3.8-flash,40,3,4,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,40,3,4,CA-519,"Chico, Paradise/Butte County CoC",1264
+gemini-3.8-flash,40,3,4,CA-520,Merced City & County CoC,724
+gemini-3.8-flash,40,3,4,CA-521,"Davis, Woodland/Yolo County CoC",815
+gemini-3.8-flash,40,3,4,CA-522,Humboldt County CoC,1612
+gemini-3.8-flash,40,3,4,CA-523,"Colusa, Glenn, Trinity Counties CoC",265
+gemini-3.8-flash,40,3,4,CA-524,Yuba City & County/Sutter County CoC,946
+gemini-3.8-flash,40,3,4,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,40,3,4,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",638
+gemini-3.8-flash,40,3,4,CA-527,Tehama County CoC,310
+gemini-3.8-flash,40,3,4,CA-529,Lake County CoC,412
+gemini-3.8-flash,40,3,4,CA-530,"Alpine, Inyo, Mono Counties CoC",235
+gemini-3.8-flash,40,3,4,CA-531,Nevada County CoC,486
+gemini-3.8-flash,40,3,4,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,40,3,4,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,40,3,4,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,40,3,4,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,40,3,4,CA-604,Bakersfield/Kern County CoC,2148
+gemini-3.8-flash,40,3,4,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,40,3,4,CA-607,Pasadena CoC,527
+gemini-3.8-flash,40,3,4,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,40,3,4,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,40,3,4,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,40,3,4,CA-612,Glendale CoC,288
+gemini-3.8-flash,40,3,4,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,40,3,4,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,41,3,5,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,41,3,5,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,41,3,5,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,41,3,5,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,41,3,5,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2800
+gemini-3.8-flash,41,3,5,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,41,3,5,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,41,3,5,CA-507,Marin County CoC,1090
+gemini-3.8-flash,41,3,5,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,41,3,5,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,41,3,5,CA-510,"Turlock, Modesto/Stanislaus County CoC",2095
+gemini-3.8-flash,41,3,5,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,41,3,5,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,41,3,5,CA-513,"Visalia/Kings, Tulare Counties CoC",1500
+gemini-3.8-flash,41,3,5,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,41,3,5,CA-515,"Roseville, Rocklin/Placer County CoC",700
+gemini-3.8-flash,41,3,5,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2500
+gemini-3.8-flash,41,3,5,CA-517,Napa City & County CoC,500
+gemini-3.8-flash,41,3,5,CA-518,Vallejo/Solano County CoC,1200
+gemini-3.8-flash,41,3,5,CA-519,"Chico, Paradise/Butte County CoC",1200
+gemini-3.8-flash,41,3,5,CA-520,Merced City & County CoC,800
+gemini-3.8-flash,41,3,5,CA-521,"Davis, Woodland/Yolo County CoC",800
+gemini-3.8-flash,41,3,5,CA-522,Humboldt County CoC,1600
+gemini-3.8-flash,41,3,5,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,41,3,5,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,41,3,5,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,41,3,5,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",600
+gemini-3.8-flash,41,3,5,CA-527,Tehama County CoC,300
+gemini-3.8-flash,41,3,5,CA-529,Lake County CoC,400
+gemini-3.8-flash,41,3,5,CA-530,"Alpine, Inyo, Mono Counties CoC",150
+gemini-3.8-flash,41,3,5,CA-531,Nevada County CoC,500
+gemini-3.8-flash,41,3,5,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,41,3,5,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,41,3,5,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,41,3,5,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,41,3,5,CA-604,Bakersfield/Kern County CoC,2100
+gemini-3.8-flash,41,3,5,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,41,3,5,CA-607,Pasadena CoC,523
+gemini-3.8-flash,41,3,5,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,41,3,5,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,41,3,5,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,41,3,5,CA-612,Glendale CoC,250
+gemini-3.8-flash,41,3,5,CA-613,Imperial County CoC,1300
+gemini-3.8-flash,41,3,5,CA-614,San Luis Obispo County CoC,1177
+gemini-3.8-flash,42,3,6,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,42,3,6,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,42,3,6,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,42,3,6,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,42,3,6,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2028
+gemini-3.8-flash,42,3,6,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,42,3,6,CA-506,"Salinas/Monterey, San Benito Counties CoC",2463
+gemini-3.8-flash,42,3,6,CA-507,Marin County CoC,1059
+gemini-3.8-flash,42,3,6,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,42,3,6,CA-509,Mendocino County CoC,769
+gemini-3.8-flash,42,3,6,CA-510,"Turlock, Modesto/Stanislaus County CoC",2128
+gemini-3.8-flash,42,3,6,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,42,3,6,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,42,3,6,CA-513,"Visalia/Kings, Tulare Counties CoC",1602
+gemini-3.8-flash,42,3,6,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,42,3,6,CA-515,"Roseville, Rocklin/Placer County CoC",742
+gemini-3.8-flash,42,3,6,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1523
+gemini-3.8-flash,42,3,6,CA-517,Napa City & County CoC,504
+gemini-3.8-flash,42,3,6,CA-518,Vallejo/Solano County CoC,1214
+gemini-3.8-flash,42,3,6,CA-519,"Chico, Paradise/Butte County CoC",1143
+gemini-3.8-flash,42,3,6,CA-520,Merced City & County CoC,735
+gemini-3.8-flash,42,3,6,CA-521,"Davis, Woodland/Yolo County CoC",786
+gemini-3.8-flash,42,3,6,CA-522,Humboldt County CoC,1642
+gemini-3.8-flash,42,3,6,CA-523,"Colusa, Glenn, Trinity Counties CoC",215
+gemini-3.8-flash,42,3,6,CA-524,Yuba City & County/Sutter County CoC,912
+gemini-3.8-flash,42,3,6,CA-525,El Dorado County CoC,511
+gemini-3.8-flash,42,3,6,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",624
+gemini-3.8-flash,42,3,6,CA-527,Tehama County CoC,312
+gemini-3.8-flash,42,3,6,CA-529,Lake County CoC,418
+gemini-3.8-flash,42,3,6,CA-530,"Alpine, Inyo, Mono Counties CoC",228
+gemini-3.8-flash,42,3,6,CA-531,Nevada County CoC,445
+gemini-3.8-flash,42,3,6,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,42,3,6,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,42,3,6,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,42,3,6,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,42,3,6,CA-604,Bakersfield/Kern County CoC,2054
+gemini-3.8-flash,42,3,6,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,42,3,6,CA-607,Pasadena CoC,532
+gemini-3.8-flash,42,3,6,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,42,3,6,CA-609,San Bernardino City & County CoC,4128
+gemini-3.8-flash,42,3,6,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,42,3,6,CA-612,Glendale CoC,247
+gemini-3.8-flash,42,3,6,CA-613,Imperial County CoC,1223
+gemini-3.8-flash,42,3,6,CA-614,San Luis Obispo County CoC,1172
+gemini-3.8-flash,43,3,7,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,43,3,7,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,43,3,7,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,43,3,7,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,43,3,7,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2467
+gemini-3.8-flash,43,3,7,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,43,3,7,CA-506,"Salinas/Monterey, San Benito Counties CoC",2378
+gemini-3.8-flash,43,3,7,CA-507,Marin County CoC,1059
+gemini-3.8-flash,43,3,7,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,43,3,7,CA-509,Mendocino County CoC,764
+gemini-3.8-flash,43,3,7,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,43,3,7,CA-511,Stockton/San Joaquin County CoC,2319
+gemini-3.8-flash,43,3,7,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,43,3,7,CA-513,"Visalia/Kings, Tulare Counties CoC",1498
+gemini-3.8-flash,43,3,7,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,43,3,7,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,43,3,7,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1820
+gemini-3.8-flash,43,3,7,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,43,3,7,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,43,3,7,CA-519,"Chico, Paradise/Butte County CoC",1156
+gemini-3.8-flash,43,3,7,CA-520,Merced City & County CoC,831
+gemini-3.8-flash,43,3,7,CA-521,"Davis, Woodland/Yolo County CoC",812
+gemini-3.8-flash,43,3,7,CA-522,Humboldt County CoC,1315
+gemini-3.8-flash,43,3,7,CA-523,"Colusa, Glenn, Trinity Counties CoC",224
+gemini-3.8-flash,43,3,7,CA-524,Yuba City & County/Sutter County CoC,953
+gemini-3.8-flash,43,3,7,CA-525,El Dorado County CoC,511
+gemini-3.8-flash,43,3,7,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",619
+gemini-3.8-flash,43,3,7,CA-527,Tehama County CoC,315
+gemini-3.8-flash,43,3,7,CA-529,Lake County CoC,417
+gemini-3.8-flash,43,3,7,CA-530,"Alpine, Inyo, Mono Counties CoC",262
+gemini-3.8-flash,43,3,7,CA-531,Nevada County CoC,496
+gemini-3.8-flash,43,3,7,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,43,3,7,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,43,3,7,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,43,3,7,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,43,3,7,CA-604,Bakersfield/Kern County CoC,2231
+gemini-3.8-flash,43,3,7,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,43,3,7,CA-607,Pasadena CoC,556
+gemini-3.8-flash,43,3,7,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,43,3,7,CA-609,San Bernardino City & County CoC,4196
+gemini-3.8-flash,43,3,7,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,43,3,7,CA-612,Glendale CoC,247
+gemini-3.8-flash,43,3,7,CA-613,Imperial County CoC,1342
+gemini-3.8-flash,43,3,7,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,44,3,8,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,44,3,8,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,44,3,8,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,44,3,8,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,44,3,8,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2437
+gemini-3.8-flash,44,3,8,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,44,3,8,CA-506,"Salinas/Monterey, San Benito Counties CoC",2460
+gemini-3.8-flash,44,3,8,CA-507,Marin County CoC,1090
+gemini-3.8-flash,44,3,8,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,44,3,8,CA-509,Mendocino County CoC,750
+gemini-3.8-flash,44,3,8,CA-510,"Turlock, Modesto/Stanislaus County CoC",2100
+gemini-3.8-flash,44,3,8,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,44,3,8,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,44,3,8,CA-513,"Visalia/Kings, Tulare Counties CoC",1500
+gemini-3.8-flash,44,3,8,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,44,3,8,CA-515,"Roseville, Rocklin/Placer County CoC",700
+gemini-3.8-flash,44,3,8,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1600
+gemini-3.8-flash,44,3,8,CA-517,Napa City & County CoC,500
+gemini-3.8-flash,44,3,8,CA-518,Vallejo/Solano County CoC,1200
+gemini-3.8-flash,44,3,8,CA-519,"Chico, Paradise/Butte County CoC",1200
+gemini-3.8-flash,44,3,8,CA-520,Merced City & County CoC,800
+gemini-3.8-flash,44,3,8,CA-521,"Davis, Woodland/Yolo County CoC",750
+gemini-3.8-flash,44,3,8,CA-522,Humboldt County CoC,1300
+gemini-3.8-flash,44,3,8,CA-523,"Colusa, Glenn, Trinity Counties CoC",200
+gemini-3.8-flash,44,3,8,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,44,3,8,CA-525,El Dorado County CoC,500
+gemini-3.8-flash,44,3,8,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",600
+gemini-3.8-flash,44,3,8,CA-527,Tehama County CoC,250
+gemini-3.8-flash,44,3,8,CA-529,Lake County CoC,400
+gemini-3.8-flash,44,3,8,CA-530,"Alpine, Inyo, Mono Counties CoC",150
+gemini-3.8-flash,44,3,8,CA-531,Nevada County CoC,500
+gemini-3.8-flash,44,3,8,CA-600,Los Angeles City & County CoC,70057
+gemini-3.8-flash,44,3,8,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,44,3,8,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,44,3,8,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,44,3,8,CA-604,Bakersfield/Kern County CoC,2300
+gemini-3.8-flash,44,3,8,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,44,3,8,CA-607,Pasadena CoC,340
+gemini-3.8-flash,44,3,8,CA-608,Riverside City & County CoC,3922
+gemini-3.8-flash,44,3,8,CA-609,San Bernardino City & County CoC,4336
+gemini-3.8-flash,44,3,8,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,44,3,8,CA-612,Glendale CoC,250
+gemini-3.8-flash,44,3,8,CA-613,Imperial County CoC,1400
+gemini-3.8-flash,44,3,8,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,45,3,9,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,45,3,9,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,45,3,9,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,45,3,9,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,45,3,9,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2745
+gemini-3.8-flash,45,3,9,CA-505,Contra Costa County CoC,2849
+gemini-3.8-flash,45,3,9,CA-506,"Salinas/Monterey, San Benito Counties CoC",2423
+gemini-3.8-flash,45,3,9,CA-507,Marin County CoC,1059
+gemini-3.8-flash,45,3,9,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,45,3,9,CA-509,Mendocino County CoC,720
+gemini-3.8-flash,45,3,9,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,45,3,9,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,45,3,9,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,45,3,9,CA-513,"Visalia/Kings, Tulare Counties CoC",1489
+gemini-3.8-flash,45,3,9,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,45,3,9,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,45,3,9,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2841
+gemini-3.8-flash,45,3,9,CA-517,Napa City & County CoC,516
+gemini-3.8-flash,45,3,9,CA-518,Vallejo/Solano County CoC,1440
+gemini-3.8-flash,45,3,9,CA-519,"Chico, Paradise/Butte County CoC",1163
+gemini-3.8-flash,45,3,9,CA-520,Merced City & County CoC,830
+gemini-3.8-flash,45,3,9,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,45,3,9,CA-522,Humboldt County CoC,1600
+gemini-3.8-flash,45,3,9,CA-523,"Colusa, Glenn, Trinity Counties CoC",250
+gemini-3.8-flash,45,3,9,CA-524,Yuba City & County/Sutter County CoC,955
+gemini-3.8-flash,45,3,9,CA-525,El Dorado County CoC,512
+gemini-3.8-flash,45,3,9,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",605
+gemini-3.8-flash,45,3,9,CA-527,Tehama County CoC,285
+gemini-3.8-flash,45,3,9,CA-529,Lake County CoC,515
+gemini-3.8-flash,45,3,9,CA-530,"Alpine, Inyo, Mono Counties CoC",185
+gemini-3.8-flash,45,3,9,CA-531,Nevada County CoC,495
+gemini-3.8-flash,45,3,9,CA-600,Los Angeles City & County CoC,71161
+gemini-3.8-flash,45,3,9,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,45,3,9,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,45,3,9,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,45,3,9,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,45,3,9,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,45,3,9,CA-607,Pasadena CoC,527
+gemini-3.8-flash,45,3,9,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,45,3,9,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,45,3,9,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,45,3,9,CA-612,Glendale CoC,248
+gemini-3.8-flash,45,3,9,CA-613,Imperial County CoC,1320
+gemini-3.8-flash,45,3,9,CA-614,San Luis Obispo County CoC,1180
+gemini-3.8-flash,46,3,10,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,46,3,10,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,46,3,10,CA-502,"Oakland, Berkeley/Alameda County CoC",9452
+gemini-3.8-flash,46,3,10,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,46,3,10,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2468
+gemini-3.8-flash,46,3,10,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,46,3,10,CA-506,"Salinas/Monterey, San Benito Counties CoC",2423
+gemini-3.8-flash,46,3,10,CA-507,Marin County CoC,1090
+gemini-3.8-flash,46,3,10,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,46,3,10,CA-509,Mendocino County CoC,742
+gemini-3.8-flash,46,3,10,CA-510,"Turlock, Modesto/Stanislaus County CoC",2051
+gemini-3.8-flash,46,3,10,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,46,3,10,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,46,3,10,CA-513,"Visalia/Kings, Tulare Counties CoC",1527
+gemini-3.8-flash,46,3,10,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,46,3,10,CA-515,"Roseville, Rocklin/Placer County CoC",702
+gemini-3.8-flash,46,3,10,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2418
+gemini-3.8-flash,46,3,10,CA-517,Napa City & County CoC,486
+gemini-3.8-flash,46,3,10,CA-518,Vallejo/Solano County CoC,1352
+gemini-3.8-flash,46,3,10,CA-519,"Chico, Paradise/Butte County CoC",1245
+gemini-3.8-flash,46,3,10,CA-520,Merced City & County CoC,784
+gemini-3.8-flash,46,3,10,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,46,3,10,CA-522,Humboldt County CoC,1612
+gemini-3.8-flash,46,3,10,CA-523,"Colusa, Glenn, Trinity Counties CoC",268
+gemini-3.8-flash,46,3,10,CA-524,Yuba City & County/Sutter County CoC,934
+gemini-3.8-flash,46,3,10,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,46,3,10,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",638
+gemini-3.8-flash,46,3,10,CA-527,Tehama County CoC,315
+gemini-3.8-flash,46,3,10,CA-529,Lake County CoC,524
+gemini-3.8-flash,46,3,10,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,46,3,10,CA-531,Nevada County CoC,496
+gemini-3.8-flash,46,3,10,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,46,3,10,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,46,3,10,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,46,3,10,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,46,3,10,CA-604,Bakersfield/Kern County CoC,2148
+gemini-3.8-flash,46,3,10,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,46,3,10,CA-607,Pasadena CoC,626
+gemini-3.8-flash,46,3,10,CA-608,Riverside City & County CoC,3939
+gemini-3.8-flash,46,3,10,CA-609,San Bernardino City & County CoC,4330
+gemini-3.8-flash,46,3,10,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,46,3,10,CA-612,Glendale CoC,241
+gemini-3.8-flash,46,3,10,CA-613,Imperial County CoC,1314
+gemini-3.8-flash,46,3,10,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,47,3,11,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,47,3,11,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,47,3,11,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,47,3,11,CA-503,Sacramento City & County CoC,6615
+gemini-3.8-flash,47,3,11,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2499
+gemini-3.8-flash,47,3,11,CA-505,Contra Costa County CoC,2844
+gemini-3.8-flash,47,3,11,CA-506,"Salinas/Monterey, San Benito Counties CoC",2378
+gemini-3.8-flash,47,3,11,CA-507,Marin County CoC,1059
+gemini-3.8-flash,47,3,11,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,47,3,11,CA-509,Mendocino County CoC,742
+gemini-3.8-flash,47,3,11,CA-510,"Turlock, Modesto/Stanislaus County CoC",2245
+gemini-3.8-flash,47,3,11,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,47,3,11,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,47,3,11,CA-513,"Visalia/Kings, Tulare Counties CoC",1487
+gemini-3.8-flash,47,3,11,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,47,3,11,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,47,3,11,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",1720
+gemini-3.8-flash,47,3,11,CA-517,Napa City & County CoC,486
+gemini-3.8-flash,47,3,11,CA-518,Vallejo/Solano County CoC,1276
+gemini-3.8-flash,47,3,11,CA-519,"Chico, Paradise/Butte County CoC",1214
+gemini-3.8-flash,47,3,11,CA-520,Merced City & County CoC,784
+gemini-3.8-flash,47,3,11,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,47,3,11,CA-522,Humboldt County CoC,1590
+gemini-3.8-flash,47,3,11,CA-523,"Colusa, Glenn, Trinity Counties CoC",248
+gemini-3.8-flash,47,3,11,CA-524,Yuba City & County/Sutter County CoC,943
+gemini-3.8-flash,47,3,11,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,47,3,11,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",612
+gemini-3.8-flash,47,3,11,CA-527,Tehama County CoC,285
+gemini-3.8-flash,47,3,11,CA-529,Lake County CoC,514
+gemini-3.8-flash,47,3,11,CA-530,"Alpine, Inyo, Mono Counties CoC",142
+gemini-3.8-flash,47,3,11,CA-531,Nevada County CoC,468
+gemini-3.8-flash,47,3,11,CA-600,Los Angeles City & County CoC,71310
+gemini-3.8-flash,47,3,11,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,47,3,11,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,47,3,11,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,47,3,11,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,47,3,11,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,47,3,11,CA-607,Pasadena CoC,552
+gemini-3.8-flash,47,3,11,CA-608,Riverside City & County CoC,4195
+gemini-3.8-flash,47,3,11,CA-609,San Bernardino City & County CoC,4127
+gemini-3.8-flash,47,3,11,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,47,3,11,CA-612,Glendale CoC,256
+gemini-3.8-flash,47,3,11,CA-613,Imperial County CoC,1248
+gemini-3.8-flash,47,3,11,CA-614,San Luis Obispo County CoC,1177
+gemini-3.8-flash,48,3,12,CA-500,San Jose/Santa Clara City & County CoC,9850
+gemini-3.8-flash,48,3,12,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,48,3,12,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,48,3,12,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,48,3,12,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2468
+gemini-3.8-flash,48,3,12,CA-505,Contra Costa County CoC,2841
+gemini-3.8-flash,48,3,12,CA-506,"Salinas/Monterey, San Benito Counties CoC",2350
+gemini-3.8-flash,48,3,12,CA-507,Marin County CoC,1090
+gemini-3.8-flash,48,3,12,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,48,3,12,CA-509,Mendocino County CoC,760
+gemini-3.8-flash,48,3,12,CA-510,"Turlock, Modesto/Stanislaus County CoC",2096
+gemini-3.8-flash,48,3,12,CA-511,Stockton/San Joaquin County CoC,2311
+gemini-3.8-flash,48,3,12,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,48,3,12,CA-513,"Visalia/Kings, Tulare Counties CoC",1520
+gemini-3.8-flash,48,3,12,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,48,3,12,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,48,3,12,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2280
+gemini-3.8-flash,48,3,12,CA-517,Napa City & County CoC,506
+gemini-3.8-flash,48,3,12,CA-518,Vallejo/Solano County CoC,1180
+gemini-3.8-flash,48,3,12,CA-519,"Chico, Paradise/Butte County CoC",1240
+gemini-3.8-flash,48,3,12,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,48,3,12,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,48,3,12,CA-522,Humboldt County CoC,1620
+gemini-3.8-flash,48,3,12,CA-523,"Colusa, Glenn, Trinity Counties CoC",265
+gemini-3.8-flash,48,3,12,CA-524,Yuba City & County/Sutter County CoC,970
+gemini-3.8-flash,48,3,12,CA-525,El Dorado County CoC,510
+gemini-3.8-flash,48,3,12,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",615
+gemini-3.8-flash,48,3,12,CA-527,Tehama County CoC,285
+gemini-3.8-flash,48,3,12,CA-529,Lake County CoC,460
+gemini-3.8-flash,48,3,12,CA-530,"Alpine, Inyo, Mono Counties CoC",210
+gemini-3.8-flash,48,3,12,CA-531,Nevada County CoC,495
+gemini-3.8-flash,48,3,12,CA-600,Los Angeles City & County CoC,75312
+gemini-3.8-flash,48,3,12,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,48,3,12,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,48,3,12,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,48,3,12,CA-604,Bakersfield/Kern County CoC,2192
+gemini-3.8-flash,48,3,12,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,48,3,12,CA-607,Pasadena CoC,556
+gemini-3.8-flash,48,3,12,CA-608,Riverside City & County CoC,3725
+gemini-3.8-flash,48,3,12,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,48,3,12,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,48,3,12,CA-612,Glendale CoC,248
+gemini-3.8-flash,48,3,12,CA-613,Imperial County CoC,1280
+gemini-3.8-flash,48,3,12,CA-614,San Luis Obispo County CoC,1448
+gemini-3.8-flash,49,3,13,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,49,3,13,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,49,3,13,CA-502,"Oakland, Berkeley/Alameda County CoC",9451
+gemini-3.8-flash,49,3,13,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,49,3,13,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2473
+gemini-3.8-flash,49,3,13,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,49,3,13,CA-506,"Salinas/Monterey, San Benito Counties CoC",2416
+gemini-3.8-flash,49,3,13,CA-507,Marin County CoC,1059
+gemini-3.8-flash,49,3,13,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,49,3,13,CA-509,Mendocino County CoC,763
+gemini-3.8-flash,49,3,13,CA-510,"Turlock, Modesto/Stanislaus County CoC",2091
+gemini-3.8-flash,49,3,13,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,49,3,13,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,49,3,13,CA-513,"Visalia/Kings, Tulare Counties CoC",1342
+gemini-3.8-flash,49,3,13,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,49,3,13,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,49,3,13,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2485
+gemini-3.8-flash,49,3,13,CA-517,Napa City & County CoC,474
+gemini-3.8-flash,49,3,13,CA-518,Vallejo/Solano County CoC,1225
+gemini-3.8-flash,49,3,13,CA-519,"Chico, Paradise/Butte County CoC",1156
+gemini-3.8-flash,49,3,13,CA-520,Merced City & County CoC,815
+gemini-3.8-flash,49,3,13,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,49,3,13,CA-522,Humboldt County CoC,1312
+gemini-3.8-flash,49,3,13,CA-523,"Colusa, Glenn, Trinity Counties CoC",262
+gemini-3.8-flash,49,3,13,CA-524,Yuba City & County/Sutter County CoC,914
+gemini-3.8-flash,49,3,13,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,49,3,13,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",638
+gemini-3.8-flash,49,3,13,CA-527,Tehama County CoC,257
+gemini-3.8-flash,49,3,13,CA-529,Lake County CoC,534
+gemini-3.8-flash,49,3,13,CA-530,"Alpine, Inyo, Mono Counties CoC",162
+gemini-3.8-flash,49,3,13,CA-531,Nevada County CoC,486
+gemini-3.8-flash,49,3,13,CA-600,Los Angeles City & County CoC,71080
+gemini-3.8-flash,49,3,13,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,49,3,13,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,49,3,13,CA-603,Santa Maria/Santa Barbara County CoC,2119
+gemini-3.8-flash,49,3,13,CA-604,Bakersfield/Kern County CoC,2154
+gemini-3.8-flash,49,3,13,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,49,3,13,CA-607,Pasadena CoC,532
+gemini-3.8-flash,49,3,13,CA-608,Riverside City & County CoC,3847
+gemini-3.8-flash,49,3,13,CA-609,San Bernardino City & County CoC,4129
+gemini-3.8-flash,49,3,13,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,49,3,13,CA-612,Glendale CoC,274
+gemini-3.8-flash,49,3,13,CA-613,Imperial County CoC,1415
+gemini-3.8-flash,49,3,13,CA-614,San Luis Obispo County CoC,1148
+gemini-3.8-flash,50,3,14,CA-500,San Jose/Santa Clara City & County CoC,9903
+gemini-3.8-flash,50,3,14,CA-501,San Francisco CoC,8323
+gemini-3.8-flash,50,3,14,CA-502,"Oakland, Berkeley/Alameda County CoC",9450
+gemini-3.8-flash,50,3,14,CA-503,Sacramento City & County CoC,6664
+gemini-3.8-flash,50,3,14,CA-504,"Santa Rosa, Petaluma/Sonoma County CoC",2036
+gemini-3.8-flash,50,3,14,CA-505,Contra Costa County CoC,2843
+gemini-3.8-flash,50,3,14,CA-506,"Salinas/Monterey, San Benito Counties CoC",2400
+gemini-3.8-flash,50,3,14,CA-507,Marin County CoC,1090
+gemini-3.8-flash,50,3,14,CA-508,Watsonville/Santa Cruz City & County CoC,1850
+gemini-3.8-flash,50,3,14,CA-509,Mendocino County CoC,760
+gemini-3.8-flash,50,3,14,CA-510,"Turlock, Modesto/Stanislaus County CoC",2050
+gemini-3.8-flash,50,3,14,CA-511,Stockton/San Joaquin County CoC,4732
+gemini-3.8-flash,50,3,14,CA-512,Daly City/San Mateo County CoC,2130
+gemini-3.8-flash,50,3,14,CA-513,"Visalia/Kings, Tulare Counties CoC",1300
+gemini-3.8-flash,50,3,14,CA-514,Fresno City & County/Madera County CoC,4493
+gemini-3.8-flash,50,3,14,CA-515,"Roseville, Rocklin/Placer County CoC",708
+gemini-3.8-flash,50,3,14,CA-516,"Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC",2750
+gemini-3.8-flash,50,3,14,CA-517,Napa City & County CoC,490
+gemini-3.8-flash,50,3,14,CA-518,Vallejo/Solano County CoC,1350
+gemini-3.8-flash,50,3,14,CA-519,"Chico, Paradise/Butte County CoC",1200
+gemini-3.8-flash,50,3,14,CA-520,Merced City & County CoC,850
+gemini-3.8-flash,50,3,14,CA-521,"Davis, Woodland/Yolo County CoC",746
+gemini-3.8-flash,50,3,14,CA-522,Humboldt County CoC,1580
+gemini-3.8-flash,50,3,14,CA-523,"Colusa, Glenn, Trinity Counties CoC",210
+gemini-3.8-flash,50,3,14,CA-524,Yuba City & County/Sutter County CoC,950
+gemini-3.8-flash,50,3,14,CA-525,El Dorado County CoC,491
+gemini-3.8-flash,50,3,14,CA-526,"Amador, Calaveras, Mariposa, Tuolumne Counties CoC",750
+gemini-3.8-flash,50,3,14,CA-527,Tehama County CoC,290
+gemini-3.8-flash,50,3,14,CA-529,Lake County CoC,490
+gemini-3.8-flash,50,3,14,CA-530,"Alpine, Inyo, Mono Counties CoC",190
+gemini-3.8-flash,50,3,14,CA-531,Nevada County CoC,480
+gemini-3.8-flash,50,3,14,CA-600,Los Angeles City & County CoC,71320
+gemini-3.8-flash,50,3,14,CA-601,San Diego City and County CoC,10605
+gemini-3.8-flash,50,3,14,CA-602,"Santa Ana, Anaheim/Orange County CoC",7322
+gemini-3.8-flash,50,3,14,CA-603,Santa Maria/Santa Barbara County CoC,2117
+gemini-3.8-flash,50,3,14,CA-604,Bakersfield/Kern County CoC,2550
+gemini-3.8-flash,50,3,14,CA-606,Long Beach CoC,3376
+gemini-3.8-flash,50,3,14,CA-607,Pasadena CoC,532
+gemini-3.8-flash,50,3,14,CA-608,Riverside City & County CoC,3936
+gemini-3.8-flash,50,3,14,CA-609,San Bernardino City & County CoC,4330
+gemini-3.8-flash,50,3,14,CA-611,"Oxnard, San Buenaventura/Ventura County CoC",2358
+gemini-3.8-flash,50,3,14,CA-612,Glendale CoC,260
+gemini-3.8-flash,50,3,14,CA-613,Imperial County CoC,1350
+gemini-3.8-flash,50,3,14,CA-614,San Luis Obispo County CoC,1490

@@ -21,7 +21,6 @@ PROCESSED = ROOT / "data" / "processed"
 SHAPEFILES = PROCESSED / "shapefiles"
 
 COC_GEOJSON = PROCESSED / "ca_coc_organizations_boundaries_pit_hic_2024.geojson"
-BLIND_GUESSES = PROCESSED / "ca_coc_blind_guesses_2024.csv"
 TRACT_ZIP = RAW_CENSUS / "tl_2024_06_tract.zip"
 ACS_TABLE = RAW_CENSUS / "acsdt5y2024-b01003.dat"
 COC_CATEGORY_JSON = ROOT / "data" / "raw" / "hud_ca_coc_geography_type_2024.json"
@@ -47,13 +46,6 @@ CATEGORY_NAMES = {
     "Suburban CoCs": "Suburban",
     "Rural CoCs": "Rural",
 }
-CATEGORY_ORDER = [
-    "Major City",
-    "Urban",
-    "Suburban",
-    "Rural",
-]
-
 EQUAL_AREA_CRS = "EPSG:3310"  # California Albers; units are meters.
 EXPECTED_COCS = 44
 STATE_FIPS = "06"
@@ -294,30 +286,6 @@ def main() -> int:
         ).round(1),
     )
 
-    blind = pd.read_csv(BLIND_GUESSES, dtype={"coc_number": "string"})
-    if (
-        len(blind) != EXPECTED_COCS
-        or blind["coc_number"].duplicated().any()
-        or set(blind["coc_number"]) != set(summary["coc_number"])
-    ):
-        raise RuntimeError("Blind guess file must contain exactly one row per CoC")
-    summary = summary.merge(blind, on="coc_number", how="left", validate="one_to_one")
-    guess_column = summary.pop("blind_guessed_pit_total_2024")
-    guess_position = summary.columns.get_loc("homeless_per_10000") + 1
-    summary.insert(
-        guess_position,
-        "blind_guessed_pit_total_2024",
-        guess_column,
-    )
-    summary.insert(
-        guess_position + 1,
-        "percent_error",
-        (
-            (summary["blind_guessed_pit_total_2024"] - summary["pit_total_2024"])
-            / summary["pit_total_2024"]
-            * 100
-        ).round(1),
-    )
     integer_columns = [
         column
         for column in summary.columns
@@ -327,52 +295,13 @@ def main() -> int:
             "coc_name",
             "coc_category",
             "homeless_per_10000",
-            "percent_error",
         }
     ]
     summary[integer_columns] = summary[integer_columns].round().astype("int64")
-    summary = summary.sort_values("coc_number")
+    category_order = {name: i for i, name in enumerate(['Major City', 'Urban', 'Suburban', 'Rural'])}
+    summary = summary.sort_values(['coc_category', 'coc_number'], key=lambda col: col.map(category_order) if col.name == 'coc_category' else col)
     summary_path = PROCESSED / "ca_coc_summary_2024.csv"
     summary.to_csv(summary_path, index=False, quoting=csv.QUOTE_MINIMAL)
-
-    category_source = summary.assign(
-        _absolute_percent_error=(
-            (
-                summary["blind_guessed_pit_total_2024"]
-                - summary["pit_total_2024"]
-            ).abs()
-            / summary["pit_total_2024"]
-            * 100
-        )
-    )
-    category_summary = (
-        category_source.groupby("coc_category", observed=True)
-        .agg(
-            count=("coc_number", "size"),
-            total_homeless=("pit_total_2024", "sum"),
-            total_population=("total_population_2024", "sum"),
-            mean_absolute_percent_error=("_absolute_percent_error", "mean"),
-            median_absolute_percent_error=("_absolute_percent_error", "median"),
-        )
-        .reindex(CATEGORY_ORDER)
-        .reset_index()
-    )
-    category_summary.insert(
-        category_summary.columns.get_loc("total_population") + 1,
-        "homeless_per_10000",
-        (
-            category_summary["total_homeless"]
-            / category_summary["total_population"]
-            * 10_000
-        ).round(1),
-    )
-    category_summary[
-        ["mean_absolute_percent_error", "median_absolute_percent_error"]
-    ] = category_summary[
-        ["mean_absolute_percent_error", "median_absolute_percent_error"]
-    ].round(1)
-    category_summary_path = PROCESSED / "ca_coc_category_summary_2024.csv"
-    category_summary.to_csv(category_summary_path, index=False, quoting=csv.QUOTE_MINIMAL)
 
     # Persist the population fields in the GeoJSON consumed by index.html.
     map_attributes = summary.set_index("coc_number")[
@@ -380,11 +309,8 @@ def main() -> int:
             "coc_category",
             "total_population_2024",
             "homeless_per_10000",
-            "blind_guessed_pit_total_2024",
-            "percent_error",
         ]
     ].copy()
-    map_attributes["absolute_percent_error"] = map_attributes["percent_error"].abs()
     population_by_coc = map_attributes.to_dict(orient="index")
     geojson = json.loads(COC_GEOJSON.read_text())
     for feature in geojson["features"]:
@@ -447,7 +373,6 @@ def main() -> int:
     )
 
     print(f"Wrote {summary_path.relative_to(ROOT)} ({len(summary)} CoCs)")
-    print(f"Wrote {category_summary_path.relative_to(ROOT)} ({len(category_summary)} categories)")
     print(f"Wrote {tract_csv.relative_to(ROOT)} ({len(tract_table)} tracts)")
     print(f"Wrote {coc_archive.relative_to(ROOT)}")
     print(f"Wrote {tract_archive.relative_to(ROOT)}")

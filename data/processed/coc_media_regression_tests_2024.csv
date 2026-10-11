@@ -1,2 +1,2 @@
 test,reduced_model,full_model,n,reduced_r_squared,full_r_squared,change_in_r_squared,numerator_df,denominator_df,f_statistic,p_value
-incremental_f_test_for_adding_article_count,population_and_pit,population_pit_and_articles,44,0.4079050341761966,0.4102105455242808,0.0023055113480842104,1,40,0.15636165282973438,0.6946296724051928
+incremental_f_test_for_adding_article_count,population_and_pit,population_pit_and_articles,44,0.3249935633713429,0.33035356834755514,0.0053600049762122515,1,40,0.32016925486995534,0.5746667045930756

@@ -1,0 +1,35 @@
+{
+  "model_id": "gemini-3.8-flash",
+  "model_id_evidence": "Model named in the first batch API quota error; same model for subsequent batches assumed from user submission.",
+  "runs_retained": 50,
+  "estimate_count": 2200,
+  "selection": "First 50 successful API requests in submission order: 17 from batch 1, 19 from batch 2, and runs 1\u201314 from batch 3.",
+  "failed_requests_excluded": {
+    "batch_1": [
+      5,
+      9,
+      20
+    ],
+    "batch_2": [
+      1
+    ],
+    "batch_3": []
+  },
+  "successful_requests_excluded": {
+    "batch_3": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ]
+  },
+  "source_ids": "source_batch and source_run preserve original request identities; run is sequential successful-run ID.",
+  "prompt": "Exact API prompt not supplied with the logs.",
+  "generation_date": null,
+  "temperature": null,
+  "independent_requests": "User reports Gemini API requests without earlier conversation context; request payloads and exact settings were not supplied.",
+  "units": "Errors in people or percentage points; SD uses sample denominator n-1; estimate range % is (max-min)/actual PIT*100.",
+  "aggregation": "Equal weight per CoC; estimates and signed/absolute errors use arithmetic means across runs. Absolute errors are calculated before averaging."
+}
