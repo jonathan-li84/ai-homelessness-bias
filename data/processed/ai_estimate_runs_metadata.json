@@ -30,6 +30,24 @@
   "generation_date": null,
   "temperature": null,
   "independent_requests": "User reports Gemini API requests without earlier conversation context; request payloads and exact settings were not supplied.",
-  "units": "Errors in people or percentage points; SD uses sample denominator n-1; estimate range % is (max-min)/actual PIT*100.",
-  "aggregation": "Equal weight per CoC; estimates and signed/absolute errors use arithmetic means across runs. Absolute errors are calculated before averaging."
+  "units": "Errors in people or percentage points. GMD is the mean absolute difference over all 1,225 distinct unordered pairs of 50 estimates. Relative GMD (%) = GMD/actual PIT*100. Relative estimate range (%) = (max-min)/actual PIT*100.",
+  "aggregation": "Equal weight per CoC; estimates and signed/absolute errors use arithmetic means across runs. Absolute errors are calculated before averaging.",
+  "consistency_correlation": {
+    "x": "ln(1 + gmd_percent)",
+    "y": "ln(1 + mean_absolute_percent_error)",
+    "percentage_units": "Percentage points (5 for 5%) before adding 1 and taking natural logarithms.",
+    "n_cocs": 44,
+    "pearson_r": 0.8078160120155026,
+    "p_value": 3.4166945030507246e-11,
+    "alternative": "two-sided",
+    "caution": "Both percentages share the actual PIT denominator. Association is not causation."
+  },
+  "display_labels": {
+    "estimate_gmd": "GMD (people)",
+    "gmd_percent": "Relative GMD (%)",
+    "estimate_range_percent": "Relative estimate range (%)",
+    "mean_estimate_gmd": "Mean GMD (people)",
+    "mean_gmd_percent": "Mean relative GMD (%)",
+    "mean_estimate_range_percent": "Mean relative estimate range (%)"
+  }
 }

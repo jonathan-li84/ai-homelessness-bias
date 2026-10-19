@@ -8,6 +8,7 @@
     <link href="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.css" rel="stylesheet" />
     <script src="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstat@1.9.6/dist/jstat.min.js"></script>
     <style>
       :root {
         color-scheme: light;
@@ -147,6 +148,8 @@
         transform: translate(-50%, -50%);
       }
       .status[hidden] { display: none; }
+      .instant-tooltip { position: fixed; z-index: 10000; pointer-events: none; max-width: min(360px, calc(100vw - 16px)); padding: 9px 12px; border-radius: 7px; background: #172033; color: #fff; box-shadow: 0 3px 14px rgb(23 32 51 / 20%); font-size: 12px; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
+      .instant-tooltip[hidden] { display: none; }
       .status.error { width: min(430px, calc(100% - 30px)); color: #8b1e1e; line-height: 1.5; text-align: center; }
       .map-card-footer { padding: 15px 22px 17px; }
       .legend-title { margin-bottom: 7px; color: #273244; font-size: 10px; font-weight: 750; }
@@ -173,7 +176,7 @@
       .histogram-section > p { color: #667384; font-size: 12px; line-height: 1.6; }
       .histogram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 16px; margin-bottom: 24px; }
       .histogram-card { margin: 0; padding: 16px; border: 1px solid #dbe1e8; border-radius: 10px; background: white; }
-      .histogram-card figcaption { min-height: 48px; color: #172033; font-size: 12px; line-height: 1.5; font-weight: 700; }
+      .histogram-card figcaption { color: #172033; font-size: 12px; line-height: 1.5; font-weight: 700; }
       .histogram-card p { color: #667384; font-size: 10px; margin: 6px 0; }
       .histogram-card svg { display: block; width: 100%; height: auto; }
       .histogram-card .tick text { font-size: 10px; fill: #667384; }
@@ -203,6 +206,12 @@
       .info-card p, .info-card li { color: #526070; font-size: 11px; line-height: 1.68; }
       .info-card p { margin-bottom: 0; }
       .info-card p + p { margin-top: 10px; }
+      .media-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 28px; align-items: start; margin-top: 18px; }
+      #media-models { min-width: 0; }
+      #media-models h3 { font-size: 13px; margin: 18px 0 8px; }
+      #media-models h3:first-child { margin-top: 0; }
+      .media-results { padding: 18px; border: 1px solid #dbe1e8; border-radius: 10px; background: #f8fafc; }
+      .media-results h3 { margin-bottom: 10px; font-size: 14px; }
       .source-list { margin: 0; padding-left: 18px; }
       .source-list li + li { margin-top: 8px; }
       footer { padding-top: 18px; color: #748092; font-size: 9px; }
@@ -243,6 +252,7 @@
         #map { height: 560px; }
       }
       @media (max-width: 680px) {
+        .media-layout { grid-template-columns: 1fr; }
         .page-shell { width: min(100% - 24px, 1240px); padding-top: 28px; }
         h1 { font-size: 39px; }
         .page-header { margin-bottom: 24px; }
@@ -260,13 +270,13 @@
     <main class="page-shell">
       <header class="page-header">
         <div>
-          <p class="eyebrow">California · 2024 research dashboard</p>
+          <p class="eyebrow">California, 2024 research dashboard</p>
           <h1>Geographic Accuracy of AI Homelessness Estimates</h1>
           <p class="intro">Fifty successful Gemini API runs are compared with January 2024 HUD PIT counts. Explore the geography and repeatability of errors across 44 California CoCs.</p>
         </div>
         <div class="research-question">
           <span class="section-label">Research question</span>
-          <p>How do the accuracy, direction, and consistency of AI homelessness estimates vary across California CoCs?</p>
+          <p>How do the accuracy and consistency of AI homelessness estimates vary across California CoCs?</p>
         </div>
       </header>
 
@@ -275,7 +285,7 @@
           <div class="map-card-header">
             <div>
               <h2 id="map-title">Explore California CoCs</h2>
-              <p>44 CoCs · 2024 HUD PIT data · ACS population · GDELT location mentions</p>
+              <p>44 CoCs, 2024 HUD PIT data, ACS population, GDELT location mentions</p>
             </div>
             <div class="map-control">
               <label for="metric-select">Color map by</label>
@@ -297,23 +307,30 @@
                 <span>—</span><span>—</span><span>—</span><span>—</span><span>—</span>
               </div>
             </div>
-            <p class="legend-note">Click a CoC for details. Use the selector to change the map measure. Percentage-error colors are capped at ±100%; numerical errors use a diverging scale. Standard deviation % and estimate range % are relative to actual PIT. Other scales use the minimum, quartiles, and maximum. Exact values are shown in the popup and table.</p>
+            <p class="legend-note">Click a CoC for details. Use the selector to change the map measure. Percentage-error colors are capped at ±100%, numerical errors use a diverging scale. Relative GMD (%) and relative estimate range (%) are relative to actual PIT. Other scales use the minimum, quartiles, and maximum. Exact values are shown in the popup and table.</p>
           </div>
         </section>
 
         <figure class="range-figure">
           <figcaption>Estimate ranges across 50 runs</figcaption>
-          <p class="model-note">Each line spans the minimum to maximum signed percentage error. Blue points mark mean-estimate error; the orange line marks the actual PIT (zero error). Each row is one CoC, grouped by category. These are observed ranges, not confidence intervals.</p>
+          <p class="model-note">Each line spans the minimum to maximum signed percentage error. Blue points mark mean-estimate error, the orange line marks the actual PIT (zero error). Each row is one CoC, grouped by category. These are observed ranges, not confidence intervals.</p>
           <svg id="range-chart" viewBox="0 0 760 1140" role="img" aria-label="Estimate ranges and mean errors for all 44 CoCs"></svg>
         </figure>
 
       </div>
 
+      <figure class="range-figure" style="margin-top:22px" aria-labelledby="gmd-chart-title">
+        <figcaption id="gmd-chart-title">Estimate variability by CoC — Relative GMD (%)</figcaption>
+        <p class="model-note">Ranked from highest to lowest relative GMD. Gini’s mean difference (GMD) is the average absolute difference between pairs of estimates, measured in people. Relative GMD divides this difference by actual PIT and multiplies by 100. Higher values indicate greater variability across the 50 runs. Hover over a bar for details.</p>
+        <div id="gmd-chart-legend" style="display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;margin:12px 0"></div>
+        <svg id="gmd-chart" viewBox="0 0 760 1140" role="img" aria-label="Ranked relative GMD for all 44 CoCs, colored by category" style="display:block;width:100%;height:auto"></svg>
+      </figure>
+
       <section class="table-card" aria-labelledby="coc-table-title">
         <div class="table-card-header">
           <div>
             <h2 id="coc-table-title">California CoC comparison</h2>
-            <p>Sort all 44 CoCs. All errors are means across 50 runs. Standard deviation % and estimate range % divide by actual PIT and multiply by 100. Standard deviation uses the sample denominator (49).</p>
+            <p>Sort all 44 CoCs. All errors are means across 50 runs. Gini’s mean difference (GMD) is the average absolute difference across the 1,225 distinct pairs of estimates for each CoC. Relative GMD (%) and relative estimate range (%) divide by actual PIT and multiply by 100.</p>
           </div>
           <span class="table-count">44 CoCs</span>
         </div>
@@ -333,11 +350,11 @@
                 <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="absoluteError">Mean absolute % error <span class="sort-indicator" aria-hidden="true"></span></button></th>
                 <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="overRate">Overestimation rate <span class="sort-indicator" aria-hidden="true"></span></button></th>
                 <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="underRate" title="">Underestimation rate <span class="sort-indicator" aria-hidden="true"></span></button></th>
-                <th class="numeric"><button class="sort-button" data-sort-key="range">Estimate range <span class="sort-indicator"></span></button></th>
+                <th class="numeric"><button class="sort-button" data-sort-key="range">Minimum–maximum estimate (people) <span class="sort-indicator"></span></button></th>
                 <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="rangeWidth" title="Maximum estimate − minimum estimate">Estimate range (people) <span class="sort-indicator" aria-hidden="true"></span></button></th>
-                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="rangePercent" title="(Maximum estimate − minimum estimate) ÷ actual PIT × 100">Estimate range % <span class="sort-indicator" aria-hidden="true"></span></button></th>
-                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="sd" title="Sample SD of the 50 estimates, in people">Standard deviation <span class="sort-indicator" aria-hidden="true"></span></button></th>
-                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="sdPercent" title="Sample SD ÷ actual PIT × 100">Standard deviation % <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="rangePercent" title="(Maximum estimate − minimum estimate) ÷ actual PIT × 100">Relative estimate range (%) <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="gmd" title="GMD of the 50 estimates, in people">GMD (people) <span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="gmdPercent" title="GMD ÷ actual PIT × 100">Relative GMD (%) <span class="sort-indicator" aria-hidden="true"></span></button></th>
                 <th scope="col" class="numeric"><button class="sort-button" type="button" data-sort-key="articles" title="">GDELT article count <span class="sort-indicator" aria-hidden="true"></span></button></th>
               </tr>
             </thead>
@@ -351,7 +368,7 @@
       <section class="table-card" aria-labelledby="category-table-title">
         <div class="table-card-header">
           <div><h2 id="category-table-title">California CoC comparison by category</h2>
-          <p>Click any column heading to sort. Each metric is the arithmetic mean across CoCs in that category, with equal weight per CoC. Population and PIT are average CoC counts, not category totals. Standard deviations and ranges are averaged within-CoC measures, not pooled variability. Estimate range endpoints are average minimum and maximum estimates.</p></div>
+          <p>Click any column heading to sort. Each metric is the arithmetic mean across CoCs in that category, with equal weight per CoC. Population and PIT are average CoC counts, not category totals. GMDs and ranges are averaged within-CoC measures, not pooled variability. Estimate range endpoints are average minimum and maximum estimates.</p></div>
           <span class="table-count">4 categories</span>
         </div>
         <div class="table-scroll" tabindex="0" aria-label="Category comparison table">
@@ -360,19 +377,33 @@
         </div>
       </section>
 
+      <section class="info-card" style="margin-top:22px" aria-labelledby="consistency-correlation-title">
+        <h2 id="consistency-correlation-title">Consistency and accuracy across CoCs</h2>
+        <p>ln(1 + relative GMD) versus ln(1 + mean absolute error %), using the 50 estimates for each CoC. Percentages enter the transformation as percentage points (5 for 5%), adding 1 retains zero values. All 44 CoCs are included.</p>
+        <p id="consistency-correlation-summary" aria-live="polite">Loading Pearson correlation…</p>
+        <div id="consistency-correlation-chart"></div>
+        <div id="consistency-correlation-legend" style="display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px" aria-label="Point categories and fitted line"></div>
+        <p>Both measures divide by the actual PIT count, which can contribute to their correlation. This is an association, not evidence that variability causes error.</p>
+      </section>
+
       <section class="histogram-section" aria-labelledby="histogram-title">
         <h2 id="histogram-title">Estimate distributions for every CoC</h2>
-        <p>Blue bars count responses within each estimate interval. Orange dashed line: actual PIT. Teal solid line: mean AI estimate. Each histogram contains 50 responses. Horizontal scales and bin widths vary by CoC; all vertical scales run from 0 to 50 responses. Actual PIT is included in the horizontal domain so persistent over/underestimation remains visible.</p>
+        <p>Blue bars count responses within each estimate interval. Orange dashed line: actual PIT. Teal solid line: mean AI estimate. Each histogram contains 50 responses. Horizontal scales and bin widths vary by CoC, all vertical scales run from 0 to 50 responses. Actual PIT is included in the horizontal domain so persistent over/underestimation remains visible.</p>
         <div id="histograms" aria-live="polite">Loading 44 histograms…</div>
       </section>
 
       <section class="info-card" style="margin-top:22px">
         <h2>Exploratory media analysis — 50-run mean errors</h2>
         <p>Does article count explain additional variation in AI error after accounting for population and actual homelessness? The outcome is each CoC’s mean absolute percentage error across its 50 responses.</p>
-        <div id="media-models" style="overflow-x:auto; margin:16px 0"></div>
-        <p id="media-result">Loading exploratory regression results…</p>
-        <p id="media-interpretation"></p>
-        <p><a href="data/processed/coc_media_regression_report_2024.md">Exploratory regression report</a> · <a href="data/processed/ai_estimate_runs_report_2024.md">50-run report</a></p>
+        <div class="media-layout">
+          <div id="media-models"></div>
+          <aside class="media-results" aria-label="Exploratory media analysis results">
+            <h3>Results</h3>
+            <p id="media-result">Loading exploratory regression results…</p>
+            <p id="media-interpretation"></p>
+            <p><a href="data/processed/coc_media_regression_report_2024.md">Exploratory regression report</a>, <a href="data/processed/ai_estimate_runs_report_2024.md">50-run report</a></p>
+          </aside>
+        </div>
       </section>
       <div class="details-grid">
         <section class="info-card" aria-labelledby="sources-title">
@@ -391,10 +422,50 @@
           <p>Repeated responses are not 2,200 independent geographic observations. Ranges describe the observed responses and are not confidence intervals. PIT is a one-night estimate with measurement limitations. The exploratory regression uses 50-run mean absolute percentage errors and cannot establish causation.</p>
         </section>
       </div>
-      <footer>California CoC homelessness and AI-estimation research · 2024</footer>
+      <footer>California CoC homelessness and AI-estimation research, 2024</footer>
     </main>
 
     <script>
+      const hoverTooltip=document.createElement("div");
+      hoverTooltip.className="instant-tooltip";hoverTooltip.id="instant-tooltip";
+      hoverTooltip.setAttribute("role","tooltip");hoverTooltip.hidden=true;
+      document.body.append(hoverTooltip);
+      let tooltipTarget=null;
+      function hideHoverTooltip() {
+        if(tooltipTarget) {
+          const ids=(tooltipTarget.getAttribute("aria-describedby")||"").split(/\s+/).filter(id=>id&&id!==hoverTooltip.id);
+          if(ids.length) tooltipTarget.setAttribute("aria-describedby",ids.join(" "));
+          else tooltipTarget.removeAttribute("aria-describedby");
+        }
+        tooltipTarget=null;hoverTooltip.hidden=true;
+      }
+      function showHoverTooltip(target,clientX,clientY) {
+        const owner=target instanceof Element?target.closest("[data-tooltip], [title]"):null;
+        const text=owner&&(owner.getAttribute("data-tooltip")||owner.getAttribute("title"));
+        if(!text) { hideHoverTooltip();return; }
+        if(owner.hasAttribute("title")) {
+          owner.setAttribute("data-tooltip",text);owner.removeAttribute("title");
+        }
+        if(tooltipTarget!==owner) {
+          hideHoverTooltip();tooltipTarget=owner;
+          const ids=owner.getAttribute("aria-describedby");
+          owner.setAttribute("aria-describedby",ids?`${ids} ${hoverTooltip.id}`:hoverTooltip.id);
+        }
+        hoverTooltip.textContent=text;hoverTooltip.hidden=false;
+        const bounds=hoverTooltip.getBoundingClientRect();
+        const left=Math.max(8,Math.min(clientX+14,window.innerWidth-bounds.width-8));
+        const top=clientY+bounds.height+20>window.innerHeight?Math.max(8,clientY-bounds.height-12):clientY+16;
+        hoverTooltip.style.left=`${left}px`;hoverTooltip.style.top=`${top}px`;
+      }
+      document.addEventListener("pointerover",event=>{if(event.pointerType!=="touch")showHoverTooltip(event.target,event.clientX,event.clientY);});
+      document.addEventListener("pointermove",event=>{if(event.pointerType!=="touch")showHoverTooltip(event.target,event.clientX,event.clientY);});
+      document.addEventListener("pointerout",event=>{if(tooltipTarget&&!tooltipTarget.contains(event.relatedTarget))hideHoverTooltip();});
+      document.addEventListener("focusin",event=>{const bounds=event.target.getBoundingClientRect();showHoverTooltip(event.target,bounds.left,bounds.bottom);});
+      document.addEventListener("focusout",hideHoverTooltip);
+      document.addEventListener("scroll",hideHoverTooltip,true);
+      document.addEventListener("keydown",event=>{if(event.key==="Escape")hideHoverTooltip();});
+      window.addEventListener("blur",hideHoverTooltip);
+
       const DATA_URL = "data/processed/ca_coc_organizations_boundaries_pit_hic_2024.geojson";
       const COVERAGE_DATA_URL = "data/processed/gdelt_gkg_article_counts_by_coc_2024.csv";
       const CALIFORNIA_BOUNDS = [[-124.65, 32.35], [-113.85, 42.15]];
@@ -407,18 +478,21 @@
       const legendLabels = document.getElementById("legend-labels");
       const cocTableBody = document.getElementById("coc-table-body");
       const tableSortButtons = [...document.querySelectorAll(".sort-button[data-sort-key]")];
-      const numberFormat = new Intl.NumberFormat("en-US");
+      const numberFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
+      const percentNumberFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
       const compactNumberFormat = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
       const CATEGORY_ORDER = ["Major City", "Urban", "Suburban", "Rural"];
+      const CATEGORY_COLORS = {"Major City":"#253494","Urban":"#2c7fb8","Suburban":"#168c83","Rural":"#bd8736"};
       let hoveredFeatureId = null;
       let cocData = null;
       let cocTableRows = [];
       let tableSort = { key: "name", direction: "asc" };
 
       function formatNumber(value) { return value == null ? "—" : numberFormat.format(value); }
+      function formatPercent(value) { return value == null ? "—" : `${percentNumberFormat.format(value)}%`; }
       function formatSignedPercent(value) {
         if (value == null) return "—";
-        return `${value > 0 ? "+" : ""}${value.toFixed(1)}%`;
+        return `${value > 0 ? "+" : ""}${formatPercent(value)}`;
       }
       function addPopupRow(list, label, value) {
         const term = document.createElement("dt");
@@ -442,8 +516,8 @@
         overRate: {type:"number", value:r=>r.overRate},
         articles: { type: "number", value: (row) => row.articles },
         absolutePeople: {type:"number",value:r=>r.absolutePeople},
-        sd: {type:"number",value:r=>r.sd},
-        sdPercent: {type:"number",value:r=>r.sdPercent},
+        gmd: {type:"number",value:r=>r.gmd},
+        gmdPercent: {type:"number",value:r=>r.gmdPercent},
         underRate: {type:"number",value:r=>r.underRate},
         homelessRate: {type:"number",value:r=>r.homelessRate},
         rangeWidth: {type:"number",value:r=>r.max-r.min},
@@ -461,9 +535,9 @@
       function renderCategoryTable() {
         const columns=[
           {key:"category",label:"Category"},{key:"count",label:"CoCs"},
-          ...METRIC_ORDER.slice(0,10).map(k=>({key:k,label:METRICS[k].label})),
-          {key:"range",label:"Estimate range"},
-          ...METRIC_ORDER.slice(10).map(k=>({key:k,label:METRICS[k].label}))
+          ...METRIC_ORDER.slice(0,10).map(k=>({key:k,label:k==="population"?"Mean population":k==="pitTotal"?"Mean actual PIT":METRICS[k].label})),
+          {key:"range",label:"Minimum–maximum estimate (people)"},
+          ...METRIC_ORDER.slice(10).map(k=>({key:k,label:k==="gmd"?"Mean GMD (people)":k==="gmdPercent"?"Mean relative GMD (%)":k==="rangePercent"?"Mean relative estimate range (%)":METRICS[k].label}))
         ];
         const head=document.getElementById("category-table-head");head.replaceChildren();
         for(const column of columns) {
@@ -529,19 +603,19 @@
           appendTableCell(rowElement, row.category);
           appendTableCell(rowElement, formatNumber(row.population), "numeric");
           appendTableCell(rowElement, formatNumber(row.pit), "numeric");
-          appendTableCell(rowElement, row.homelessRate.toFixed(1), "numeric");
+          appendTableCell(rowElement, formatNumber(row.homelessRate), "numeric");
           appendTableCell(rowElement, formatNumber(row.estimate), "numeric");
           appendTableCell(rowElement, formatNumber(row.signedPeople), "numeric");
           appendTableCell(rowElement, formatSignedPercent(row.signedError), "numeric");
           appendTableCell(rowElement, formatNumber(row.absolutePeople), "numeric");
-          appendTableCell(rowElement, `${row.absoluteError.toFixed(1)}%`, "numeric");
-          appendTableCell(rowElement, `${row.overRate.toFixed(0)}%`, "numeric");
-          appendTableCell(rowElement, `${row.underRate.toFixed(0)}%`, "numeric");
+          appendTableCell(rowElement, formatPercent(row.absoluteError), "numeric");
+          appendTableCell(rowElement, formatPercent(row.overRate), "numeric");
+          appendTableCell(rowElement, formatPercent(row.underRate), "numeric");
           appendTableCell(rowElement, `${formatNumber(row.min)}–${formatNumber(row.max)}`, "numeric");
           appendTableCell(rowElement, formatNumber(row.max-row.min), "numeric");
-          appendTableCell(rowElement, `${row.rangePercent.toFixed(1)}%`, "numeric");
-          appendTableCell(rowElement, formatNumber(row.sd), "numeric");
-          appendTableCell(rowElement, `${row.sdPercent.toFixed(1)}%`, "numeric");
+          appendTableCell(rowElement, formatPercent(row.rangePercent), "numeric");
+          appendTableCell(rowElement, formatNumber(row.gmd), "numeric");
+          appendTableCell(rowElement, formatPercent(row.gmdPercent), "numeric");
           appendTableCell(rowElement, formatNumber(row.articles), "numeric");
           fragment.append(rowElement);
         });
@@ -575,13 +649,13 @@
 
       const coalescedProperty = (name) => ["coalesce", ["get", name], 0];
       const METRICS = {
-        absoluteError: { label: "Mean absolute % error", expression: coalescedProperty("mean_absolute_percent_error"), value: (p) => p.mean_absolute_percent_error, format: (v) => `${v.toFixed(1)}%`, colorCap: 100 },
+        absoluteError: { label: "Mean absolute % error", expression: coalescedProperty("mean_absolute_percent_error"), value: (p) => p.mean_absolute_percent_error, format: (v) => formatPercent(v), colorCap: 100 },
         signedPeople:{label:"Mean signed error (people)",expression:coalescedProperty("mean_signed_error_people"),value:p=>p.mean_signed_error_people,format:v=>formatNumber(v),colors:SIGNED_ERROR_RAMP,diverging:true,colorCap:Infinity},
-        overRate:{label:"Overestimation rate",expression:coalescedProperty("overestimate_rate"),value:p=>p.overestimate_rate,format:v=>`${v.toFixed(0)}%`,colorCap:100},
-        rangePercent:{label:"Estimate range %",expression:coalescedProperty("range_percent"),value:p=>p.range_percent,format:v=>`${v.toFixed(1)}%`},
+        overRate:{label:"Overestimation rate",expression:coalescedProperty("overestimate_rate"),value:p=>p.overestimate_rate,format:v=>formatPercent(v),colorCap:100},
+        rangePercent:{label:"Relative estimate range (%)",expression:coalescedProperty("range_percent"),value:p=>p.range_percent,format:v=>formatPercent(v)},
         signedError: { label: "Mean signed % error", expression: coalescedProperty("mean_signed_percent_error"), value: (p) => p.mean_signed_percent_error, format: formatSignedPercent, colors: SIGNED_ERROR_RAMP, diverging: true, colorCap: 100 },
         articleMentions: { label: "GDELT article count", expression: coalescedProperty("gdelt_article_count_2024"), value: (p) => p.gdelt_article_count_2024, format: formatNumber },
-        homelessRate: { label: "Homeless per 10,000", expression: coalescedProperty("homeless_per_10000"), value: (p) => p.homeless_per_10000, format: (v) => v.toFixed(1) },
+        homelessRate: { label: "Homeless per 10,000", expression: coalescedProperty("homeless_per_10000"), value: (p) => p.homeless_per_10000, format: formatNumber },
         pitTotal: { label: "Actual PIT", expression: coalescedProperty("pit_total_homeless_persons"), value: (p) => p.pit_total_homeless_persons, format: formatNumber },
         population: { label: "Population", expression: coalescedProperty("total_population_2024"), value: (p) => p.total_population_2024, format: formatNumber },
         meanEstimate: { label: "Mean AI estimate", expression: coalescedProperty("mean_estimate"), value: (p) => p.mean_estimate, format: formatNumber },
@@ -589,12 +663,12 @@
 
       Object.assign(METRICS, {
         absolutePeople:{label:"Mean absolute error (people)",expression:coalescedProperty("mean_absolute_error_people"),value:p=>p.mean_absolute_error_people,format:formatNumber},
-        sd:{label:"Standard deviation",expression:coalescedProperty("estimate_sd"),value:p=>p.estimate_sd,format:formatNumber},
-        sdPercent:{label:"Standard deviation %",expression:coalescedProperty("normalized_sd_percent"),value:p=>p.normalized_sd_percent,format:v=>`${v.toFixed(1)}%`},
-        underRate:{label:"Underestimation rate",expression:coalescedProperty("underestimate_rate"),value:p=>p.underestimate_rate,format:v=>`${v.toFixed(0)}%`,colorCap:100},
+        gmd:{label:"GMD (people)",expression:coalescedProperty("estimate_gmd"),value:p=>p.estimate_gmd,format:formatNumber},
+        gmdPercent:{label:"Relative GMD (%)",expression:coalescedProperty("gmd_percent"),value:p=>p.gmd_percent,format:v=>formatPercent(v)},
+        underRate:{label:"Underestimation rate",expression:coalescedProperty("underestimate_rate"),value:p=>p.underestimate_rate,format:v=>formatPercent(v),colorCap:100},
         rangeWidth:{label:"Estimate range (people)",expression:coalescedProperty("estimate_range_people"),value:p=>p.estimate_range_people,format:formatNumber}
       });
-      const METRIC_ORDER = ["population","pitTotal","homelessRate","meanEstimate","signedPeople","signedError","absolutePeople","absoluteError","overRate","underRate","rangeWidth","rangePercent","sd","sdPercent","articleMentions"];
+      const METRIC_ORDER = ["population","pitTotal","homelessRate","meanEstimate","signedPeople","signedError","absolutePeople","absoluteError","overRate","underRate","rangeWidth","rangePercent","gmd","gmdPercent","articleMentions"];
       for(const key of METRIC_ORDER) {
         const metric=METRICS[key];
         const option=document.createElement("option");option.value=key;option.textContent=metric.label;metricSelect.append(option);
@@ -668,17 +742,86 @@
         title.className = "popup-title";
         title.textContent = properties.COCNAME;
         code.className = "popup-code";
-        code.textContent = `${properties.COCNUM} · ${properties.coc_category}`;
+        code.textContent = `${properties.COCNUM}, ${properties.coc_category}`;
         list.className = "popup-grid";
         for(const key of METRIC_ORDER) {
           const metric=METRICS[key];
           const value=metric.value(properties);
           addPopupRow(list,metric.label,Number.isFinite(value)?metric.format(value):"—");
         }
-        addPopupRow(list,"Estimate range",`${formatNumber(properties.min_estimate)}–${formatNumber(properties.max_estimate)}`);
+        addPopupRow(list,"Minimum–maximum estimate (people)",`${formatNumber(properties.min_estimate)}–${formatNumber(properties.max_estimate)}`);
         container.append(title, code, list);
         return container;
       }
+
+      function formatPValue(value) {
+        if(value===0) return "below numerical precision";
+        if(value>=0.001) return formatNumber(value);
+        const superscripts={"-":"⁻","0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹"};
+        const [mantissa,exponent]=value.toExponential(2).split("e");
+        return `${mantissa} × 10${String(Number(exponent)).split("").map(c=>superscripts[c]).join("")}`;
+      }
+
+      function correlationStatistics(rows) {
+        const points=rows.map(r=>({...r,x:Math.log1p(Number(r.gmd_percent)),y:Math.log1p(Number(r.mean_absolute_percent_error))}))
+          .filter(r=>Number.isFinite(r.x)&&Number.isFinite(r.y));
+        if(points.length<3) throw new Error("Insufficient correlation data");
+        const mx=d3.mean(points,d=>d.x),my=d3.mean(points,d=>d.y);
+        const xx=d3.sum(points,d=>(d.x-mx)**2),yy=d3.sum(points,d=>(d.y-my)**2);
+        const xy=d3.sum(points,d=>(d.x-mx)*(d.y-my));
+        if(xx===0||yy===0) throw new Error("Correlation requires variation in both measures");
+        const r=Math.max(-1,Math.min(1,xy/Math.sqrt(xx*yy))),df=points.length-2;
+        const t=Math.abs(r)*Math.sqrt(df/(1-r*r));
+        const p=2*jStat.studentt.cdf(-t,df);
+        return {points,r,p,slope:xy/xx,intercept:my-(xy/xx)*mx};
+      }
+
+      async function loadConsistencyCorrelation() {
+        const summary=document.getElementById("consistency-correlation-summary");
+        try {
+          const response=await fetch("data/processed/ai_estimate_coc_summary_2024.csv");
+          if(!response.ok) throw new Error("CoC summary unavailable");
+          const {points,r,p,slope,intercept}=correlationStatistics(d3.csvParse(await response.text(),d3.autoType));
+          const categoryColors=CATEGORY_COLORS;
+          const legend=document.getElementById("consistency-correlation-legend");
+          legend.replaceChildren();
+          for(const category of CATEGORY_ORDER) {
+            const item=document.createElement("span"),symbol=document.createElement("span");
+            symbol.textContent="● ";symbol.style.color=categoryColors[category];symbol.setAttribute("aria-hidden","true");
+            item.append(symbol,document.createTextNode(category));legend.append(item);
+          }
+          const lineItem=document.createElement("span"),lineSymbol=document.createElement("span");
+          lineSymbol.textContent="━ ";lineSymbol.style.color="#172033";lineSymbol.setAttribute("aria-hidden","true");
+          lineItem.append(lineSymbol,document.createTextNode("Overall linear best-fit line"));legend.append(lineItem);
+          const pLabel=formatPValue(p);
+          summary.textContent=`Log-transformed Pearson r = ${formatNumber(r)}, p = ${pLabel}, ${points.length} CoCs. CoCs with more variable estimates generally had higher percentage errors.`;
+          const width=900,height=440,margin={top:20,right:25,bottom:65,left:75};
+          const x=d3.scaleLinear().domain([0,d3.max(points,d=>d.x)*1.08]).nice().range([margin.left,width-margin.right]);
+          const y=d3.scaleLinear().domain([0,d3.max(points,d=>d.y)*1.08]).nice().range([height-margin.bottom,margin.top]);
+          const svg=d3.select("#consistency-correlation-chart").append("svg")
+            .attr("viewBox",`0 0 ${width} ${height}`).attr("role","img")
+            .attr("aria-label",`Log-transformed scatterplot of relative GMD against mean absolute percentage error for ${points.length} CoCs. Pearson correlation ${formatNumber(r)}, p = ${pLabel}.`)
+            .style("display","block").style("width","100%").style("height","auto");
+          svg.append("g").attr("transform",`translate(${margin.left},0)`)
+            .call(d3.axisLeft(y).ticks(6).tickSize(-(width-margin.left-margin.right)).tickFormat(""))
+            .call(g=>g.select(".domain").remove()).call(g=>g.selectAll("line").attr("stroke","#e5eaf0"));
+          svg.append("g").attr("transform",`translate(0,${height-margin.bottom})`).call(d3.axisBottom(x).ticks(7).tickFormat(formatNumber));
+          svg.append("g").attr("transform",`translate(${margin.left},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(formatNumber));
+          svg.append("text").attr("x",(margin.left+width-margin.right)/2).attr("y",height-15).attr("text-anchor","middle").attr("fill","#334155").text("ln(1 + relative GMD)");
+          svg.append("text").attr("transform","rotate(-90)").attr("x",-(margin.top+height-margin.bottom)/2).attr("y",18).attr("text-anchor","middle").attr("fill","#334155").text("ln(1 + mean absolute error %)");
+          const endpoints=d3.extent(points,d=>d.x);
+          svg.append("line").attr("x1",x(endpoints[0])).attr("x2",x(endpoints[1]))
+            .attr("y1",y(intercept+slope*endpoints[0])).attr("y2",y(intercept+slope*endpoints[1]))
+            .attr("stroke","#172033").attr("stroke-width",2.5);
+          svg.selectAll(".correlation-point").data(points).join("circle").attr("class","correlation-point")
+            .attr("cx",d=>x(d.x)).attr("cy",d=>y(d.y)).attr("r",5).attr("fill",d=>categoryColors[d.coc_category]).attr("fill-opacity",0.8)
+            .attr("stroke","white").attr("stroke-width",1)
+            .attr("data-tooltip",d=>`${d.coc_number}, ${d.coc_name}\nCategory: ${d.coc_category}\nRelative GMD: ${formatPercent(Number(d.gmd_percent))}\nMean absolute error: ${formatPercent(Number(d.mean_absolute_percent_error))}`);
+        } catch(error) {
+          summary.textContent="Correlation chart unavailable, check the CoC summary data.";
+        }
+      }
+      loadConsistencyCorrelation();
 
       async function loadHistograms() {
         const container=document.getElementById("histograms");
@@ -702,10 +845,10 @@
               const values=responses.map(r=>r.estimated_pit_total_2024);
               if(values.some(v=>!Number.isFinite(v))) throw new Error("Invalid estimate");
               const figure=document.createElement("figure");figure.className="histogram-card";
-              const caption=document.createElement("figcaption");caption.textContent=`${row.coc_number} · ${row.coc_name}`;
-              const note=document.createElement("p");note.textContent=`Actual PIT: ${formatNumber(row.pit_total_2024)} · Mean estimate: ${formatNumber(row.mean_estimate)}`;
+              const caption=document.createElement("figcaption");caption.textContent=`${row.coc_number}, ${row.coc_name}`;
+              const note=document.createElement("p");note.textContent=`Actual PIT: ${formatNumber(row.pit_total_2024)}, Mean estimate: ${formatNumber(row.mean_estimate)}`;
               figure.append(caption,note);grid.append(figure);
-              const svg=d3.select(figure).append("svg").attr("viewBox","0 0 380 245").attr("role","img").attr("aria-label",`Histogram of 50 AI estimates for ${row.coc_name}; actual PIT ${row.pit_total_2024}`);
+              const svg=d3.select(figure).append("svg").attr("viewBox","0 0 380 245").attr("role","img").attr("aria-label",`Histogram of 50 AI estimates for ${row.coc_name}, actual PIT ${row.pit_total_2024}`);
               const lo=Math.min(d3.min(values),row.pit_total_2024),hi=Math.max(d3.max(values),row.pit_total_2024);
               const padding=Math.max((hi-lo)*0.06,1);
               const x=d3.scaleLinear().domain([Math.max(0,lo-padding),hi+padding]).range([42,366]);
@@ -716,9 +859,9 @@
               svg.append("g").selectAll("rect").data(bins).join("rect")
                 .attr("x",b=>x(b.x0)+0.5).attr("width",b=>Math.max(0,x(b.x1)-x(b.x0)-1))
                 .attr("y",b=>y(b.length)).attr("height",b=>y(0)-y(b.length)).attr("fill","#2c7fb8")
-                .append("title").text((b,i)=>`${formatNumber(b.x0)} to ${formatNumber(b.x1)}${i===bins.length-1?' (inclusive)':' (upper bound excluded)'}: ${b.length} responses`);
+                .attr("data-tooltip",(b,i)=>`${formatNumber(b.x0)} to ${formatNumber(b.x1)}${i===bins.length-1?' (inclusive)':' (upper bound excluded)'}: ${b.length} responses`);
               for(const [value,color,dash,label] of [[row.mean_estimate,"#168c83",null,"Mean estimate"],[row.pit_total_2024,"#ea580c","5 3","Actual PIT"]]) {
-                svg.append("line").attr("x1",x(value)).attr("x2",x(value)).attr("y1",15).attr("y2",197).attr("stroke",color).attr("stroke-width",2).attr("stroke-dasharray",dash).append("title").text(`${label}: ${formatNumber(value)}`);
+                svg.append("line").attr("x1",x(value)).attr("x2",x(value)).attr("y1",15).attr("y2",197).attr("stroke",color).attr("stroke-width",2).attr("stroke-dasharray",dash).attr("data-tooltip",`${label}: ${formatNumber(value)}`);
               }
               svg.append("g").attr("transform","translate(0,197)").call(d3.axisBottom(x).ticks(4).tickFormat(d3.format("~s")));
               svg.append("g").attr("transform","translate(42,0)").call(d3.axisLeft(y).tickValues([0,10,20,30,40,50]));
@@ -732,49 +875,111 @@
 
       async function loadMediaResult() {
         try {
-          const [response, modelsResponse]=await Promise.all([
+          const [response, modelsResponse, dataResponse]=await Promise.all([
             fetch("data/processed/coc_media_regression_tests_2024.csv"),
-            fetch("data/processed/coc_media_regression_model_metrics_2024.csv")
+            fetch("data/processed/coc_media_regression_model_metrics_2024.csv"),
+            fetch("data/processed/coc_media_regression_data_2024.csv")
           ]);
-          if(!response.ok || !modelsResponse.ok) throw new Error("Media results unavailable");
+          if(!response.ok || !modelsResponse.ok || !dataResponse.ok) throw new Error("Media results unavailable");
           const r=d3.csvParse(await response.text(),d3.autoType)[0];
           const models=d3.csvParse(await modelsResponse.text(),d3.autoType);
+          const rows=d3.csvParse(await dataResponse.text(),d3.autoType);
+          const predictions=models.map(model=>rows.map(row=>({row,actual:row.log1p_absolute_percent_error,
+            predicted:model.intercept+model.log_population_coefficient*row.log_population
+              +model.log_pit_total_coefficient*row.log_pit_total
+              +model.log1p_article_count_coefficient*row.log1p_article_count})));
+          const limits=d3.extent(predictions.flatMap(points=>points.flatMap(d=>[d.actual,d.predicted])));
+          const padding=(limits[1]-limits[0])*0.06;
+          const domain=[limits[0]-padding,limits[1]+padding];
           const container=document.getElementById("media-models");
           container.replaceChildren();
-          const term=(coefficient,label)=>` ${coefficient<0 ? '−' : '+'} ${Math.abs(coefficient).toFixed(3)} ${label}`;
-          for(const model of models) {
+          const term=(coefficient,label)=>` ${coefficient<0 ? '−' : '+'} ${formatNumber(Math.abs(coefficient))} ${label}`;
+          for(const [index,model] of models.entries()) {
             const full=model.model==="population_pit_and_articles";
             const heading=document.createElement("h3");
-            heading.textContent=`${full ? 'Population, PIT and articles' : 'Population and PIT'} · R² = ${model.r_squared.toFixed(4)}`;
+            heading.textContent=`${full ? 'Population, PIT and articles' : 'Population and PIT'}, R² = ${formatNumber(model.r_squared)}`;
             const equation=document.createElement("p");
             equation.style.fontFamily="ui-monospace, monospace";
             equation.style.lineHeight="1.8";
-            equation.textContent=`log(1 + Mean Absolute % Error) = ${model.intercept.toFixed(3)}`
-              +term(model.log_population_coefficient,"log(population)")
-              +term(model.log_pit_total_coefficient,"log(actual PIT)")
-              +(full ? term(model.log1p_article_count_coefficient,"log(1 + article count)") : '');
+            equation.textContent=`ln(1 + Mean Absolute % Error) = ${formatNumber(model.intercept)}`
+              +term(model.log_population_coefficient,"ln(population)")
+              +term(model.log_pit_total_coefficient,"ln(actual PIT)")
+              +(full ? term(model.log1p_article_count_coefficient,"ln(1 + article count)") : '');
             container.append(heading,equation);
+            drawMediaModelChart(container,predictions[index],domain);
           }
-          document.getElementById("media-result").textContent=`ΔR² = ${r.change_in_r_squared.toFixed(4)} · F(${r.numerator_df},${r.denominator_df}) = ${r.f_statistic.toFixed(3)} · p = ${r.p_value.toFixed(3)}. Adding articles explains an additional ${(100*r.change_in_r_squared).toFixed(2)} percentage points of the variation in log-transformed mean error.`;
+          document.getElementById("media-result").textContent=`ΔR² = ${formatNumber(r.change_in_r_squared)}, F(${r.numerator_df},${r.denominator_df}) = ${formatNumber(r.f_statistic)}, p = ${formatPValue(r.p_value)}. Adding articles explains an additional ${percentNumberFormat.format(100*r.change_in_r_squared)} percentage points of the variation in log-transformed mean error.`;
           document.getElementById("media-interpretation").textContent=r.p_value>=0.05
             ? 'The news indicator adds limited explanatory value and provides no convincing evidence of an additional linear association. This does not prove zero association or establish causation.'
             : 'The added article measure is associated with error under this model’s assumptions. This exploratory association does not establish causation.';
-        } catch(error) { document.getElementById("media-result").textContent="Exploratory results unavailable; see the linked report."; }
+        } catch(error) { document.getElementById("media-result").textContent="Exploratory results unavailable, see the linked report."; }
       }
       loadMediaResult();
+      function drawMediaModelChart(container,points,domain) {
+        const width=900,height=410,margin={top:18,right:25,bottom:60,left:75};
+        const x=d3.scaleLinear().domain(domain).nice().range([margin.left,width-margin.right]);
+        const y=d3.scaleLinear().domain(x.domain()).range([height-margin.bottom,margin.top]);
+        const svg=d3.select(container).append("svg").attr("viewBox",`0 0 ${width} ${height}`)
+          .attr("role","img").attr("aria-label","Observed versus model-predicted log-transformed mean absolute percentage error for 44 CoCs")
+          .style("display","block").style("width","100%").style("height","auto");
+        svg.append("g").attr("transform",`translate(${margin.left},0)`)
+          .call(d3.axisLeft(y).ticks(6).tickSize(-(width-margin.left-margin.right)).tickFormat(""))
+          .call(g=>g.select(".domain").remove()).call(g=>g.selectAll("line").attr("stroke","#e5eaf0"));
+        svg.append("g").attr("transform",`translate(0,${height-margin.bottom})`).call(d3.axisBottom(x).ticks(7).tickFormat(formatNumber));
+        svg.append("g").attr("transform",`translate(${margin.left},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(formatNumber));
+        const extent=x.domain();
+        svg.append("line").attr("x1",x(extent[0])).attr("x2",x(extent[1]))
+          .attr("y1",y(extent[0])).attr("y2",y(extent[1])).attr("stroke","#168c83").attr("stroke-width",2).attr("stroke-dasharray","6 4");
+        svg.selectAll("circle").data(points).join("circle").attr("cx",d=>x(d.actual)).attr("cy",d=>y(d.predicted))
+          .attr("r",5).attr("fill","#2563eb").attr("fill-opacity",0.75).attr("stroke","white")
+          .attr("data-tooltip",d=>`${d.row.coc_number}, ${d.row.coc_name}\nObserved ln(1 + mean absolute error %): ${formatNumber(d.actual)}\nPredicted ln(1 + mean absolute error %): ${formatNumber(d.predicted)}`);
+        svg.append("text").attr("x",(margin.left+width-margin.right)/2).attr("y",height-15).attr("text-anchor","middle").attr("fill","#334155").text("Observed ln(1 + mean absolute error %)");
+        svg.append("text").attr("transform","rotate(-90)").attr("x",-(margin.top+height-margin.bottom)/2).attr("y",18).attr("text-anchor","middle").attr("fill","#334155").text("Predicted ln(1 + mean absolute error %)");
+        const legend=document.createElement("p");legend.style.fontSize="12px";
+        legend.innerHTML='<span style="color:#2563eb">●</span> One CoC &nbsp; <svg aria-hidden="true" width="48" height="14" viewBox="0 0 48 14" style="display:inline-block;vertical-align:middle;margin:0 5px"><line x1="0" y1="7" x2="48" y2="7" stroke="#168c83" stroke-width="3" stroke-dasharray="6 4" /></svg> Exact agreement (predicted = observed)';
+        container.append(legend);
+      }
+      function drawGmdChart(rows) {
+        const ordered=[...rows].sort((a,b)=>b.gmd_percent-a.gmd_percent||a.coc_number.localeCompare(b.coc_number));
+        const width=760,height=1140,margin={top:62,right:75,bottom:18,left:100};
+        const x=d3.scaleLinear().domain([0,d3.max(ordered,r=>r.gmd_percent)||1]).nice().range([margin.left,width-margin.right]);
+        const y=d3.scaleBand().domain(ordered.map(r=>r.coc_number)).range([margin.top,height-margin.bottom]).padding(0.24);
+        const svg=d3.select("#gmd-chart");svg.selectAll("*").remove();
+        svg.append("text").attr("x",margin.left).attr("y",17).attr("fill","#334155").attr("font-size",12).text("Relative GMD (% of actual PIT)");
+        svg.append("g").attr("transform",`translate(0,${margin.top-8})`).call(d3.axisTop(x).ticks(6).tickFormat(formatPercent));
+        svg.append("g").attr("transform",`translate(0,${margin.top-8})`)
+          .call(d3.axisTop(x).ticks(6).tickSize(-(height-margin.bottom-margin.top+8)).tickFormat(""))
+          .call(g=>g.select(".domain").remove()).call(g=>g.selectAll("line").attr("stroke","#e5eaf0"));
+        const legend=document.getElementById("gmd-chart-legend");legend.replaceChildren();
+        for(const category of CATEGORY_ORDER) {
+          const item=document.createElement("span"),symbol=document.createElement("span");
+          symbol.textContent="● ";symbol.style.color=CATEGORY_COLORS[category];symbol.setAttribute("aria-hidden","true");
+          item.append(symbol,document.createTextNode(category));legend.append(item);
+        }
+        for(const row of ordered) {
+          const cy=y(row.coc_number)+y.bandwidth()/2;
+          const details=`${row.coc_number}, ${row.coc_name}\nCategory: ${row.coc_category}\nGMD: ${formatNumber(row.estimate_gmd)} people\nRelative GMD (%): ${formatPercent(row.gmd_percent)}`;
+          svg.append("text").attr("x",margin.left-10).attr("y",cy+4).attr("text-anchor","end").attr("font-size",11).attr("fill","#334155").text(row.coc_number).attr("data-tooltip",details);
+          svg.append("rect").attr("x",x(0)).attr("y",y(row.coc_number)).attr("width",x(row.gmd_percent)-x(0))
+            .attr("height",y.bandwidth()).attr("rx",2).attr("fill",CATEGORY_COLORS[row.coc_category]).attr("data-tooltip",details);
+          if(row.gmd_percent===0) svg.append("circle").attr("cx",x(0)).attr("cy",cy).attr("r",3).attr("fill",CATEGORY_COLORS[row.coc_category]).attr("data-tooltip",details);
+          svg.append("text").attr("x",x(row.gmd_percent)+7).attr("y",cy+4).attr("font-size",11).attr("fill","#334155").text(formatPercent(row.gmd_percent)).attr("data-tooltip",details);
+        }
+      }
+
       function drawRunChart(rows) {
         const ordered=[...rows].sort((a,b)=>CATEGORY_ORDER.indexOf(a.coc_category)-CATEGORY_ORDER.indexOf(b.coc_category)||a.coc_number.localeCompare(b.coc_number));
         const svg=d3.select("#range-chart"), left=185,right=740,top=40,bottom=1100;
         const error=(r,v)=>100*(v-r.pit_total_2024)/r.pit_total_2024;
         const x=d3.scaleLinear().domain(d3.extent(rows.flatMap(r=>[error(r,r.min_estimate),error(r,r.max_estimate),0]))).nice().range([left,right]);
         const y=d3.scaleBand().domain(ordered.map(r=>r.coc_number)).range([top,bottom]);
-        svg.append("g").attr("transform",`translate(0,${top-15})`).call(d3.axisTop(x).ticks(6).tickFormat(v=>`${v}%`));
+        svg.append("g").attr("transform",`translate(0,${top-15})`).call(d3.axisTop(x).ticks(6).tickFormat(formatPercent));
         svg.append("line").attr("x1",x(0)).attr("x2",x(0)).attr("y1",top).attr("y2",bottom).attr("stroke","#ea580c").attr("stroke-width",2);
         for(const r of ordered) {
           const cy=y(r.coc_number)+y.bandwidth()/2;
-          svg.append("text").attr("x",left-10).attr("y",cy+4).attr("text-anchor","end").attr("font-size",11).text(`${r.coc_number} · ${r.coc_category}`);
+          svg.append("text").attr("x",left-10).attr("y",cy+4).attr("text-anchor","end").attr("font-size",11).text(`${r.coc_number}, ${r.coc_category}`);
           svg.append("line").attr("x1",x(error(r,r.min_estimate))).attr("x2",x(error(r,r.max_estimate))).attr("y1",cy).attr("y2",cy).attr("stroke","#2c7fb8").attr("stroke-width",3);
-          svg.append("circle").attr("cx",x(r.mean_signed_percent_error)).attr("cy",cy).attr("r",4).attr("fill","#253494").append("title").text(`${r.coc_name}: mean ${r.mean_estimate}, range ${r.min_estimate}–${r.max_estimate}`);
+          svg.append("circle").attr("cx",x(r.mean_signed_percent_error)).attr("cy",cy).attr("r",4).attr("fill","#253494").attr("data-tooltip",`${r.coc_name}: mean ${formatNumber(r.mean_estimate)}, range ${formatNumber(r.min_estimate)}–${formatNumber(r.max_estimate)}`);
         }
 
       }
@@ -786,8 +991,9 @@
           const runRows=d3.csvParse(await runResponse.text(),d3.autoType);
           if(runRows.length!==44 || runRows.some(r=>r.run_count!==50)) throw new Error("Expected 50 runs for 44 CoCs");
           drawRunChart(runRows);
+          drawGmdChart(runRows);
           const runsByCoc=new Map(runRows.map(r=>[r.coc_number,r]));
-          if (!boundaryResponse.ok || !coverageResponse.ok) throw new Error(`Data request failed (${boundaryResponse.status}; ${coverageResponse.status})`);
+          if (!boundaryResponse.ok || !coverageResponse.ok) throw new Error(`Data request failed (${boundaryResponse.status}, ${coverageResponse.status})`);
           const data = await boundaryResponse.json();
           const coverageRows = d3.csvParse(await coverageResponse.text());
           if (data.type !== "FeatureCollection" || data.features.length !== 44 || coverageRows.length !== 44) throw new Error("Expected data for 44 California CoCs");
@@ -819,7 +1025,7 @@
             rangePercent:Number(properties.range_percent),
             articles: Number(properties.gdelt_article_count_2024),
             absolutePeople:Number(properties.mean_absolute_error_people),
-            sd:Number(properties.estimate_sd), sdPercent:Number(properties.normalized_sd_percent),
+            gmd:Number(properties.estimate_gmd), gmdPercent:Number(properties.gmd_percent),
             underRate:Number(properties.underestimate_rate), homelessRate:Number(properties.homeless_per_10000),
           }));
           renderCocTable();

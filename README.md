@@ -2,7 +2,7 @@
 
 [View the dashboard](https://jonathan-li84.github.io/ai-homelessness-bias/)
 
-How do the accuracy, direction, and consistency of AI homelessness estimates vary across California CoCs?
+How do the accuracy and consistency of AI homelessness estimates vary across California CoCs?
 
 The primary analysis compares the first 50 successful Gemini API runs (2,200 estimates) with January 2024 HUD PIT counts for 44 CoCs. The model is identified as gemini-3.8-flash in the first batch quota log; consistent settings across batches are assumed. Retained runs comprise 17 from batch 1, 19 from batch 2 and requests 1–14 from batch 3. Four failed requests and the final six successful requests were excluded. Exact API prompt, settings and dates were not supplied.
 
@@ -11,21 +11,23 @@ The primary analysis compares the first 50 successful Gemini API runs (2,200 est
 - `data/raw/ai_estimate_runs_2024.csv`: retained estimates with model ID, sequential run number, original source batch/request number and CoC.
 - `data/processed/ca_coc_summary_2024.csv`: baseline names, categories, population, actual PIT and homelessness rate; no AI estimates.
 - `ai_estimate_run_errors_2024.csv`: signed/absolute errors for every response.
-- `ai_estimate_coc_summary_2024.csv`: mean estimates, observed range, sample SD, mean signed/absolute errors and over/underestimation rates.
+- `ai_estimate_coc_summary_2024.csv`: mean estimates, observed range, GMD, mean signed/absolute errors and over/underestimation rates.
 - `ai_estimate_category_summary_2024.csv`: equal-CoC-weighted geographic summaries.
 - `ai_estimate_runs_metadata.json` and `ai_estimate_runs_report_2024.md`: provenance, methods and results.
 - `ca_coc_organizations_boundaries_pit_hic_2024.geojson`: HUD boundaries, PIT/HIC/performance data and population, without embedded AI estimates.
 
 Files without a directory prefix above are in `data/processed`.
-Signed error is estimate minus actual PIT. Percentage error divides by actual PIT and multiplies by 100. Absolute error removes the sign. Signed errors and absolute errors are averaged across runs separately, so overestimates and underestimates do not cancel in the absolute measure. SD uses n−1. Ranges are observed responses, not confidence intervals. Repeated runs are not additional independent geographic observations.
+Signed error is estimate minus actual PIT. Percentage error divides by actual PIT and multiplies by 100. Absolute error removes the sign. Signed errors and absolute errors are averaged across runs separately, so overestimates and underestimates do not cancel in the absolute measure. Gini’s mean difference (GMD) averages absolute differences over the 1,225 distinct unordered pairs among each CoC’s 50 estimates. It is zero only when all estimates are identical. Relative GMD (%) divides GMD by actual PIT and multiplies by 100. Ranges are observed responses, not confidence intervals. Repeated runs are not additional independent geographic observations.
 
 ## Dashboard
 
-The map joins repeated-run results to boundaries by CoC ID. Map selectors, legends, popups and the sortable table share metric names: mean signed/absolute error in people and percentages, sample standard deviation, standard deviation %, estimate range in people and %, over/underestimation rates, mean estimate, actual PIT, population, homelessness rate and GDELT counts. The table also shows minimum–maximum estimates. Standard deviation % is sample SD divided by actual PIT times 100; estimate range % is (maximum−minimum) divided by actual PIT times 100. Category summaries include the mean CoC SD in people and mean normalized SD; these are averages of within-CoC variability, not pooled standard deviations. The dashboard also shows all 44 estimate ranges.
+The map joins repeated-run results to boundaries by CoC ID. Map selectors, legends, popups and the sortable table share metric names: mean signed/absolute error in people and percentages, GMD, Relative GMD (%), estimate range in people and %, over/underestimation rates, mean estimate, actual PIT, population, homelessness rate and GDELT counts. The table also shows minimum–maximum estimates. Relative GMD (%) is GMD divided by actual PIT times 100; relative estimate range (%) is (maximum−minimum) divided by actual PIT times 100. Category summaries include the mean CoC GMD in people and mean relative GMD; these are averages of within-CoC variability, not pooled GMDs. The dashboard also shows all 44 estimate ranges.
 
-The CoC table, map selector and popup order is counts/context, mean estimates, signed errors, absolute errors, over/underestimation rates, ranges, standard deviations, then media counts. A second sortable table shows all these metrics by category, plus CoC counts, defaulting to Major City → Urban → Suburban → Rural order. Every header sorts numerically or by category order; clicking again reverses the direction. Estimate range sorts by its width. Category metrics are equal-CoC-weighted means: population/PIT are average counts, not totals; SDs and ranges are averaged within-CoC measures. Range endpoints are average minima and maxima. The saved category CSV uses the same grouping.
+The CoC table, map selector and popup order is counts/context, mean estimates, signed errors, absolute errors, over/underestimation rates, ranges, GMDs, then media counts. A second sortable table shows all these metrics by category, plus CoC counts, defaulting to Major City → Urban → Suburban → Rural order. Every header sorts numerically or by category order; clicking again reverses the direction. Estimate range sorts by its width. Category metrics are equal-CoC-weighted means: population/PIT are average counts, not totals; GMDs and ranges are averaged within-CoC measures. Range endpoints are average minima and maxima. The saved category CSV uses the same grouping.
 
 There is also a histogram for every CoC, grouped in geographic category order. Each uses all 50 response estimates, 30 equal-width bins, a shared vertical scale of 0–50 responses, and a CoC-specific horizontal scale that includes actual PIT. Reference lines mark actual PIT and the mean estimate. Hovering bars shows interval counts. Different horizontal scales/bin widths should be considered when comparing histograms.
+
+The consistency–accuracy scatterplot uses ln(1 + relative GMD) and ln(1 + mean absolute percentage error), with percentages entered as percentage points (5 for 5%). It retains all 44 CoCs, colors points by category, and shows an overall fitted line, Pearson r and p-value. Current r = 0.807816 and p = 3.41669 × 10⁻¹¹. Both percentages share the actual PIT denominator, which can contribute to the association. Results are also saved in the run metadata and report. The media regression remains a separate analysis with an unchanged outcome.
 
 It loads the CoC GeoJSON, repeated-run CoC summary and per-run errors, GDELT count CSV, regression-test CSV and regression-model-metrics CSV. Run `python3 -m http.server` and open <http://localhost:8000/>; opening HTML directly blocks data requests.
 
@@ -62,6 +64,14 @@ does not guarantee compliance with API quotas; validate returned CSVs before
 adding them to the experiment. Credentials belong outside the repository.
 
 ## Rebuild data
+
+Paper figures are exported to `figures/` as editable SVG files and high-resolution PNGs:
+
+```bash
+.venv/bin/python scripts/export_paper_figures.py
+```
+
+PNG export requires `rsvg-convert` on PATH; without it, the script still exports SVGs. The four figures are the signed-percentage-error map, ranked relative GMD chart, ln-transformed consistency–accuracy scatterplot, and exploratory media-model comparison. Figure 4 stacks the models without and with article count, with identical axis limits, fitted equations, R² values and the incremental F-test result. They use the current processed data and dashboard colors. The map uses projected CoC boundaries without external basemap tiles.
 
 ```bash
 python3 -m venv .venv
