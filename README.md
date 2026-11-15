@@ -4,11 +4,11 @@
 
 How do the accuracy and consistency of AI homelessness estimates vary across California CoCs?
 
-The primary analysis compares the first 50 successful Gemini API runs (2,200 estimates) with January 2024 HUD PIT counts for 44 CoCs. The model is identified as gemini-3.8-flash in the first batch quota log; consistent settings across batches are assumed. Retained runs comprise 17 from batch 1, 19 from batch 2 and requests 1–14 from batch 3. Four failed requests and the final six successful requests were excluded. Exact API prompt, settings and dates were not supplied.
+The primary analysis compares 50 Gemini API requests (2,200 estimates) with January 2024 HUD PIT counts for 44 CoCs. The estimates were generated on October 10, 2026, using gemini-3.8-flash. Each request used the same fixed prompt without previous conversation history, a custom system instruction, or external tools. Temperature 1.0 and thinking level medium are the documented model defaults; generation settings were not explicitly set in the collection script. The full prompt and CoC list are saved in scripts/collect_gemini_estimates.py.
 
 ## Current data
 
-- `data/raw/ai_estimate_runs_2024.csv`: retained estimates with model ID, sequential run number, original source batch/request number and CoC.
+- `data/raw/ai_estimate_runs_2024.csv`: estimates from 50 requests, with model ID, request number and CoC.
 - `data/processed/ca_coc_summary_2024.csv`: baseline names, population, actual PIT and homelessness rate; no AI estimates.
 - `ai_estimate_run_errors_2024.csv`: signed/absolute errors for every response.
 - `ai_estimate_coc_summary_2024.csv`: mean estimates, observed range, GMD, mean signed/absolute errors and over/underestimation rates.
@@ -32,7 +32,7 @@ The map joins repeated-run results to boundaries by CoC ID. Map selectors, legen
 
 The CoC table, map selector and popup order is counts/context, mean estimates, signed errors, absolute errors, over/underestimation rates, ranges, GMDs, then media counts. Table headers sort numerically, clicking again reverses the direction. Estimate range sorts by its width. CoCs default to numeric CoC order.
 
-The sorted error heatmap shows one row per CoC in CoC-number order, with 50 tiles sorted independently by signed percentage error from lowest to highest (ties use original run order). Tile positions indicate rank, not error magnitude or chronology. Blue marks underestimates, magenta overestimates, and pale yellow exact matches, using the same five-color palette as the signed-error map. The two color ramps use square-root scaling capped at −100% and +100%, so small errors remain visible and matching magnitudes receive matching intensity. Errors beyond these limits receive the darkest color, with exact values retained in tooltips. Legends label the color scale. Actual PIT, mean estimate, and under/exact/over rates appear beside each row. Instant hover and keyboard-focus tooltips show the original run, estimate, signed percentage error, and error in people. All 50 responses are retained, including duplicates and outliers. The table scrolls within its frame, with sticky CoC labels and column headers. Searching and linked profile navigation filter the rows without changing colors or recalculating results.
+The sorted error heatmap shows one row per CoC in CoC-number order, with 50 tiles sorted independently by signed percentage error from lowest to highest (ties use original run order). Tile positions indicate rank, not error magnitude or chronology. Blue marks underestimates, magenta overestimates, and pale yellow exact matches, using the same five-color palette as the signed-error map. The two color ramps use square-root scaling capped at −100% and +100%, so small errors remain visible and matching magnitudes receive matching intensity. Errors beyond these limits receive the darkest color, with exact values retained in tooltips. Legends label the color scale. Actual PIT, mean estimate, and under/exact/over rates appear beside each row. Instant hover and keyboard-focus tooltips show the original run, estimate, signed percentage error, and error in people. All 50 responses are included, including duplicates and outliers. The table scrolls within its frame, with sticky CoC labels and column headers. Searching and linked profile navigation filter the rows without changing colors or recalculating results.
 
 The consistency–accuracy scatterplot uses ln(1 + relative GMD) and ln(1 + mean absolute percentage error), with percentages entered as percentage points (5 for 5%). It retains all 44 CoCs, uses blue points and shows an overall fitted line, Pearson r and p-value. Current r = 0.807816 and p = 3.41669 × 10⁻¹¹. Both percentages share the actual PIT denominator, which can contribute to the association. Results are also saved in the run metadata and report. The media regression remains a separate analysis with an unchanged outcome.
 
@@ -68,7 +68,7 @@ the environment. After installing requirements and setting that variable locally
 
 The model defaults to `gemini-3.8-flash` and can be changed with `--model`.
 Results and errors print to stdout; the script does not overwrite the analysis
-dataset. Fifty attempts may yield fewer than fifty usable responses. The delay
+dataset. The delay
 does not guarantee compliance with API quotas; validate returned CSVs before
 adding them to the experiment. Credentials belong outside the repository.
 

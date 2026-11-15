@@ -462,8 +462,8 @@
         <div class="profile-actions"><button class="action-button" type="button" data-profile-view="geography">Locate on map</button><button class="action-button" type="button" data-profile-view="comparison">View table row</button><button class="action-button" type="button" data-profile-view="distributions">View 50-run distribution</button></div>
       </aside>
       <section data-panel="overview" aria-label="Study overview">
-        <div class="overview-question"><span class="section-label">Research question</span><h2>How do the accuracy and consistency of AI homelessness estimates vary across California CoCs?</h2><p>Fifty successful Gemini API runs are compared with January 2024 HUD PIT counts. The study examines where estimates are more accurate, where they vary more across requests, and whether those patterns are related.</p><div class="study-tags" aria-label="Study scope"><span>2024 PIT benchmark</span><span>44 California CoCs</span><span>50 runs per CoC</span><span>2,200 estimates</span></div>
-          <dl class="research-context"><div><dt>What is compared</dt><dd>January 2024 HUD PIT totals and the model’s estimates for the same 44 Continuums of Care, not individual cities or counties.</dd></div><div><dt>Two separate questions</dt><dd>Accuracy measures the difference from PIT. Consistency measures how much the 50 responses differ from one another.</dd></div><div><dt>Scope of the findings</dt><dd>These results describe the retained responses. Geographic differences alone do not establish what caused the errors.</dd></div></dl>
+        <div class="overview-question"><span class="section-label">Research question</span><h2>How do the accuracy and consistency of AI homelessness estimates vary across California CoCs?</h2><p>Fifty Gemini API requests are compared with January 2024 HUD PIT counts. The study examines where estimates are more accurate, where they vary more across requests, and whether those patterns are related.</p><div class="study-tags" aria-label="Study scope"><span>2024 PIT benchmark</span><span>44 California CoCs</span><span>50 runs per CoC</span><span>2,200 estimates</span></div>
+          <dl class="research-context"><div><dt>What is compared</dt><dd>January 2024 HUD PIT totals and the model’s estimates for the same 44 Continuums of Care, not individual cities or counties.</dd></div><div><dt>Two separate questions</dt><dd>Accuracy measures the difference from PIT. Consistency measures how much the 50 responses differ from one another.</dd></div><div><dt>Scope of the findings</dt><dd>These results describe the 50 requests. Geographic differences alone do not establish what caused the errors.</dd></div></dl>
         </div>
         <nav class="reading-route" aria-label="Explore the research"><span>Explore the evidence</span><a href="#geography">Compare the maps →</a><a href="#consistency">Examine consistency →</a><a href="#study">Check the methods →</a></nav>
         <h2 class="block-heading">What the results show</h2>
@@ -482,7 +482,7 @@
         <p>Lower error means greater accuracy, and lower relative GMD means greater consistency. These are unadjusted associations, not evidence that population causes better estimates. Both outcomes divide by actual PIT, which is related to population and may contribute to these relationships.</p>
         <p class="source-foot">The 50 runs summarize each CoC, they are not 2,200 independent geographic observations. <a href="data/processed/ai_estimate_coc_summary_2024.csv">Data behind these charts</a></p>
       </section>
-        <p class="overview-note">More consistent estimates are not necessarily more accurate. These results describe one model, one prompt, and the retained 50 runs.</p>
+        <p class="overview-note">More consistent estimates are not necessarily more accurate. These results describe one model, one prompt, and the 50 requests.</p>
         <h2 class="block-heading">What the averages can hide</h2>
         <div id="overview-cases" class="evidence-grid" aria-live="polite">Loading CoC examples…</div>
       </section>
@@ -633,7 +633,7 @@
             <div><dt>Accuracy</dt><dd>Each estimate is compared with its CoC’s January 2024 HUD PIT total. Absolute errors measure the size of the difference, while signed errors retain overestimation or underestimation.</dd></div>
             <div><dt>Consistency</dt><dd>Gini’s mean difference averages the absolute differences between all 1,225 distinct pairs among 50 estimates. Relative GMD divides that value by actual PIT and multiplies by 100.</dd></div>
             <div><dt>Ranges and averages</dt><dd>Ranges show the observed minimum and maximum, not confidence intervals. Each CoC is one geographic observation.</dd></div>
-            <div><dt>Repeated requests</dt><dd>The first 50 successful Gemini API requests provide 50 estimates for each of 44 CoCs. There are 2,200 responses, but 44 geographic observations in the correlations and regression.</dd></div>
+            <div><dt>Repeated requests</dt><dd>The 50 Gemini API requests provide 50 estimates for each of 44 CoCs. There are 2,200 responses, but 44 geographic observations in the correlations and regression.</dd></div>
           </dl>
         </section>
         <details class="info-card method-disclosure"><summary>How the main measures are calculated</summary><p><strong>Signed error (people)</strong> = AI estimate − actual PIT. <strong>Signed error %</strong> = signed error ÷ actual PIT × 100. Absolute errors remove the sign before averaging across responses.</p><p><strong>GMD (people)</strong> = the average absolute difference across the 1,225 distinct pairs among 50 estimates. <strong>Relative GMD (%)</strong> = GMD ÷ actual PIT × 100. <strong>Relative estimate range (%)</strong> = (maximum estimate − minimum estimate) ÷ actual PIT × 100.</p></details>
@@ -643,7 +643,7 @@
           <ul class="source-list">
             <li><strong>U.S. Department of Housing and Urban Development:</strong> FY2024 California CoC boundaries, January 2024 PIT and HIC counts, and CoC Performance Profiles.</li>
             <li><strong>U.S. Census Bureau:</strong> 2020–2024 ACS five-year population estimates from table B01003 and 2024 TIGER/Line census-tract boundaries.</li>
-            <li><strong>Repeated AI estimates:</strong> First 50 successful Gemini API runs (gemini-3.8-flash as identified in the first batch log), totaling 2,200 estimates. Failed requests and the final six successful requests were excluded. Exact API prompt, settings and dates were not supplied.</li>
+            <li><strong>Repeated AI estimates:</strong> 50 Gemini API requests using gemini-3.8-flash on October 10, 2026, totaling 2,200 estimates across 44 CoCs. Each request used the same prompt without previous conversation history or external tools. Temperature 1.0 and thinking level medium are the documented model defaults. The full prompt and CoC list are saved in scripts/collect_gemini_estimates.py.</li>
             <li><strong>GDELT:</strong> English homelessness-related Article List headlines from January 1 through December 31, 2024, joined to GKG California location annotations and spatially assigned to CoCs.</li>
           </ul>
         </section>

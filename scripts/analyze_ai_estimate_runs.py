@@ -1,4 +1,4 @@
-"""Summarize the first 50 successful Gemini API runs, one row per CoC."""
+"""Summarize 50 Gemini API requests, one row per CoC."""
 from pathlib import Path
 import json
 import numpy as np
@@ -74,7 +74,20 @@ def main():
     ]]
     categories.to_csv(ROOT / 'data/processed/ai_estimate_category_summary_2024.csv', index=False)
     correlation = pearsonr(np.log1p(summary.gmd_percent), np.log1p(summary.mean_absolute_percent_error))
-    metadata = {'model_id':'gemini-3.8-flash','model_id_evidence':'Model named in the first batch API quota error; same model for subsequent batches assumed from user submission.', 'runs_retained':50,'estimate_count':2200,'selection':'First 50 successful API requests in submission order: 17 from batch 1, 19 from batch 2, and runs 1–14 from batch 3.', 'failed_requests_excluded':{'batch_1':[5,9,20],'batch_2':[1],'batch_3':[]}, 'successful_requests_excluded':{'batch_3':[15,16,17,18,19,20]}, 'source_ids':'source_batch and source_run preserve original request identities; run is sequential successful-run ID.', 'prompt':'Exact API prompt not supplied with the logs.', 'generation_date':None,'temperature':None,'independent_requests':'User reports Gemini API requests without earlier conversation context; request payloads and exact settings were not supplied.', 'units':'Errors in people or percentage points; relative estimate range (%) is (max-min)/actual PIT*100.', 'aggregation':'Equal weight per CoC; estimates and signed/absolute errors use arithmetic means across runs. Absolute errors are calculated before averaging.'}
+    metadata = {
+        'model_id': 'gemini-3.8-flash',
+        'request_count': 50,
+        'estimate_count': 2200,
+        'coc_count': 44,
+        'request_ids': 'run identifies each of the 50 requests, numbered 1 through 50.',
+        'prompt': 'Full prompt and CoC list: PROMPT in scripts/collect_gemini_estimates.py.',
+        'generation_date': '2026-10-10',
+        'temperature': 1.0,
+        'thinking_level': 'medium',
+        'generation_settings_source': 'Documented model defaults; generation settings were not explicitly set in the collection script.',
+        'independent_requests': 'Each request used the same fixed prompt without prior conversation history, a custom system instruction, or external tools.',
+        'aggregation': 'Equal weight per CoC; estimates and signed/absolute errors use arithmetic means across runs. Absolute errors are calculated before averaging.',
+    }
     metadata['units'] = 'Errors in people or percentage points. GMD is the mean absolute difference over all 1,225 distinct unordered pairs of 50 estimates. Relative GMD (%) = GMD/actual PIT*100. Relative estimate range (%) = (max-min)/actual PIT*100.'
     metadata['consistency_correlation'] = {
         'x': 'ln(1 + gmd_percent)', 'y': 'ln(1 + mean_absolute_percent_error)',
@@ -90,14 +103,14 @@ def main():
         'mean_estimate_range_percent': 'Mean relative estimate range (%)',
     }
     (ROOT / 'data/processed/ai_estimate_runs_metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
-    report = '# Geographic AI estimation error — 50 successful API runs\n\n'
+    report = '# Geographic AI estimation error — 50 API requests\n\n'
     report += 'How do the accuracy and consistency of AI homelessness estimates vary across California CoCs?\n\n'
-    report += 'Gemini API (gemini-3.8-flash as identified in batch 1): 50 successful runs, 2,200 estimates, 44 CoCs. Selected chronologically: 17 successful runs from batch 1, 19 from batch 2 and runs 1–14 from batch 3. Four failed requests and the final six successful requests were excluded. Original batch/request numbers are preserved.\n\n'
+    report += 'Gemini API (gemini-3.8-flash): 50 requests, 2,200 estimates, 44 CoCs. Estimates were generated on October 10, 2026. Each request used the same fixed prompt without prior conversation history, a custom system instruction, or external tools. The prompt and full CoC list are in scripts/collect_gemini_estimates.py. Temperature 1.0 and thinking level medium are the documented model defaults; generation settings were not explicitly set in the collection script.\n\n'
     report += f'Mean absolute percentage error, averaged equally across CoCs and runs: {summary.mean_absolute_percent_error.mean():.4f}%.\n\n'
     report += "Consistency is measured by Gini's mean difference (GMD): the average absolute difference over the 1,225 distinct unordered pairs among each CoC's 50 estimates. Relative GMD (%) is GMD divided by actual PIT and multiplied by 100. Category GMDs are equal-weighted means of within-CoC GMDs, not pooled variability.\n\n"
-    report += f'Pearson correlation across 44 CoCs between ln(1 + relative GMD) and ln(1 + mean absolute percentage error): r = {correlation.statistic:.6f}, p-value = {correlation.pvalue:.6g} (two-sided). Percentages enter as percentage points (5 for 5%). All CoCs are retained. Both variables share the PIT denominator, which can contribute to the association; this is not evidence of causation.\n\n'
+    report += f'Pearson correlation across 44 CoCs between ln(1 + relative GMD) and ln(1 + mean absolute percentage error): r = {correlation.statistic:.6f}, p-value = {correlation.pvalue:.6g} (two-sided). Percentages enter as percentage points (5 for 5%). All 44 CoCs are included. Both variables share the PIT denominator, which can contribute to the association; this is not evidence of causation.\n\n'
     report += categories.to_csv(index=False)
-    report += '\nSigned errors describe direction; absolute errors describe inaccuracy. Numerical error describes people added or missed; percentage error describes error relative to actual PIT. Ranges summarize the observed 50 responses, not confidence intervals. Repeated responses are not additional independent geographic observations. Exact API prompt, settings and generation dates were not supplied.\n\nThe media regression uses mean absolute percentage error across these 50 runs. See coc_media_regression_report_2024.md for current exploratory results; it does not identify causation.\n'
+    report += '\nSigned errors describe direction; absolute errors describe inaccuracy. Numerical error describes people added or missed; percentage error describes error relative to actual PIT. Ranges summarize the observed 50 responses, not confidence intervals. Repeated responses are not additional independent geographic observations.\n\nThe media regression uses mean absolute percentage error across these 50 requests. See coc_media_regression_report_2024.md for current exploratory results; it does not identify causation.\n'
     (ROOT / 'data/processed/ai_estimate_runs_report_2024.md').write_text(report)
     print(categories.to_string(index=False))
 
